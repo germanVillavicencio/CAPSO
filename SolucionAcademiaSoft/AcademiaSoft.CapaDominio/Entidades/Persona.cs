@@ -8,6 +8,27 @@ namespace AcademiaSoft.CapaDominio.Entidades
 {
     class Persona
     {
-        private int codigo;
+        protected String nombre;
+        protected int dni;
+        protected DateTime fechaDeNacimiento;
+        protected String apellidoPaterno;
+        protected String apellidoMaterno;
+        protected int telefono;
+        protected String correo;
+        protected String direccion;
+
+        public string Nombre { get => nombre; set => nombre = value; }
+        public int Dni { get => dni; set => dni = value; }
+        public DateTime FechaDeNacimiento { get => fechaDeNacimiento; set => fechaDeNacimiento = value; }
+        public string ApellidoPaterno { get => apellidoPaterno; set => apellidoPaterno = value; }
+        public string ApellidoMaterno { get => apellidoMaterno; set => apellidoMaterno = value; }
+        public int Telefono { get => telefono; set => telefono = value; }
+        public string Correo { get => correo; set => correo = value; }
+        public string Direccion { get => direccion; set => direccion = value; }
+
+        public void calcularEdad()
+        {
+
+        }
     }
 }
