@@ -9,5 +9,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
     class Matricula
     {
         private int codigo;
+        private double pago;
     }
 }

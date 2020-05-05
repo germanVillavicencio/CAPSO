@@ -8,5 +8,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
 {
     class Persona
     {
+        private int codigo;
     }
 }
