@@ -43,5 +43,15 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AcademiaSoft.CapaDominio\AcademiaSoft.CapaDominio.csproj">
+      <Project>{68475ae4-fac1-4773-86a7-097fd00895cb}</Project>
+      <Name>AcademiaSoft.CapaDominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AcademiaSoft.CapaPersistencia\AcademiaSoft.CapaPersistencia.csproj">
+      <Project>{6495e038-1f8e-44e1-a667-0829848f613a}</Project>
+      <Name>AcademiaSoft.CapaPersistencia</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -78,5 +78,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AcademiaSoft.CapaAplicacion\AcademiaSoft.CapaAplicacion.csproj">
+      <Project>{33fd7774-fdfd-4941-a398-77ea6570d19a}</Project>
+      <Name>AcademiaSoft.CapaAplicacion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AcademiaSoft.CapaDominio\AcademiaSoft.CapaDominio.csproj">
+      <Project>{68475ae4-fac1-4773-86a7-097fd00895cb}</Project>
+      <Name>AcademiaSoft.CapaDominio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

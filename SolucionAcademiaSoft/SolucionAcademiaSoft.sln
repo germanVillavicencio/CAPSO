@@ -6,21 +6,10 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaSoft.CapaDominio", "AcademiaSoft.CapaDominio\AcademiaSoft.CapaDominio.csproj", "{68475AE4-FAC1-4773-86A7-097FD00895CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaSoft.CapaAplicacion", "AcademiaSoft.CapaAplicacion\AcademiaSoft.CapaAplicacion.csproj", "{33FD7774-FDFD-4941-A398-77EA6570D19A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6495E038-1F8E-44E1-A667-0829848F613A} = {6495E038-1F8E-44E1-A667-0829848F613A}
-		{68475AE4-FAC1-4773-86A7-097FD00895CB} = {68475AE4-FAC1-4773-86A7-097FD00895CB}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaSoft.CapaPersistencia", "AcademiaSoft.CapaPersistencia\AcademiaSoft.CapaPersistencia.csproj", "{6495E038-1F8E-44E1-A667-0829848F613A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{68475AE4-FAC1-4773-86A7-097FD00895CB} = {68475AE4-FAC1-4773-86A7-097FD00895CB}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaSoft.CapaPresentacion", "AcademiaSoft.CapaPresentacion\AcademiaSoft.CapaPresentacion.csproj", "{B960E7DB-835B-499A-B7D3-4F0C19965D62}"
-	ProjectSection(ProjectDependencies) = postProject
-		{33FD7774-FDFD-4941-A398-77EA6570D19A} = {33FD7774-FDFD-4941-A398-77EA6570D19A}
-		{68475AE4-FAC1-4773-86A7-097FD00895CB} = {68475AE4-FAC1-4773-86A7-097FD00895CB}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
