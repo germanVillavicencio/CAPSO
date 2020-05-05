@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLServerDAO\AlumnoDAO.cs" />
+    <Compile Include="SQLServerDAO\GestorSQL.cs" />
+    <Compile Include="SQLServerDAO\MatriculaDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AcademiaSoft.CapaDominio\AcademiaSoft.CapaDominio.csproj">
