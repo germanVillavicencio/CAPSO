@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AcademiaSoft.CapaDominio.Entidades
 {
-    class Matricula
+    public class Matricula
     {
         private Secretario secretario;
         private Alumno alumno;

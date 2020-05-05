@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AcademiaSoft.CapaDominio.Entidades
 {
-    class Examen
+    public class Examen
     {
         private Clase clase;
 

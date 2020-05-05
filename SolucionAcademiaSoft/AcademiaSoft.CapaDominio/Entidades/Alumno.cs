@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AcademiaSoft.CapaDominio.Entidades
 {
-    class Alumno : Persona
+    public class Alumno : Persona
     {
         private Matricula matricula;
         private List<Clase> listaDeClases;
@@ -27,7 +27,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         }
 
         public string IdCard { get => idCard; set => idCard = value; }
-        internal Clase Clase { get => clase; set => clase = value; }
-        internal List<Clase> ListaDeClases { get => listaDeClases; set => listaDeClases = value; }
+        
+        public List<Clase> ListaDeClases { get => listaDeClases; set => listaDeClases = value; }
     }
 }

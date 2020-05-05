@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AcademiaSoft.CapaDominio.Entidades
 {
-    class Docente : Persona
+    public class Docente : Persona
     {
         private List<Clase> listaDeClases;
 

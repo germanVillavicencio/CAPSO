@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AcademiaSoft.CapaDominio.Entidades
 {
-    class Persona
+    public class Persona
     {
         protected String nombre;
         protected int dni;
