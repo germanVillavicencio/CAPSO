@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AcademiaSoft.CapaPresentacion
 {
-    public partial class Form1 : Form
+    public partial class FormRegistrarMatricula : Form
     {
-        public Form1()
+        public FormRegistrarMatricula()
         {
             InitializeComponent();
         }
