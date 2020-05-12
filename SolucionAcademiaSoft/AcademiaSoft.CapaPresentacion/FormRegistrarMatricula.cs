@@ -39,18 +39,29 @@ namespace AcademiaSoft.CapaPresentacion
                     textCorreo.Text = alumno.Correo;
                     datePickerFechaNacimiento.Value = alumno.FechaDeNacimiento;
                 }
-                else
-                {
-                    groupAlumnoDatosPersonales.Enabled = true;//esto falta
-                }
             }
             catch (Exception err)
             {
                 MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limpiarDatosDelAlumno();
+                groupAlumnoDatosPersonales.Enabled = true;
+                groupAlumnoContacto.Enabled = true;
                 return;
+
             }
 
 
+        }
+
+        private void limpiarDatosDelAlumno()
+        {
+            textNombres.Text = "";
+            textApellidoPaterno.Text = "";
+            textApellidoMaterno.Text = "";
+            textDireccion.Text = "";
+            textTelefono.Text = "";
+            textCorreo.Text = "";
+            datePickerFechaNacimiento.Value = DateTime.Now;
         }
     }
 }
