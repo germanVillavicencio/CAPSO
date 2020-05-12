@@ -14,7 +14,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private double pagoPorHora;
         private String especialidad;
 
-        public Docente(int horasTrabajadas, double pagoPorHora, string especialidad, String nombre, String dni, DateTime fechaNac, String apellidoP, String apellidoM, int telefono, String correo, String direccion)
+        public Docente(int horasTrabajadas, double pagoPorHora, string especialidad, String nombre, String dni, DateTime fechaNac, String apellidoP, String apellidoM, String correo, String direccion)
         {
             this.horasTrabajadas = horasTrabajadas;
             this.pagoPorHora = pagoPorHora;
@@ -24,7 +24,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
             FechaDeNacimiento = fechaNac;
             ApellidoPaterno = apellidoP;
             ApellidoPaterno = apellidoM;
-            Telefono = telefono;
             Correo = correo;
             Direccion = direccion;
         }

@@ -24,7 +24,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
             ApellidoPaterno = apellidoP;
             ApellidoPaterno = apellidoM;
             Celular = celular;
-            Telefono = telefono;
             Correo = correo;
             Direccion = direccion;
         }

@@ -14,7 +14,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
         protected DateTime fechaDeNacimiento;
         protected String apellidoPaterno;
         protected String apellidoMaterno;
-        protected int telefono;
         protected String correo;
         protected String direccion;
 
@@ -23,7 +22,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public DateTime FechaDeNacimiento { get => fechaDeNacimiento; set => fechaDeNacimiento = value; }
         public string ApellidoPaterno { get => apellidoPaterno; set => apellidoPaterno = value; }
         public string ApellidoMaterno { get => apellidoMaterno; set => apellidoMaterno = value; }
-        public int Telefono { get => telefono; set => telefono = value; }
         public string Correo { get => correo; set => correo = value; }
         public string Direccion { get => direccion; set => direccion = value; }
         public string Celular { get => celular; set => celular = value; }

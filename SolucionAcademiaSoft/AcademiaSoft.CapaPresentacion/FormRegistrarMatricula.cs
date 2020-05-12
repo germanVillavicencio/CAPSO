@@ -32,16 +32,21 @@ namespace AcademiaSoft.CapaPresentacion
                 if(alumno != null)
                 {
                     textNombres.Text = alumno.Nombre;
+                    textApellidoPaterno.Text = alumno.ApellidoPaterno;
                     textApellidoMaterno.Text = alumno.ApellidoMaterno;
+                    textDireccion.Text = alumno.Direccion;
+                    textTelefono.Text = alumno.Celular;
+                    textCorreo.Text = alumno.Correo;
+                    datePickerFechaNacimiento.Value = alumno.FechaDeNacimiento;
                 }
                 else
                 {
-                    groupAlumnoDatosPersonales.Enabled = true;
+                    groupAlumnoDatosPersonales.Enabled = true;//esto falta
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show(this, err.Message, "Sistema VentaPasajeSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
