@@ -9,7 +9,8 @@ namespace AcademiaSoft.CapaDominio.Entidades
     public class Persona
     {
         protected String nombre;
-        protected int dni;
+        protected String dni;
+        protected String celular;
         protected DateTime fechaDeNacimiento;
         protected String apellidoPaterno;
         protected String apellidoMaterno;
@@ -18,13 +19,14 @@ namespace AcademiaSoft.CapaDominio.Entidades
         protected String direccion;
 
         public string Nombre { get => nombre; set => nombre = value; }
-        public int Dni { get => dni; set => dni = value; }
+        public string Dni { get => dni; set => dni = value; }
         public DateTime FechaDeNacimiento { get => fechaDeNacimiento; set => fechaDeNacimiento = value; }
         public string ApellidoPaterno { get => apellidoPaterno; set => apellidoPaterno = value; }
         public string ApellidoMaterno { get => apellidoMaterno; set => apellidoMaterno = value; }
         public int Telefono { get => telefono; set => telefono = value; }
         public string Correo { get => correo; set => correo = value; }
         public string Direccion { get => direccion; set => direccion = value; }
+        public string Celular { get => celular; set => celular = value; }
 
         public void calcularEdad()
         {

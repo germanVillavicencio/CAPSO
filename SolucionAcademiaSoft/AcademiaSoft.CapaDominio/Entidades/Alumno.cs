@@ -11,9 +11,11 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private Matricula matricula;
         private List<Clase> listaDeClases;
 
-        private String idCard;
+        private int idCard;
 
-        public Alumno(string idCard, String nombre, int dni, DateTime fechaNac, String apellidoP, String apellidoM, int telefono, String correo, String direccion)
+        public Alumno() { }
+
+        public Alumno(int idCard, String nombre, String dni, DateTime fechaNac, String apellidoP, String apellidoM, String celular, int telefono, String correo, String direccion)
         {
             this.IdCard = idCard;
             Nombre = nombre;
@@ -21,12 +23,13 @@ namespace AcademiaSoft.CapaDominio.Entidades
             FechaDeNacimiento = fechaNac;
             ApellidoPaterno = apellidoP;
             ApellidoPaterno = apellidoM;
+            Celular = celular;
             Telefono = telefono;
             Correo = correo;
             Direccion = direccion;
         }
 
-        public string IdCard { get => idCard; set => idCard = value; }
+        public int IdCard { get => idCard; set => idCard = value; }
         
         public List<Clase> ListaDeClases { get => listaDeClases; set => listaDeClases = value; }
     }

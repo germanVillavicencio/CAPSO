@@ -14,7 +14,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         internal Matricula Matricula { get => matricula; set => matricula = value; }
         public double Sueldo { get => sueldo; set => sueldo = value; }
 
-        public Secretario(double sueldo,String nombre,int dni,DateTime fechaNac, String apellidoP, String apellidoM, int telefono, String correo, String direccion)
+        public Secretario(double sueldo,String nombre,String dni,DateTime fechaNac, String apellidoP, String apellidoM, int telefono, String correo, String direccion)
         {
             this.Sueldo = sueldo;
             Nombre = nombre;

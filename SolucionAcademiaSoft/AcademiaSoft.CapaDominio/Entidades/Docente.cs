@@ -14,7 +14,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private double pagoPorHora;
         private String especialidad;
 
-        public Docente(int horasTrabajadas, double pagoPorHora, string especialidad, String nombre, int dni, DateTime fechaNac, String apellidoP, String apellidoM, int telefono, String correo, String direccion)
+        public Docente(int horasTrabajadas, double pagoPorHora, string especialidad, String nombre, String dni, DateTime fechaNac, String apellidoP, String apellidoM, int telefono, String correo, String direccion)
         {
             this.horasTrabajadas = horasTrabajadas;
             this.pagoPorHora = pagoPorHora;
