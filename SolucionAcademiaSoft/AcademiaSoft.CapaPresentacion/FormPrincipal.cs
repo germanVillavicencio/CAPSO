@@ -15,6 +15,15 @@ namespace AcademiaSoft.CapaPresentacion
         public FormPrincipal()
         {
             InitializeComponent();
+            MaximizeBox = false;
+        }
+
+        private void buttonIniciarSesion_Click(object sender, EventArgs e)
+        {
+            string nick = textNick.Text.Trim();
+            string password = textPassword.Text.Trim();
+
+
         }
     }
 }

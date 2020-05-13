@@ -45,6 +45,7 @@
     <Compile Include="SQLServerDAO\AlumnoDAO.cs" />
     <Compile Include="SQLServerDAO\GestorSQL.cs" />
     <Compile Include="SQLServerDAO\MatriculaDAO.cs" />
+    <Compile Include="SQLServerDAO\UsuarioDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AcademiaSoft.CapaDominio\AcademiaSoft.CapaDominio.csproj">
