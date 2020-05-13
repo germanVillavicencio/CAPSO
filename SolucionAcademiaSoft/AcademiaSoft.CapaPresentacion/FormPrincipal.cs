@@ -25,5 +25,21 @@ namespace AcademiaSoft.CapaPresentacion
 
 
         }
+
+        private void buttonRegistrarUsuario_Click(object sender, EventArgs e)
+        {
+            FormRegistrarUsuario formRegistrarUsuario = new FormRegistrarUsuario();
+            formRegistrarUsuario.ShowDialog();
+        }
+
+        private void pictureBox2_MouseHover(object sender, EventArgs e)
+        {
+            textPassword.UseSystemPasswordChar = false;
+        }
+
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            textPassword.UseSystemPasswordChar = true;
+        }
     }
 }
