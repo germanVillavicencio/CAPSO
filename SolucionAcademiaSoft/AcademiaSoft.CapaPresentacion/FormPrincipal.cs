@@ -16,16 +16,5 @@ namespace AcademiaSoft.CapaPresentacion
         {
             InitializeComponent();
         }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula();
-            formRegistrarMatricula.ShowDialog();
-        }
     }
 }
