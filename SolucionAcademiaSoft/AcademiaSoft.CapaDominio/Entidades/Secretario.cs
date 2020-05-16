@@ -8,13 +8,10 @@ namespace AcademiaSoft.CapaDominio.Entidades
 {
     public class Secretario : Persona
     {
-        private Matricula matricula;
+        private List<Matricula> listaDeMatriculas;
         private double sueldo;
 
-        internal Matricula Matricula { get => matricula; set => matricula = value; }
-        public double Sueldo { get => sueldo; set => sueldo = value; }
-
-        public Secretario(double sueldo,String nombre,String dni,DateTime fechaNac, String apellidoP, String apellidoM, String correo, String direccion)
+        public Secretario(double sueldo, String nombre, String dni, DateTime fechaNac, String apellidoP, String apellidoM, String celular, String correo, String direccion)
         {
             this.Sueldo = sueldo;
             Nombre = nombre;
@@ -22,9 +19,13 @@ namespace AcademiaSoft.CapaDominio.Entidades
             FechaDeNacimiento = fechaNac;
             ApellidoPaterno = apellidoP;
             ApellidoPaterno = apellidoM;
+            Celular = celular;
             Correo = correo;
             Direccion = direccion;
         }
+
+        public double Sueldo { get => sueldo; set => sueldo = value; }
+        public List<Matricula> ListaDeMatriculas { get => listaDeMatriculas; set => listaDeMatriculas = value; }
 
         public void registrarMatricula()
         {

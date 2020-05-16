@@ -8,22 +8,16 @@ namespace AcademiaSoft.CapaDominio.Entidades
 {
     public class Examen
     {
-        private Clase clase;
+        private int nota;
+        private String codigo;
 
-        private int calificacion;
-        private String tipo;
-        private double procentaje;
-
-        public Examen(int calificacion, string tipo, double procentaje)
+        public Examen(int nota, String codigo)
         {
-            this.calificacion = calificacion;
-            this.tipo = tipo;
-            this.procentaje = procentaje;
+            this.Nota = nota;
+            this.Codigo = codigo;
         }
 
-        public int Calificacion { get => calificacion; set => calificacion = value; }
-        public string Tipo { get => tipo; set => tipo = value; }
-        public double Procentaje { get => procentaje; set => procentaje = value; }
-        internal Clase Clase { get => clase; set => clase = value; }
+        public string Codigo { get => codigo; set => codigo = value; }
+        public int Nota { get => nota; set => nota = value; }
     }
 }

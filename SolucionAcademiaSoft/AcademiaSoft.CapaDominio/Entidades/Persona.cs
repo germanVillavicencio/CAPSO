@@ -8,12 +8,12 @@ namespace AcademiaSoft.CapaDominio.Entidades
 {
     public class Persona
     {
-        protected String nombre;
         protected String dni;
-        protected String celular;
-        protected DateTime fechaDeNacimiento;
+        protected String nombre;
         protected String apellidoPaterno;
         protected String apellidoMaterno;
+        protected DateTime fechaDeNacimiento;
+        protected String celular;
         protected String correo;
         protected String direccion;
 

@@ -8,14 +8,12 @@ namespace AcademiaSoft.CapaDominio.Entidades
 {
     public class Alumno : Persona
     {
-        private Matricula matricula;
-        private List<Clase> listaDeClases;
-
         private int idCard;
+        private Matricula matricula;
 
         public Alumno() { }
 
-        public Alumno(int idCard, String nombre, String dni, DateTime fechaNac, String apellidoP, String apellidoM, String celular, int telefono, String correo, String direccion)
+        public Alumno(int idCard, String nombre, String dni, DateTime fechaNac, String apellidoP, String apellidoM, String celular, String correo, String direccion)
         {
             this.IdCard = idCard;
             Nombre = nombre;
@@ -30,6 +28,5 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
         public int IdCard { get => idCard; set => idCard = value; }
         
-        public List<Clase> ListaDeClases { get => listaDeClases; set => listaDeClases = value; }
     }
 }

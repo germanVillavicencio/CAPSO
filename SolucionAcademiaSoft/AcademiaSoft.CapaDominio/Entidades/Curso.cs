@@ -11,16 +11,16 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private List<Clase> listaDeClases;
 
         private String nombre;
-        private int codigo;
+        private String codigo;
 
-        public Curso(string nombre, int codigo)
+        public Curso(String nombre, String codigo)
         {
             this.nombre = nombre;
             this.codigo = codigo;
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
-        public int Codigo { get => codigo; set => codigo = value; }
-        internal List<Clase> ListaDeClases { get => listaDeClases; set => listaDeClases = value; }
+        public String Codigo { get => codigo; set => codigo = value; }
+        public List<Clase> ListaDeClases { get => listaDeClases; set => listaDeClases = value; }
     }
 }
