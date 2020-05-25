@@ -26,20 +26,5 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
         public double Sueldo { get => sueldo; set => sueldo = value; }
         public List<Matricula> ListaDeMatriculas { get => listaDeMatriculas; set => listaDeMatriculas = value; }
-
-        public void registrarMatricula()
-        {
-
-        }
-
-        public void registrarDocente()
-        {
-
-        }
-
-        public void registrarCurso()
-        {
-
-        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -42,6 +43,30 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return alumno;
         }
 
+        public void guardarAlumno(Alumno alumno)
+        {
+            string consultaSQL = "execute registrarAlumno @dni, @nombre, @apellidoP, @apellidoM, @direccion, @celular, @fechaDeNacimiento, @correo";
+       
+            try {
+                SqlCommand comando;
+                //Guardar la alumno
+                comando = gestorSQL.obtenerComandoSQL(consultaSQL);
+                comando.Parameters.AddWithValue("@idPago", alumno.Dni);
+                comando.Parameters.AddWithValue("@nombre", alumno.Nombre);
+                comando.Parameters.AddWithValue("@apellidoP", alumno.ApellidoPaterno);
+                comando.Parameters.AddWithValue("@apellidoM", alumno.ApellidoMaterno);
+                comando.Parameters.AddWithValue("@direccion", alumno.Direccion);
+                comando.Parameters.AddWithValue("@celular", alumno.Celular);
+                comando.Parameters.AddWithValue("@fechaDeNacimiento", alumno.FechaDeNacimiento);
+                comando.Parameters.AddWithValue("@correo", alumno.Correo);
+                comando.ExecuteNonQuery();
+            }
+            catch(Exception err)
+            {
+                throw new Exception("Ocurrio un problema al guardar el alumno.",err);
+            }
+        }
+
         private Alumno obtenerAlumno(SqlDataReader resultadoSQL)
         {
             Alumno alumno = new Alumno();
@@ -56,6 +81,5 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             alumno.IdCard = resultadoSQL.GetInt32(8);
             return alumno;
         }
-
     }
 }

@@ -26,9 +26,13 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public string Direccion { get => direccion; set => direccion = value; }
         public string Celular { get => celular; set => celular = value; }
 
-        public void calcularEdad()
+        public int calcularEdad()
         {
+            int edad = 0;
 
+            edad = DateTime.Today.AddTicks(-fechaDeNacimiento.Ticks).Year - 1;
+
+            return edad;
         }
     }
 }

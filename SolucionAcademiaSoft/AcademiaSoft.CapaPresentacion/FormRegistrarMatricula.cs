@@ -63,5 +63,10 @@ namespace AcademiaSoft.CapaPresentacion
             textCorreo.Text = "";
             datePickerFechaNacimiento.Value = DateTime.Now;
         }
+
+        private void buttonRegistrarMatricula_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

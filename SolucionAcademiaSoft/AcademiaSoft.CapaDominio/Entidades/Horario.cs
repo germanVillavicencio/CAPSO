@@ -25,9 +25,5 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public DateTime Fin { get => fin; set => fin = value; }
         public string Dia { get => dia; set => dia = value; }
 
-        public bool esHorarioValido()
-        {
-            return true;
-        }
     }
 }

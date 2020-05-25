@@ -38,10 +38,5 @@ namespace AcademiaSoft.CapaDominio.Entidades
         {
             return HorasTrabajadas * PagoPorHora;
         }
-
-        public void registrarNotas()
-        {
-
-        }
     }
 }

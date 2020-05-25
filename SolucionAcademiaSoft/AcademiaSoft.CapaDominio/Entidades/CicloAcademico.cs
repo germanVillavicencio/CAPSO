@@ -12,18 +12,66 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private int totalDeAlumnos;
         private DateTime fechaInicio;
         private DateTime fechaFin;
+        private DateTime fechaInicioMatricula;
+        private List<Clase> clases;
+        private List<Matricula> matriculas;
 
-        public CicloAcademico(string periodo, int totalDeAlumnos, DateTime fechaInicio, DateTime fechaFin)
+        public CicloAcademico() { }
+        public CicloAcademico(string periodo, int totalDeAlumnos, DateTime fechaInicio, DateTime fechaFin, DateTime fechaInicioMatricula)
         {
             this.Periodo = periodo;
             this.TotalDeAlumnos = totalDeAlumnos;
             this.FechaInicio = fechaInicio;
             this.FechaFin = fechaFin;
+            this.FechaInicioMatricula = fechaInicioMatricula;
+            this.Clases = new List<Clase>();
+            this.Matriculas = new List<Matricula>();
         }
 
         public string Periodo { get => periodo; set => periodo = value; }
         public int TotalDeAlumnos { get => totalDeAlumnos; set => totalDeAlumnos = value; }
         public DateTime FechaInicio { get => fechaInicio; set => fechaInicio = value; }
         public DateTime FechaFin { get => fechaFin; set => fechaFin = value; }
+        public List<Clase> Clases { get => clases; set => clases = value; }
+        public List<Matricula> Matriculas { get => matriculas; set => matriculas = value; }
+        public DateTime FechaInicioMatricula { get => fechaInicioMatricula; set => fechaInicioMatricula = value; }
+
+        public bool esValidoRegistro(int cantidadAlumnosRegistrados)
+        {
+            return (totalDeAlumnos>cantidadAlumnosRegistrados);
+        }
+
+        public bool estaAlumnoMatriculado(string dni)
+        {
+            bool respuesta;
+
+            foreach(Matricula m in matriculas)
+            {
+                if (m.Alumno.Dni.Equals(dni))
+                    return true;
+            }
+            return false;
+        }
+
+        public bool esValidoFechaMatricula()
+        {
+            DateTime fechaActual = new DateTime();
+
+            if (fechaInicioMatricula.AddDays(20)>= fechaActual && fechaInicioMatricula<= fechaActual)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public DateTime calcularFechaInicioClases()
+        {
+            return fechaInicioMatricula.AddDays(14);//Dos semanas despues de inicio de pago de matricula
+        }
+
+        public DateTime calcularFechaTerminoClases()
+        {
+            return fechaInicioMatricula.AddDays(132);//18 semanas mas 6 dias despues del pago de matricula
+        }
     }
 }

@@ -27,6 +27,5 @@ namespace AcademiaSoft.CapaDominio.Entidades
         }
 
         public int IdCard { get => idCard; set => idCard = value; }
-        
     }
 }

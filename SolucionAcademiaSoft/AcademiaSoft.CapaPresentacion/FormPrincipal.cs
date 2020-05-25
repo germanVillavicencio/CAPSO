@@ -22,8 +22,8 @@ namespace AcademiaSoft.CapaPresentacion
         {
             string nick = textNick.Text.Trim();
             string password = textPassword.Text.Trim();
-
-
+            FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula();
+            formRegistrarMatricula.ShowDialog();
         }
 
         private void buttonRegistrarUsuario_Click(object sender, EventArgs e)
