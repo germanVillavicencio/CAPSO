@@ -62,11 +62,50 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return listaMatriculas;
         }
 
+        public CicloAcademico obtenerMatriculasDeUnCiclo(CicloAcademico cicloAcademico)
+        {
+            Matricula matricula = null;
+            String turno = "";
+            //List<Matricula> listaMatriculas = new List<Matricula>();
+            string consultaSQL = "select m.mat_fecha, m.mat_pago, m.alu_dni,h.hor_turno from Registro_Clases rc inner join Clase c on rc.cla_id = c.cla_id " +
+                                    "inner join Horario h on h.hor_id = c.hor_id " +
+                                    "inner join Ciclo_Academico ca on ca.cic_id = c.cic_id " +
+                                    "inner join Matricula m on m.mat_codigo = rc.mat_codigo " +
+                                    "where ca.cic_periodo = '"+  cicloAcademico.Periodo +"' "+
+                                    "group by rc.mat_codigo, h.hor_turno, m.alu_dni, m.mat_fecha, m.mat_pago";
+
+            try
+            {
+                SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
+                while (resultadoSQL.Read())
+                {
+                    turno = resultadoSQL.GetString(3);
+                    matricula = obtenerMatricula(resultadoSQL);
+                    if(turno.Equals("Mañana"))
+                    {
+                        cicloAcademico.MatriculasMañana.Add(matricula);
+                    }
+                    else
+                    {
+                        if(turno.Equals("Tarde"))
+                            cicloAcademico.MatriculasTarde.Add(matricula);
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+
+            return cicloAcademico;
+        }
+
         private Matricula obtenerMatricula(SqlDataReader resultadoSQL)
         {
             Matricula matricula = new Matricula();
+            matricula.Alumno = new Alumno();
             matricula.Fecha = resultadoSQL.GetDateTime(0);
-            matricula.Pago = resultadoSQL.GetDouble(1);
+            matricula.Pago = double.Parse(resultadoSQL.GetDecimal(1).ToString());
             matricula.Alumno.Dni = resultadoSQL.GetString(2);
             return matricula;
         }

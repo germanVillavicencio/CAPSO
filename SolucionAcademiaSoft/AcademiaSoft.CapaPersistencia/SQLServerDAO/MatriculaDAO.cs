@@ -21,18 +21,22 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
         public int calcularAlumnosRegistrados(string periodo)
         {
             int totalAlumnos = 0;
-            string consultaSQL = "select count(rc.mat_codigo) from Registro_Clases rc inner join Matricula m on rc.mat_codigo = m.mat_codigo inner join Ciclo_Academico ca on m.cic_id = ca.cic_id where ca.cic_periodo='"+periodo+"'";
+            List<Matricula> matriculas = new List<Matricula>();
+            //string consultaSQL = "select count(rc.mat_codigo) from Registro_Clases rc inner join Matricula m on rc.mat_codigo = m.mat_codigo inner join Ciclo_Academico ca on m.cic_id = ca.cic_id where ca.cic_periodo='"+periodo+"'";
+            string consultaSQL = "select rc.mat_codigo as Codigo_Matricula, h.hor_turno as Turno from Registro_Clases rc inner join Clase c on rc.cla_id = c.cla_id" +
+                                                            "inner join Horario h on h.hor_id = c.hor_id" +
+                                                            "inner join Ciclo_Academico ca on ca.cic_id = c.cic_id" +
+                                                            "where ca.cic_periodo = " + periodo +
+                                                            "group by rc.mat_codigo, h.hor_turno";
+
 
             try
             {
                 SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
-                if (resultadoSQL.Read())
+                while (resultadoSQL.Read())
                 {
-                    totalAlumnos = obtenerNumerosAlumnosRegistrados(resultadoSQL);
-                }
-                else
-                {
-                    throw new Exception("No hay alumnos registrados. Ingrese sus datos para registrarlo");
+                    /*matricula = obtenerMatricula(resultadoSQL);
+                    listaMatriculas.Add(matricula);*/
                 }
             }
             catch(Exception err)
@@ -64,9 +68,9 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             }
         }
        
-        private int obtenerNumerosAlumnosRegistrados(SqlDataReader resultadoSQL)
+        /*private int obtenerNumerosAlumnosRegistrados(SqlDataReader resultadoSQL)
         {         
             return resultadoSQL.GetInt32(0);
-        }
+        }*/
     }
 }

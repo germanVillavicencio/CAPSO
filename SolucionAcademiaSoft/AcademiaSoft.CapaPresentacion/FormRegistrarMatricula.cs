@@ -16,8 +16,10 @@ namespace AcademiaSoft.CapaPresentacion
     public partial class FormRegistrarMatricula : Form
     {
         Alumno alumno;
-        public FormRegistrarMatricula()
+        CicloAcademico cicloAcademico;
+        public FormRegistrarMatricula(CicloAcademico ciclo)
         {
+            this.cicloAcademico = ciclo;
             InitializeComponent();
         }
 
