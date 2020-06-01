@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupAlumno = new System.Windows.Forms.GroupBox();
             this.buttonBuscarAlumno = new System.Windows.Forms.Button();
             this.textDni = new System.Windows.Forms.TextBox();
@@ -57,6 +60,8 @@
             this.dataHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxTurno = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textPrecio = new System.Windows.Forms.TextBox();
             this.groupAlumno.SuspendLayout();
             this.groupAlumnoContacto.SuspendLayout();
             this.groupAlumnoDatosPersonales.SuspendLayout();
@@ -76,7 +81,7 @@
             this.groupAlumno.Margin = new System.Windows.Forms.Padding(2);
             this.groupAlumno.Name = "groupAlumno";
             this.groupAlumno.Padding = new System.Windows.Forms.Padding(2);
-            this.groupAlumno.Size = new System.Drawing.Size(634, 322);
+            this.groupAlumno.Size = new System.Drawing.Size(685, 322);
             this.groupAlumno.TabIndex = 0;
             this.groupAlumno.TabStop = false;
             this.groupAlumno.Text = "Datos del Alumno";
@@ -85,7 +90,7 @@
             // 
             this.buttonBuscarAlumno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBuscarAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBuscarAlumno.Location = new System.Drawing.Point(538, 55);
+            this.buttonBuscarAlumno.Location = new System.Drawing.Point(583, 55);
             this.buttonBuscarAlumno.Margin = new System.Windows.Forms.Padding(2);
             this.buttonBuscarAlumno.Name = "buttonBuscarAlumno";
             this.buttonBuscarAlumno.Size = new System.Drawing.Size(85, 28);
@@ -97,12 +102,13 @@
             // textDni
             // 
             this.textDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDni.Location = new System.Drawing.Point(403, 57);
+            this.textDni.Location = new System.Drawing.Point(420, 60);
             this.textDni.Margin = new System.Windows.Forms.Padding(2);
             this.textDni.MaxLength = 8;
             this.textDni.Name = "textDni";
-            this.textDni.Size = new System.Drawing.Size(123, 23);
+            this.textDni.Size = new System.Drawing.Size(149, 23);
             this.textDni.TabIndex = 0;
+            this.textDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textDni_KeyPress);
             // 
             // groupAlumnoContacto
             // 
@@ -113,11 +119,11 @@
             this.groupAlumnoContacto.Controls.Add(this.textDireccion);
             this.groupAlumnoContacto.Controls.Add(this.label6);
             this.groupAlumnoContacto.Enabled = false;
-            this.groupAlumnoContacto.Location = new System.Drawing.Point(346, 89);
+            this.groupAlumnoContacto.Location = new System.Drawing.Point(347, 87);
             this.groupAlumnoContacto.Margin = new System.Windows.Forms.Padding(2);
             this.groupAlumnoContacto.Name = "groupAlumnoContacto";
             this.groupAlumnoContacto.Padding = new System.Windows.Forms.Padding(2);
-            this.groupAlumnoContacto.Size = new System.Drawing.Size(277, 216);
+            this.groupAlumnoContacto.Size = new System.Drawing.Size(321, 216);
             this.groupAlumnoContacto.TabIndex = 11;
             this.groupAlumnoContacto.TabStop = false;
             this.groupAlumnoContacto.Text = "Contacto";
@@ -129,7 +135,7 @@
             this.textCorreo.Margin = new System.Windows.Forms.Padding(2);
             this.textCorreo.MaxLength = 50;
             this.textCorreo.Name = "textCorreo";
-            this.textCorreo.Size = new System.Drawing.Size(240, 23);
+            this.textCorreo.Size = new System.Drawing.Size(282, 23);
             this.textCorreo.TabIndex = 5;
             // 
             // label8
@@ -150,8 +156,9 @@
             this.textTelefono.Margin = new System.Windows.Forms.Padding(2);
             this.textTelefono.MaxLength = 9;
             this.textTelefono.Name = "textTelefono";
-            this.textTelefono.Size = new System.Drawing.Size(240, 23);
+            this.textTelefono.Size = new System.Drawing.Size(282, 23);
             this.textTelefono.TabIndex = 3;
+            this.textTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textTelefono_KeyPress);
             // 
             // label7
             // 
@@ -171,7 +178,7 @@
             this.textDireccion.Margin = new System.Windows.Forms.Padding(2);
             this.textDireccion.MaxLength = 50;
             this.textDireccion.Name = "textDireccion";
-            this.textDireccion.Size = new System.Drawing.Size(240, 23);
+            this.textDireccion.Size = new System.Drawing.Size(282, 23);
             this.textDireccion.TabIndex = 1;
             // 
             // label6
@@ -188,7 +195,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(350, 59);
+            this.label1.Location = new System.Drawing.Point(367, 62);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 20);
@@ -210,7 +217,7 @@
             this.groupAlumnoDatosPersonales.Margin = new System.Windows.Forms.Padding(2);
             this.groupAlumnoDatosPersonales.Name = "groupAlumnoDatosPersonales";
             this.groupAlumnoDatosPersonales.Padding = new System.Windows.Forms.Padding(2);
-            this.groupAlumnoDatosPersonales.Size = new System.Drawing.Size(306, 264);
+            this.groupAlumnoDatosPersonales.Size = new System.Drawing.Size(309, 264);
             this.groupAlumnoDatosPersonales.TabIndex = 11;
             this.groupAlumnoDatosPersonales.TabStop = false;
             this.groupAlumnoDatosPersonales.Text = "Personales";
@@ -233,7 +240,7 @@
             this.textNombres.Margin = new System.Windows.Forms.Padding(2);
             this.textNombres.MaxLength = 50;
             this.textNombres.Name = "textNombres";
-            this.textNombres.Size = new System.Drawing.Size(270, 23);
+            this.textNombres.Size = new System.Drawing.Size(274, 23);
             this.textNombres.TabIndex = 6;
             // 
             // datePickerFechaNacimiento
@@ -242,7 +249,7 @@
             this.datePickerFechaNacimiento.Location = new System.Drawing.Point(21, 228);
             this.datePickerFechaNacimiento.Margin = new System.Windows.Forms.Padding(2);
             this.datePickerFechaNacimiento.Name = "datePickerFechaNacimiento";
-            this.datePickerFechaNacimiento.Size = new System.Drawing.Size(270, 23);
+            this.datePickerFechaNacimiento.Size = new System.Drawing.Size(274, 23);
             this.datePickerFechaNacimiento.TabIndex = 3;
             // 
             // textApellidoMaterno
@@ -252,7 +259,7 @@
             this.textApellidoMaterno.Margin = new System.Windows.Forms.Padding(2);
             this.textApellidoMaterno.MaxLength = 50;
             this.textApellidoMaterno.Name = "textApellidoMaterno";
-            this.textApellidoMaterno.Size = new System.Drawing.Size(270, 23);
+            this.textApellidoMaterno.Size = new System.Drawing.Size(274, 23);
             this.textApellidoMaterno.TabIndex = 10;
             // 
             // label5
@@ -273,7 +280,7 @@
             this.textApellidoPaterno.Margin = new System.Windows.Forms.Padding(2);
             this.textApellidoPaterno.MaxLength = 50;
             this.textApellidoPaterno.Name = "textApellidoPaterno";
-            this.textApellidoPaterno.Size = new System.Drawing.Size(270, 23);
+            this.textApellidoPaterno.Size = new System.Drawing.Size(274, 23);
             this.textApellidoPaterno.TabIndex = 8;
             // 
             // label3
@@ -300,16 +307,19 @@
             // 
             // groupMatricula
             // 
+            this.groupMatricula.Controls.Add(this.textPrecio);
+            this.groupMatricula.Controls.Add(this.label10);
             this.groupMatricula.Controls.Add(this.buttonRegistrarMatricula);
             this.groupMatricula.Controls.Add(this.dataGridClases);
             this.groupMatricula.Controls.Add(this.label9);
             this.groupMatricula.Controls.Add(this.comboBoxTurno);
+            this.groupMatricula.Enabled = false;
             this.groupMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupMatricula.Location = new System.Drawing.Point(22, 364);
             this.groupMatricula.Margin = new System.Windows.Forms.Padding(2);
             this.groupMatricula.Name = "groupMatricula";
             this.groupMatricula.Padding = new System.Windows.Forms.Padding(2);
-            this.groupMatricula.Size = new System.Drawing.Size(634, 287);
+            this.groupMatricula.Size = new System.Drawing.Size(685, 287);
             this.groupMatricula.TabIndex = 1;
             this.groupMatricula.TabStop = false;
             this.groupMatricula.Text = "Datos de la Matricula";
@@ -318,10 +328,10 @@
             // 
             this.buttonRegistrarMatricula.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRegistrarMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRegistrarMatricula.Location = new System.Drawing.Point(518, 210);
+            this.buttonRegistrarMatricula.Location = new System.Drawing.Point(508, 237);
             this.buttonRegistrarMatricula.Margin = new System.Windows.Forms.Padding(2);
             this.buttonRegistrarMatricula.Name = "buttonRegistrarMatricula";
-            this.buttonRegistrarMatricula.Size = new System.Drawing.Size(105, 63);
+            this.buttonRegistrarMatricula.Size = new System.Drawing.Size(160, 46);
             this.buttonRegistrarMatricula.TabIndex = 3;
             this.buttonRegistrarMatricula.Text = "Registrar Matricula";
             this.buttonRegistrarMatricula.UseVisualStyleBackColor = true;
@@ -329,18 +339,42 @@
             // 
             // dataGridClases
             // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridClases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridClases.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridClases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataCodigo,
             this.dataCurso,
             this.dataDocente,
             this.dataHorario});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridClases.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridClases.Location = new System.Drawing.Point(21, 71);
             this.dataGridClases.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridClases.Name = "dataGridClases";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridClases.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridClases.RowHeadersWidth = 51;
             this.dataGridClases.RowTemplate.Height = 24;
-            this.dataGridClases.Size = new System.Drawing.Size(602, 122);
+            this.dataGridClases.Size = new System.Drawing.Size(647, 152);
             this.dataGridClases.TabIndex = 2;
             // 
             // dataCodigo
@@ -384,6 +418,7 @@
             // 
             // comboBoxTurno
             // 
+            this.comboBoxTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTurno.FormattingEnabled = true;
             this.comboBoxTurno.Location = new System.Drawing.Point(74, 33);
@@ -391,12 +426,35 @@
             this.comboBoxTurno.Name = "comboBoxTurno";
             this.comboBoxTurno.Size = new System.Drawing.Size(147, 24);
             this.comboBoxTurno.TabIndex = 0;
+            this.comboBoxTurno.SelectionChangeCommitted += new System.EventHandler(this.comboBoxTurno_SelectionChangeCommitted);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(492, 33);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 17);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Precio:";
+            // 
+            // textPrecio
+            // 
+            this.textPrecio.Enabled = false;
+            this.textPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPrecio.Location = new System.Drawing.Point(548, 30);
+            this.textPrecio.Margin = new System.Windows.Forms.Padding(2);
+            this.textPrecio.MaxLength = 8;
+            this.textPrecio.Name = "textPrecio";
+            this.textPrecio.Size = new System.Drawing.Size(120, 23);
+            this.textPrecio.TabIndex = 12;
             // 
             // FormRegistrarMatricula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 609);
+            this.ClientSize = new System.Drawing.Size(723, 662);
             this.Controls.Add(this.groupMatricula);
             this.Controls.Add(this.groupAlumno);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -446,5 +504,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataCurso;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataDocente;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataHorario;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textPrecio;
     }
 }

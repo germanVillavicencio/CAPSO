@@ -48,7 +48,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 
         public void guardarMatricula(Matricula matricula, string turno) {
 
-            string consultaSQL = "execute registrarMatricula @par_pago, @par_dni_secretario, @par_dni_alumno, @par_ciclo, @turno";
+            string consultaSQL = "execute registrarMatricula @par_pago, @par_dni_secretario, @par_dni_alumno, @par_ciclo, @par_turno";
 
             try
             {
@@ -59,7 +59,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
                 comando.Parameters.AddWithValue("@par_dni_secretario", matricula.Secretario.Dni);
                 comando.Parameters.AddWithValue("@par_dni_alumno", matricula.Alumno.Dni);
                 comando.Parameters.AddWithValue("@par_ciclo", matricula.CicloAcademico.Periodo);
-                comando.Parameters.AddWithValue("@turno", turno);
+                comando.Parameters.AddWithValue("@par_turno", turno);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)

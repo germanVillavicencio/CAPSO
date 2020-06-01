@@ -8,22 +8,24 @@ namespace AcademiaSoft.CapaDominio.Entidades
 {
     public class Horario
     {
-        private DateTime inicio;
-        private DateTime fin;
-        private String dia;
-        private String turno;
+        private string inicio;
+        private string fin;
+        private string dia;
+        private string turno;
 
-        public Horario(DateTime inicio, DateTime fin, String dia, String turno)
+        public Horario() { }
+
+        public Horario(string inicio, string fin, string dia, string turno)
         {
             this.inicio = inicio;
             this.fin = fin;
             this.Dia = dia;
-            this.turno = turno;
+            this.Turno = turno;
         }
 
-        public DateTime Inicio { get => inicio; set => inicio = value; }
-        public DateTime Fin { get => fin; set => fin = value; }
+        public string Inicio { get => inicio; set => inicio = value; }
+        public string Fin { get => fin; set => fin = value; }
         public string Dia { get => dia; set => dia = value; }
-
+        public string Turno { get => turno; set => turno = value; }
     }
 }

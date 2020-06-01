@@ -30,37 +30,37 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxDatosPersonales = new System.Windows.Forms.GroupBox();
-            this.textNombre = new System.Windows.Forms.TextBox();
-            this.textDni = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textApellidoPat = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textApellidoMat = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimeFechaNac = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textDireccion = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textCorreo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textCelular = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textCorreo = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textDireccion = new System.Windows.Forms.TextBox();
+            this.dateTimeFechaNac = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textApellidoMat = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textApellidoPat = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textDni = new System.Windows.Forms.TextBox();
+            this.textNombre = new System.Windows.Forms.TextBox();
             this.groupBoxDatosTrabajo = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.comboBoxTipoUsuario = new System.Windows.Forms.ComboBox();
-            this.labelPagoHora = new System.Windows.Forms.Label();
-            this.textPagoHora = new System.Windows.Forms.TextBox();
-            this.textEspecialidad = new System.Windows.Forms.TextBox();
-            this.labelEspecialidad = new System.Windows.Forms.Label();
             this.textSueldo = new System.Windows.Forms.TextBox();
             this.labelSueldo = new System.Windows.Forms.Label();
+            this.textEspecialidad = new System.Windows.Forms.TextBox();
+            this.labelEspecialidad = new System.Windows.Forms.Label();
+            this.textPagoHora = new System.Windows.Forms.TextBox();
+            this.labelPagoHora = new System.Windows.Forms.Label();
+            this.comboBoxTipoUsuario = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupDatosIngreso = new System.Windows.Forms.GroupBox();
-            this.textNick = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textPassword = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textNick = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.buttonRegistrarUsuario = new System.Windows.Forms.Button();
             this.groupBoxDatosPersonales.SuspendLayout();
             this.groupBoxDatosTrabajo.SuspendLayout();
@@ -104,108 +104,24 @@
             this.groupBoxDatosPersonales.TabStop = false;
             this.groupBoxDatosPersonales.Text = "Datos Personales";
             // 
-            // textNombre
+            // label9
             // 
-            this.textNombre.Location = new System.Drawing.Point(21, 97);
-            this.textNombre.MaxLength = 50;
-            this.textNombre.Name = "textNombre";
-            this.textNombre.Size = new System.Drawing.Size(291, 26);
-            this.textNombre.TabIndex = 1;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(420, 187);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 20);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Celular";
             // 
-            // textDni
+            // textCelular
             // 
-            this.textDni.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textDni.Location = new System.Drawing.Point(64, 36);
-            this.textDni.MaxLength = 8;
-            this.textDni.Name = "textDni";
-            this.textDni.Size = new System.Drawing.Size(248, 26);
-            this.textDni.TabIndex = 0;
-            this.textDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "DNI:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Nombre:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 131);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 20);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Apellido Paterno";
-            // 
-            // textApellidoPat
-            // 
-            this.textApellidoPat.Location = new System.Drawing.Point(21, 154);
-            this.textApellidoPat.MaxLength = 50;
-            this.textApellidoPat.Name = "textApellidoPat";
-            this.textApellidoPat.Size = new System.Drawing.Size(291, 26);
-            this.textApellidoPat.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 187);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 20);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Apellido Materno";
-            // 
-            // textApellidoMat
-            // 
-            this.textApellidoMat.Location = new System.Drawing.Point(21, 210);
-            this.textApellidoMat.MaxLength = 50;
-            this.textApellidoMat.Name = "textApellidoMat";
-            this.textApellidoMat.Size = new System.Drawing.Size(291, 26);
-            this.textApellidoMat.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(420, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(159, 20);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Fecha de Nacimiento";
-            // 
-            // dateTimeFechaNac
-            // 
-            this.dateTimeFechaNac.Location = new System.Drawing.Point(424, 39);
-            this.dateTimeFechaNac.Name = "dateTimeFechaNac";
-            this.dateTimeFechaNac.Size = new System.Drawing.Size(291, 26);
-            this.dateTimeFechaNac.TabIndex = 10;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(420, 75);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 20);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Dirección";
-            // 
-            // textDireccion
-            // 
-            this.textDireccion.Location = new System.Drawing.Point(424, 98);
-            this.textDireccion.MaxLength = 50;
-            this.textDireccion.Name = "textDireccion";
-            this.textDireccion.Size = new System.Drawing.Size(291, 26);
-            this.textDireccion.TabIndex = 11;
+            this.textCelular.Location = new System.Drawing.Point(424, 210);
+            this.textCelular.MaxLength = 9;
+            this.textCelular.Name = "textCelular";
+            this.textCelular.Size = new System.Drawing.Size(291, 26);
+            this.textCelular.TabIndex = 15;
+            this.textCelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textCelular_KeyPress);
             // 
             // label8
             // 
@@ -224,23 +140,109 @@
             this.textCorreo.Size = new System.Drawing.Size(291, 26);
             this.textCorreo.TabIndex = 13;
             // 
-            // label9
+            // label7
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(420, 187);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 20);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Celular";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(420, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(75, 20);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Dirección";
             // 
-            // textCelular
+            // textDireccion
             // 
-            this.textCelular.Location = new System.Drawing.Point(424, 210);
-            this.textCelular.MaxLength = 9;
-            this.textCelular.Name = "textCelular";
-            this.textCelular.Size = new System.Drawing.Size(291, 26);
-            this.textCelular.TabIndex = 15;
-            this.textCelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textDireccion.Location = new System.Drawing.Point(424, 98);
+            this.textDireccion.MaxLength = 50;
+            this.textDireccion.Name = "textDireccion";
+            this.textDireccion.Size = new System.Drawing.Size(291, 26);
+            this.textDireccion.TabIndex = 11;
+            // 
+            // dateTimeFechaNac
+            // 
+            this.dateTimeFechaNac.Location = new System.Drawing.Point(424, 39);
+            this.dateTimeFechaNac.Name = "dateTimeFechaNac";
+            this.dateTimeFechaNac.Size = new System.Drawing.Size(291, 26);
+            this.dateTimeFechaNac.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(420, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(159, 20);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Fecha de Nacimiento";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 187);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(128, 20);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Apellido Materno";
+            // 
+            // textApellidoMat
+            // 
+            this.textApellidoMat.Location = new System.Drawing.Point(21, 210);
+            this.textApellidoMat.MaxLength = 50;
+            this.textApellidoMat.Name = "textApellidoMat";
+            this.textApellidoMat.Size = new System.Drawing.Size(291, 26);
+            this.textApellidoMat.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 131);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(125, 20);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Apellido Paterno";
+            // 
+            // textApellidoPat
+            // 
+            this.textApellidoPat.Location = new System.Drawing.Point(21, 154);
+            this.textApellidoPat.MaxLength = 50;
+            this.textApellidoPat.Name = "textApellidoPat";
+            this.textApellidoPat.Size = new System.Drawing.Size(291, 26);
+            this.textApellidoPat.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Nombre:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "DNI:";
+            // 
+            // textDni
+            // 
+            this.textDni.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textDni.Location = new System.Drawing.Point(64, 36);
+            this.textDni.MaxLength = 8;
+            this.textDni.Name = "textDni";
+            this.textDni.Size = new System.Drawing.Size(248, 26);
+            this.textDni.TabIndex = 0;
+            this.textDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textDni_KeyPress);
+            // 
+            // textNombre
+            // 
+            this.textNombre.Location = new System.Drawing.Point(21, 97);
+            this.textNombre.MaxLength = 50;
+            this.textNombre.Name = "textNombre";
+            this.textNombre.Size = new System.Drawing.Size(291, 26);
+            this.textNombre.TabIndex = 1;
             // 
             // groupBoxDatosTrabajo
             // 
@@ -260,49 +262,27 @@
             this.groupBoxDatosTrabajo.TabStop = false;
             this.groupBoxDatosTrabajo.Text = "Datos de Trabajo";
             // 
-            // label17
+            // textSueldo
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(17, 39);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(124, 20);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Tipo de Usuario:";
+            this.textSueldo.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textSueldo.Location = new System.Drawing.Point(90, 86);
+            this.textSueldo.MaxLength = 8;
+            this.textSueldo.Name = "textSueldo";
+            this.textSueldo.Size = new System.Drawing.Size(230, 26);
+            this.textSueldo.TabIndex = 21;
+            this.textSueldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textSueldo.Visible = false;
+            this.textSueldo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textSueldo_KeyPress);
             // 
-            // comboBoxTipoUsuario
+            // labelSueldo
             // 
-            this.comboBoxTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTipoUsuario.FormattingEnabled = true;
-            this.comboBoxTipoUsuario.Items.AddRange(new object[] {
-            "Secretario",
-            "Docente"});
-            this.comboBoxTipoUsuario.Location = new System.Drawing.Point(147, 39);
-            this.comboBoxTipoUsuario.Name = "comboBoxTipoUsuario";
-            this.comboBoxTipoUsuario.Size = new System.Drawing.Size(173, 28);
-            this.comboBoxTipoUsuario.TabIndex = 17;
-            this.comboBoxTipoUsuario.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoUsuario_SelectedIndexChanged);
-            this.comboBoxTipoUsuario.SelectionChangeCommitted += new System.EventHandler(this.comboBoxTipoUsuario_SelectionChangeCommitted);
-            // 
-            // labelPagoHora
-            // 
-            this.labelPagoHora.AutoSize = true;
-            this.labelPagoHora.Location = new System.Drawing.Point(21, 86);
-            this.labelPagoHora.Name = "labelPagoHora";
-            this.labelPagoHora.Size = new System.Drawing.Size(113, 20);
-            this.labelPagoHora.TabIndex = 18;
-            this.labelPagoHora.Text = "Pago por hora:";
-            this.labelPagoHora.Visible = false;
-            // 
-            // textPagoHora
-            // 
-            this.textPagoHora.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textPagoHora.Location = new System.Drawing.Point(147, 86);
-            this.textPagoHora.MaxLength = 8;
-            this.textPagoHora.Name = "textPagoHora";
-            this.textPagoHora.Size = new System.Drawing.Size(173, 26);
-            this.textPagoHora.TabIndex = 17;
-            this.textPagoHora.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textPagoHora.Visible = false;
+            this.labelSueldo.AutoSize = true;
+            this.labelSueldo.Location = new System.Drawing.Point(21, 86);
+            this.labelSueldo.Name = "labelSueldo";
+            this.labelSueldo.Size = new System.Drawing.Size(63, 20);
+            this.labelSueldo.TabIndex = 22;
+            this.labelSueldo.Text = "Sueldo:";
+            this.labelSueldo.Visible = false;
             // 
             // textEspecialidad
             // 
@@ -324,26 +304,50 @@
             this.labelEspecialidad.Text = "Especialidad:";
             this.labelEspecialidad.Visible = false;
             // 
-            // textSueldo
+            // textPagoHora
             // 
-            this.textSueldo.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textSueldo.Location = new System.Drawing.Point(90, 86);
-            this.textSueldo.MaxLength = 8;
-            this.textSueldo.Name = "textSueldo";
-            this.textSueldo.Size = new System.Drawing.Size(230, 26);
-            this.textSueldo.TabIndex = 21;
-            this.textSueldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textSueldo.Visible = false;
+            this.textPagoHora.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textPagoHora.Location = new System.Drawing.Point(147, 86);
+            this.textPagoHora.MaxLength = 8;
+            this.textPagoHora.Name = "textPagoHora";
+            this.textPagoHora.Size = new System.Drawing.Size(173, 26);
+            this.textPagoHora.TabIndex = 17;
+            this.textPagoHora.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textPagoHora.Visible = false;
+            this.textPagoHora.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textPagoHora_KeyPress);
             // 
-            // labelSueldo
+            // labelPagoHora
             // 
-            this.labelSueldo.AutoSize = true;
-            this.labelSueldo.Location = new System.Drawing.Point(21, 86);
-            this.labelSueldo.Name = "labelSueldo";
-            this.labelSueldo.Size = new System.Drawing.Size(63, 20);
-            this.labelSueldo.TabIndex = 22;
-            this.labelSueldo.Text = "Sueldo:";
-            this.labelSueldo.Visible = false;
+            this.labelPagoHora.AutoSize = true;
+            this.labelPagoHora.Location = new System.Drawing.Point(21, 86);
+            this.labelPagoHora.Name = "labelPagoHora";
+            this.labelPagoHora.Size = new System.Drawing.Size(113, 20);
+            this.labelPagoHora.TabIndex = 18;
+            this.labelPagoHora.Text = "Pago por hora:";
+            this.labelPagoHora.Visible = false;
+            // 
+            // comboBoxTipoUsuario
+            // 
+            this.comboBoxTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTipoUsuario.FormattingEnabled = true;
+            this.comboBoxTipoUsuario.Items.AddRange(new object[] {
+            "Secretario",
+            "Docente"});
+            this.comboBoxTipoUsuario.Location = new System.Drawing.Point(147, 39);
+            this.comboBoxTipoUsuario.Name = "comboBoxTipoUsuario";
+            this.comboBoxTipoUsuario.Size = new System.Drawing.Size(173, 28);
+            this.comboBoxTipoUsuario.TabIndex = 17;
+            this.comboBoxTipoUsuario.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoUsuario_SelectedIndexChanged);
+            this.comboBoxTipoUsuario.SelectionChangeCommitted += new System.EventHandler(this.comboBoxTipoUsuario_SelectionChangeCommitted);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(17, 39);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(124, 20);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Tipo de Usuario:";
             // 
             // groupDatosIngreso
             // 
@@ -360,23 +364,17 @@
             this.groupDatosIngreso.TabStop = false;
             this.groupDatosIngreso.Text = "Datos de Ingreso";
             // 
-            // textNick
+            // pictureBox1
             // 
-            this.textNick.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textNick.Location = new System.Drawing.Point(147, 34);
-            this.textNick.MaxLength = 16;
-            this.textNick.Name = "textNick";
-            this.textNick.Size = new System.Drawing.Size(200, 26);
-            this.textNick.TabIndex = 23;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(21, 34);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 20);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Usuario:";
+            this.pictureBox1.BackgroundImage = global::AcademiaSoft.CapaPresentacion.Properties.Resources.Icon_Ojo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(353, 70);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 38);
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
+            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
             // 
             // textPassword
             // 
@@ -397,17 +395,23 @@
             this.label11.TabIndex = 26;
             this.label11.Text = "Contraseña:";
             // 
-            // pictureBox1
+            // textNick
             // 
-            this.pictureBox1.BackgroundImage = global::AcademiaSoft.CapaPresentacion.Properties.Resources.Icon_Ojo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(353, 70);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 38);
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
-            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
+            this.textNick.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textNick.Location = new System.Drawing.Point(147, 34);
+            this.textNick.MaxLength = 16;
+            this.textNick.Name = "textNick";
+            this.textNick.Size = new System.Drawing.Size(200, 26);
+            this.textNick.TabIndex = 23;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(21, 34);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 20);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Usuario:";
             // 
             // buttonRegistrarUsuario
             // 

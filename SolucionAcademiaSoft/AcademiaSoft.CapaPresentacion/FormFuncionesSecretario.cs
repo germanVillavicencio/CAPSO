@@ -34,6 +34,7 @@ namespace AcademiaSoft.CapaPresentacion
                 MessageBox.Show(mensaje);
                 if (vacantesDisponibles == true)
                 {
+                    cicloActual.Clases = registrarMatriculaServicio.obtenerClases(cicloActual.Periodo);
                     FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual);
                     formRegistrarMatricula.ShowDialog();
                 }

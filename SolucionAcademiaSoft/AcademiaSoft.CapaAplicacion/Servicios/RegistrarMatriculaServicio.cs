@@ -34,7 +34,6 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
 
         public Boolean verificarVacantes(ref CicloAcademico cicloAcademico, ref String mensaje)
         {
-            int totalAlumnosRegistrados = 0;
             gestorSQL.abrirConexion();
             cicloAcademico = null;// ciclo academico actual
             List<CicloAcademico> ciclosAcademicos = cicloAcademicoDAO.buscarCiclosAcademicos();
@@ -86,12 +85,12 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             return false;
         }
 
-        private bool verificarAlumnoMatriculado(string dni)
+        public bool verificarAlumnoMatriculado(string dni, CicloAcademico cicloAcademico)
         {
-            CicloAcademico cicloAcademico = new CicloAcademico();
+            /*CicloAcademico cicloAcademico = new CicloAcademico();
             gestorSQL.abrirConexion();
-            //cicloAcademico.Matriculas = cicloAcademicoDAO.listarMatriculasActuales();
-            gestorSQL.cerrarConexion();
+            cicloAcademico.Matriculas = cicloAcademicoDAO.listarMatriculasActuales();
+            gestorSQL.cerrarConexion();*/
             if (cicloAcademico.estaAlumnoMatriculado(dni))
             {
                 return true;
@@ -99,24 +98,28 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             return false;
         }
 
-        private void guardarMatricula(Matricula matricula, Alumno alumno, bool alumnoEncontrado, string turno) {
+        public List<Clase> obtenerClases(string periodo)
+        {
+            List<Clase> listaDeClases = new List<Clase>();
+            gestorSQL.abrirConexion();
+            listaDeClases = cicloAcademicoDAO.obtenerClasesDeUnCiclo(periodo);
+            gestorSQL.cerrarConexion();
+            return listaDeClases;
+        }
+
+        public void guardarMatricula(Matricula matricula, bool estaAlumnoRegistrado, string turno) {
             gestorSQL.abrirConexion();
 
-            if (alumnoEncontrado)
+            if (!estaAlumnoRegistrado)
             {
-                if (!verificarAlumnoMatriculado(alumno.Dni))
-                {
-                    gestorSQL.iniciarTransaccion();
-                    matriculaDAO.guardarMatricula(matricula,turno);
-                }
+                gestorSQL.abrirConexion();
+                alumnoDAO.guardarAlumno(matricula.Alumno);
+                gestorSQL.cerrarConexion();
             }
-            else
-            {
-                gestorSQL.iniciarTransaccion();
-                alumnoDAO.guardarAlumno(alumno);
-                gestorSQL.iniciarTransaccion();
-                matriculaDAO.guardarMatricula(matricula,turno);
-            }
+
+            gestorSQL.abrirConexion();
+            matriculaDAO.guardarMatricula(matricula,turno);
+
             gestorSQL.cerrarConexion(); 
         }
     }

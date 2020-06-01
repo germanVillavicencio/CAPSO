@@ -14,7 +14,12 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
         private String codigo;
 
-        public Clase(String codigo, String salon)
+        public Clase() {
+            this.docente = new Docente();
+            this.Horario = new Horario();
+            this.curso = new Curso();
+        }
+        public Clase(String codigo)
         {
             this.codigo = codigo;
         }

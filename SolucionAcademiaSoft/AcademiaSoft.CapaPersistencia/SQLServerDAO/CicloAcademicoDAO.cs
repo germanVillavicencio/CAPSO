@@ -100,6 +100,52 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return cicloAcademico;
         }
 
+        public List<Clase> obtenerClasesDeUnCiclo(string periodo)
+        {
+            List<Clase> listaDeClases = new List<Clase>();
+            Clase clase = null;
+            //List<Matricula> listaMatriculas = new List<Matricula>();
+            string consultaSQL = "select c.cla_codigo, cur.cur_nombre, p.per_nombre, p.per_apellido_pat, p.per_apellido_mat,h.hor_dia, h.hor_inicio, h.hor_fin, h.hor_turno from Clase c " +
+                                    "inner join Horario h on c.hor_id = h.hor_id " +
+                                    "inner join Curso cur on c.cur_id = cur.cur_id " +
+                                    "inner join Docente d on c.doc_dni = d.per_dni " +
+                                    "inner join Persona p on d.per_dni = p.per_dni " +
+                                    "inner join Ciclo_Academico ca on c.cic_id = ca.cic_id " +
+                                    "where ca.cic_periodo = '" + periodo + "' ";
+
+            try
+            {
+                SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
+                while (resultadoSQL.Read())
+                {
+                    clase = obtenerClase(resultadoSQL);
+                    listaDeClases.Add(clase);
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+
+            return listaDeClases;
+        }
+
+        private Clase obtenerClase(SqlDataReader resultadoSQL)
+        {
+            Clase clase = new Clase();
+
+            clase.Codigo = resultadoSQL.GetString(0);
+            clase.Curso.Nombre = resultadoSQL.GetString(1);
+            clase.Docente.Nombre = resultadoSQL.GetString(2);
+            clase.Docente.ApellidoPaterno = resultadoSQL.GetString(3);
+            clase.Docente.ApellidoMaterno = resultadoSQL.GetString(4);
+            clase.Horario.Dia = resultadoSQL.GetString(5);
+            clase.Horario.Inicio = resultadoSQL.GetString(6);
+            clase.Horario.Fin = resultadoSQL.GetString(7);
+            clase.Horario.Turno = resultadoSQL.GetString(8);
+
+            return clase;
+        }
         private Matricula obtenerMatricula(SqlDataReader resultadoSQL)
         {
             Matricula matricula = new Matricula();

@@ -13,6 +13,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private String nombre;
         private String codigo;
 
+        public Curso() { }
         public Curso(String nombre, String codigo)
         {
             this.nombre = nombre;

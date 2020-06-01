@@ -11,6 +11,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private List<Matricula> listaDeMatriculas;
         private double sueldo;
 
+        public Secretario() { }
         public Secretario(double sueldo, String nombre, String dni, DateTime fechaNac, String apellidoP, String apellidoM, String celular, String correo, String direccion)
         {
             this.Sueldo = sueldo;

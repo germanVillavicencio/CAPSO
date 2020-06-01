@@ -45,20 +45,20 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 
         public void guardarAlumno(Alumno alumno)
         {
-            string consultaSQL = "execute registrarAlumno @dni, @nombre, @apellidoP, @apellidoM, @direccion, @celular, @fechaDeNacimiento, @correo";
+            string consultaSQL = "execute registrarAlumno @par_dni, @par_nombre, @par_apellido_pat, @par_apellido_mat, @par_direccion, @par_celular, @par_fecha_nac, @par_correo";
        
             try {
                 SqlCommand comando;
                 //Guardar la alumno
                 comando = gestorSQL.obtenerComandoSQL(consultaSQL);
-                comando.Parameters.AddWithValue("@idPago", alumno.Dni);
-                comando.Parameters.AddWithValue("@nombre", alumno.Nombre);
-                comando.Parameters.AddWithValue("@apellidoP", alumno.ApellidoPaterno);
-                comando.Parameters.AddWithValue("@apellidoM", alumno.ApellidoMaterno);
-                comando.Parameters.AddWithValue("@direccion", alumno.Direccion);
-                comando.Parameters.AddWithValue("@celular", alumno.Celular);
-                comando.Parameters.AddWithValue("@fechaDeNacimiento", alumno.FechaDeNacimiento);
-                comando.Parameters.AddWithValue("@correo", alumno.Correo);
+                comando.Parameters.AddWithValue("@par_dni", alumno.Dni);
+                comando.Parameters.AddWithValue("@par_nombre", alumno.Nombre);
+                comando.Parameters.AddWithValue("@par_apellido_pat", alumno.ApellidoPaterno);
+                comando.Parameters.AddWithValue("@par_apellido_mat", alumno.ApellidoMaterno);
+                comando.Parameters.AddWithValue("@par_direccion", alumno.Direccion);
+                comando.Parameters.AddWithValue("@par_celular", alumno.Celular);
+                comando.Parameters.AddWithValue("@par_fecha_nac", alumno.FechaDeNacimiento.Date);
+                comando.Parameters.AddWithValue("@par_correo", alumno.Correo);
                 comando.ExecuteNonQuery();
             }
             catch(Exception err)
