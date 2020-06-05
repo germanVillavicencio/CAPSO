@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaSoft.CapaPersistenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaSoft.CapaPresentacion", "AcademiaSoft.CapaPresentacion\AcademiaSoft.CapaPresentacion.csproj", "{B960E7DB-835B-499A-B7D3-4F0C19965D62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProyectoAcademiaSoft", "UnitTestProyectoAcademiaSoft\UnitTestProyectoAcademiaSoft.csproj", "{CAF3A88B-FB6E-4468-BC23-D1C70BBF2AF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B960E7DB-835B-499A-B7D3-4F0C19965D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B960E7DB-835B-499A-B7D3-4F0C19965D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B960E7DB-835B-499A-B7D3-4F0C19965D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAF3A88B-FB6E-4468-BC23-D1C70BBF2AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF3A88B-FB6E-4468-BC23-D1C70BBF2AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF3A88B-FB6E-4468-BC23-D1C70BBF2AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF3A88B-FB6E-4468-BC23-D1C70BBF2AF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
