@@ -5,36 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AcademiaSoft.CapaDominio.Entidades;
+using AcademiaSoft.CapaDominio.Contratos;
 using AcademiaSoft.CapaPersistencia.SQLServerDAO;
 
 namespace AcademiaSoft.CapaAplicacion.Servicios
 {
     public class RegistrarMatriculaServicio
     {
-        private GestorSQL gestorSQL;
-        private AlumnoDAO alumnoDAO;
-        private CicloAcademicoDAO cicloAcademicoDAO;
-        private MatriculaDAO matriculaDAO;
+        private IGestorDAO gestorDAO;
+        private IAlumnoDAO alumnoDAO;
+        private ICicloAcademicoDAO cicloAcademicoDAO;
+        private IMatriculaDAO matriculaDAO;
 
         public RegistrarMatriculaServicio()
         {
-            gestorSQL = new GestorSQL();
-            alumnoDAO = new AlumnoDAO(gestorSQL);
-            cicloAcademicoDAO = new CicloAcademicoDAO(gestorSQL);
-            matriculaDAO = new MatriculaDAO(gestorSQL);
+            gestorDAO = new GestorSQL();
+            alumnoDAO = new AlumnoDAO(gestorDAO);
+            cicloAcademicoDAO = new CicloAcademicoDAO(gestorDAO);
+            matriculaDAO = new MatriculaDAO(gestorDAO);
         }
+
+        
 
         public Alumno buscarPorDni(string dni)
         {
-            gestorSQL.abrirConexion();
+            gestorDAO.abrirConexion();
             Alumno alumno = alumnoDAO.buscarPorDni(dni);
-            gestorSQL.cerrarConexion();
+            gestorDAO.cerrarConexion();
             return alumno;
         }
 
         public Boolean verificarVacantes(ref CicloAcademico cicloAcademico, ref String mensaje)
         {
-            gestorSQL.abrirConexion();
+            gestorDAO.abrirConexion();
             cicloAcademico = null;// ciclo academico actual
             List<CicloAcademico> ciclosAcademicos = cicloAcademicoDAO.buscarCiclosAcademicos();
 
@@ -50,11 +53,11 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             
             if(cicloAcademico != null)
             {
-                gestorSQL.iniciarTransaccion();
+                gestorDAO.iniciarTransaccion();
                 cicloAcademico.MatriculasMañana = new List<Matricula>();
                 cicloAcademico.MatriculasTarde = new List<Matricula>();
                 cicloAcademico = cicloAcademicoDAO.obtenerMatriculasDeUnCiclo(cicloAcademico);
-                gestorSQL.cerrarConexion();
+                gestorDAO.cerrarConexion();
 
                 int numeroMatriculasMañana = cicloAcademico.MatriculasMañana.Count();
                 int numeroMatriculasTarde = cicloAcademico.MatriculasTarde.Count();
@@ -101,26 +104,26 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
         public List<Clase> obtenerClases(string periodo)
         {
             List<Clase> listaDeClases = new List<Clase>();
-            gestorSQL.abrirConexion();
+            gestorDAO.abrirConexion();
             listaDeClases = cicloAcademicoDAO.obtenerClasesDeUnCiclo(periodo);
-            gestorSQL.cerrarConexion();
+            gestorDAO.cerrarConexion();
             return listaDeClases;
         }
 
         public void guardarMatricula(Matricula matricula, bool estaAlumnoRegistrado, string turno) {
-            gestorSQL.abrirConexion();
+            gestorDAO.abrirConexion();
 
             if (!estaAlumnoRegistrado)
             {
-                gestorSQL.abrirConexion();
+                gestorDAO.abrirConexion();
                 alumnoDAO.guardarAlumno(matricula.Alumno);
-                gestorSQL.cerrarConexion();
+                gestorDAO.cerrarConexion();
             }
 
-            gestorSQL.abrirConexion();
+            gestorDAO.abrirConexion();
             matriculaDAO.guardarMatricula(matricula,turno);
 
-            gestorSQL.cerrarConexion(); 
+            gestorDAO.cerrarConexion(); 
         }
     }
 }

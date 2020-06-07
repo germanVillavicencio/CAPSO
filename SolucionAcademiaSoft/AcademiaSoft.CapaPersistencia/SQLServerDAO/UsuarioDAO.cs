@@ -7,7 +7,7 @@ using AcademiaSoft.CapaDominio.Entidades;
 
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
-    public class UsuarioDAO
+    public class UsuarioDAO 
     {
         private GestorSQL gestorSQL;
 

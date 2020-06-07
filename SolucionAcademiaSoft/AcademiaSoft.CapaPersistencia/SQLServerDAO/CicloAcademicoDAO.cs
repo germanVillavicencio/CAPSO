@@ -9,13 +9,13 @@ using AcademiaSoft.CapaDominio.Contratos;
 
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
-    public class CicloAcademicoDAO
+    public class CicloAcademicoDAO : ICicloAcademicoDAO
     {
         private GestorSQL gestorSQL;
 
-        public CicloAcademicoDAO(GestorSQL gestorSQL)
+        public CicloAcademicoDAO(IGestorDAO gestorSQL)
         {
-            this.gestorSQL = gestorSQL;
+            this.gestorSQL = (GestorSQL)gestorSQL;
         }
         public List<CicloAcademico> buscarCiclosAcademicos()
         {

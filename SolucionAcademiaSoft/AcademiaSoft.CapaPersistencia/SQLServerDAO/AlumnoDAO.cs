@@ -10,13 +10,13 @@ using AcademiaSoft.CapaDominio.Contratos;
 
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
-    public class AlumnoDAO
+    public class AlumnoDAO : IAlumnoDAO
     {
         private GestorSQL gestorSQL;
 
-        public AlumnoDAO(GestorSQL gestorSQL)
+        public AlumnoDAO(IGestorDAO gestorSQL)
         {
-            this.gestorSQL = gestorSQL;
+            this.gestorSQL = (GestorSQL)gestorSQL;
         }
 
         public Alumno buscarPorDni(string dni)

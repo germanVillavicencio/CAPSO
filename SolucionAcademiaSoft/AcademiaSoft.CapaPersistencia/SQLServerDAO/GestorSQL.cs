@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
-    public class GestorSQL
+    public class GestorSQL :IGestorDAO
     {
         private SqlConnection conexion;
         private SqlTransaction transaccion;

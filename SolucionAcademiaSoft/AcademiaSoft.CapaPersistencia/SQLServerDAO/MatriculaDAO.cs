@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 using AcademiaSoft.CapaDominio.Contratos;
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
-    public class MatriculaDAO
+    public class MatriculaDAO : IMatriculaDAO
     {
 
         private GestorSQL gestorSQL;
 
-        public MatriculaDAO(GestorSQL gestorSQL)
+        public MatriculaDAO(IGestorDAO gestorSQL)
         {
-            this.gestorSQL = gestorSQL;
+            this.gestorSQL = (GestorSQL)gestorSQL;
         }
 
         public int calcularAlumnosRegistrados(string periodo)
