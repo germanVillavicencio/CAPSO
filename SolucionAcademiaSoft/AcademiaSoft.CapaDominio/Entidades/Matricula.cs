@@ -47,4 +47,5 @@ namespace AcademiaSoft.CapaDominio.Entidades
         }
 
     }
+
 }
