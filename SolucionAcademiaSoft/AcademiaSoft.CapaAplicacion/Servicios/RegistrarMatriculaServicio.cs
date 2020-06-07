@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AcademiaSoft.CapaDominio.Entidades;
 using AcademiaSoft.CapaDominio.Contratos;
 using AcademiaSoft.CapaPersistencia.SQLServerDAO;
+using System.Diagnostics;
 
 namespace AcademiaSoft.CapaAplicacion.Servicios
 {
@@ -35,7 +36,7 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             return alumno;
         }
 
-        public Boolean verificarVacantes(ref CicloAcademico cicloAcademico, ref String mensaje)
+        public Boolean verificarVacantes(ref CicloAcademico cicloAcademico, ref String mensaje, ref int totalMatriculasMañana, ref int totalMatriculasTarde)
         {
             gestorDAO.abrirConexion();
             cicloAcademico = null;// ciclo academico actual
@@ -54,29 +55,24 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             if(cicloAcademico != null)
             {
                 gestorDAO.iniciarTransaccion();
-                cicloAcademico.MatriculasMañana = new List<Matricula>();
-                cicloAcademico.MatriculasTarde = new List<Matricula>();
-                cicloAcademico = cicloAcademicoDAO.obtenerMatriculasDeUnCiclo(cicloAcademico);
+                cicloAcademico.Matriculas = new List<Matricula>();
+                cicloAcademico = cicloAcademicoDAO.obtenerMatriculasDeUnCiclo(cicloAcademico,ref totalMatriculasMañana, ref totalMatriculasTarde);
                 gestorDAO.cerrarConexion();
 
-                int numeroMatriculasMañana = cicloAcademico.MatriculasMañana.Count();
-                int numeroMatriculasTarde = cicloAcademico.MatriculasTarde.Count();
-
-               
-                if (cicloAcademico.esValidoRegistro(numeroMatriculasMañana) && cicloAcademico.esValidoRegistro(numeroMatriculasTarde))
+                if (cicloAcademico.esValidoRegistro(totalMatriculasMañana) && cicloAcademico.esValidoRegistro(totalMatriculasTarde))
                 {
                     mensaje = "Vacantes disponibles para AMBOS TURNOS";
                     return true;
                 }
                 else
                 {
-                    if(cicloAcademico.esValidoRegistro(numeroMatriculasMañana))
+                    if(cicloAcademico.esValidoRegistro(totalMatriculasMañana))
                     {
                         mensaje = "Solo hay vacantes disponibles para el TURNO MAÑANA";
                         return true;
                     }
 
-                    if (cicloAcademico.esValidoRegistro(numeroMatriculasTarde))
+                    if (cicloAcademico.esValidoRegistro(totalMatriculasTarde))
                     {
                         mensaje = "Solo hay vacantes disponibles para el TURNO TARDE";
                         return true;
@@ -90,10 +86,6 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
 
         public bool verificarAlumnoMatriculado(string dni, CicloAcademico cicloAcademico)
         {
-            /*CicloAcademico cicloAcademico = new CicloAcademico();
-            gestorSQL.abrirConexion();
-            cicloAcademico.Matriculas = cicloAcademicoDAO.listarMatriculasActuales();
-            gestorSQL.cerrarConexion();*/
             if (cicloAcademico.estaAlumnoMatriculado(dni))
             {
                 return true;

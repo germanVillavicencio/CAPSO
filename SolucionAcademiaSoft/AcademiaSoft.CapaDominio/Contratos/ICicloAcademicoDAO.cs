@@ -12,7 +12,7 @@ namespace AcademiaSoft.CapaDominio.Contratos
     {
         List<CicloAcademico> buscarCiclosAcademicos();
         List<Matricula> listarMatriculasActuales();
-        CicloAcademico obtenerMatriculasDeUnCiclo(CicloAcademico cicloAcademico);
+        CicloAcademico obtenerMatriculasDeUnCiclo(CicloAcademico cicloAcademico, ref int totalMatriculasMañana, ref int totalMatriculasTarde);
         List<Clase> obtenerClasesDeUnCiclo(string periodo);
     }
 }

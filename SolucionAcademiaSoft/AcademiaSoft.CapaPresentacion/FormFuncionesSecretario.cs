@@ -29,13 +29,15 @@ namespace AcademiaSoft.CapaPresentacion
                 CicloAcademico cicloActual = new CicloAcademico();
                 Boolean vacantesDisponibles = false;
                 String mensaje = "";
-                vacantesDisponibles = registrarMatriculaServicio.verificarVacantes(ref cicloActual, ref mensaje);
+                int totalMatriculasMañana = 0;
+                int totalMatriculasTarde = 0;
+                vacantesDisponibles = registrarMatriculaServicio.verificarVacantes(ref cicloActual, ref mensaje, ref totalMatriculasMañana, ref totalMatriculasTarde);
 
                 MessageBox.Show(mensaje);
                 if (vacantesDisponibles == true)
                 {
                     cicloActual.Clases = registrarMatriculaServicio.obtenerClases(cicloActual.Periodo);
-                    FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual);
+                    FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual, totalMatriculasMañana, totalMatriculasTarde);
                     formRegistrarMatricula.ShowDialog();
                 }
 

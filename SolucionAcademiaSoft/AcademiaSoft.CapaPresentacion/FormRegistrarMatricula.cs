@@ -17,36 +17,39 @@ namespace AcademiaSoft.CapaPresentacion
     {
         Alumno alumno;
         CicloAcademico cicloAcademico;
-        int estadoDeVacantes = 0;
+
         List<Clase> listaDeClasesMañana = new List<Clase>();
         List<Clase> listaDeClasesTarde = new List<Clase>();
+
+        int numeroMatriculasMañana = 0;
+        int numeroMatriculasTarde = 0;
+
         Boolean estaAlumnoRegistrado = false;
         double precioPagar = 0.0;
         string turnoSeleccionado = "";
         string dniSecretario = "11111111";
-        public FormRegistrarMatricula(CicloAcademico ciclo)
+        public FormRegistrarMatricula(CicloAcademico ciclo, int totalMatriculasManaña, int totalMatriculasTarde)
         {
             this.cicloAcademico = ciclo;
+            this.numeroMatriculasMañana = totalMatriculasManaña;
+            this.numeroMatriculasTarde = totalMatriculasTarde;
             llenarListaDeClase();
             InitializeComponent();
-            if (this.cicloAcademico.MatriculasMañana.Count()< cicloAcademico.TotalDeAlumnos && this.cicloAcademico.MatriculasTarde.Count() < cicloAcademico.TotalDeAlumnos)
+            if (this.numeroMatriculasMañana < cicloAcademico.TotalDeAlumnos && this.numeroMatriculasTarde < cicloAcademico.TotalDeAlumnos)
             {
                 this.comboBoxTurno.Items.AddRange(new object[] { "Mañana", "Tarde" });
-                this.estadoDeVacantes = 1;
             }
             else
             {
-                if(this.cicloAcademico.MatriculasMañana.Count() < this.cicloAcademico.TotalDeAlumnos)
+                if(this.numeroMatriculasMañana < this.cicloAcademico.TotalDeAlumnos)
                 {
                     this.comboBoxTurno.Items.AddRange(new object[] { "Mañana"});
-                    this.estadoDeVacantes = 2;
                 }
                 else
                 {
-                    if(this.cicloAcademico.MatriculasTarde.Count() < cicloAcademico.TotalDeAlumnos)
+                    if(this.numeroMatriculasTarde < cicloAcademico.TotalDeAlumnos)
                     {
                         this.comboBoxTurno.Items.AddRange(new object[] { "Tarde" });
-                        this.estadoDeVacantes = 3;
                     }
                 }
             }

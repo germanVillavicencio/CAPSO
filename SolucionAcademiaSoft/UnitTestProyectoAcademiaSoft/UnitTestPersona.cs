@@ -31,8 +31,8 @@ namespace UnitTestProyectoAcademiaSoft
         public void Test3_CalcularEdad()
         {
             Persona persona = new Persona();
-            persona.FechaDeNacimiento = new DateTime(1996, 06 , 07);
-            int resultadoEsperado = 23;
+            persona.FechaDeNacimiento = new DateTime(2002, 12 , 31);
+            int resultadoEsperado = 17;
             int resultado = persona.calcularEdad();
             Assert.AreEqual(resultadoEsperado, resultado);
         }

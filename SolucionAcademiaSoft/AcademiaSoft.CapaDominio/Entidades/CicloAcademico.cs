@@ -14,8 +14,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private DateTime fechaFin;
         private DateTime fechaInicioMatricula;
         private List<Clase> clases;
-        private List<Matricula> matriculasMañana;
-        private List<Matricula> matriculasTarde;
+        private List<Matricula> matriculas;
 
         public CicloAcademico() { }
         public CicloAcademico(string periodo, int totalDeAlumnos, DateTime fechaInicio, DateTime fechaFin, DateTime fechaInicioMatricula)
@@ -26,8 +25,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
             this.FechaFin = fechaFin;
             this.FechaInicioMatricula = fechaInicioMatricula;
             this.Clases = new List<Clase>();
-            this.MatriculasMañana = new List<Matricula>();
-            this.MatriculasTarde = new List<Matricula>();
+            this.Matriculas = new List<Matricula>();
         }
 
         public string Periodo { get => periodo; set => periodo = value; }
@@ -36,8 +34,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public DateTime FechaFin { get => fechaFin; set => fechaFin = value; }
         public List<Clase> Clases { get => clases; set => clases = value; }
         public DateTime FechaInicioMatricula { get => fechaInicioMatricula; set => fechaInicioMatricula = value; }
-        public List<Matricula> MatriculasMañana { get => matriculasMañana; set => matriculasMañana = value; }
-        public List<Matricula> MatriculasTarde { get => matriculasTarde; set => matriculasTarde = value; }
+        public List<Matricula> Matriculas { get => matriculas; set => matriculas = value; }
 
         public bool esValidoRegistro(int cantidadAlumnosRegistrados)
         {
@@ -46,17 +43,12 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
         public bool estaAlumnoMatriculado(string dni)
         {
-            foreach(Matricula m in matriculasMañana)
+            foreach(Matricula m in matriculas)
             {
                 if (m.Alumno.Dni.Equals(dni))
                     return true;
             }
 
-            foreach (Matricula m in matriculasTarde)
-            {
-                if (m.Alumno.Dni.Equals(dni))
-                    return true;
-            }
             return false;
         }
 

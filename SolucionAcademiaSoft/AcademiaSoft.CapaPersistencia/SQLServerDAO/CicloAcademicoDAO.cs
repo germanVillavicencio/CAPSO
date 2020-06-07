@@ -63,11 +63,12 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return listaMatriculas;
         }
 
-        public CicloAcademico obtenerMatriculasDeUnCiclo(CicloAcademico cicloAcademico)
+        public CicloAcademico obtenerMatriculasDeUnCiclo(CicloAcademico cicloAcademico, ref int totalMatriculasMañana, ref int totalMatriculasTarde)
         {
+            totalMatriculasMañana = 0;
+            totalMatriculasTarde = 0;
             Matricula matricula = null;
             String turno = "";
-            //List<Matricula> listaMatriculas = new List<Matricula>();
             string consultaSQL = "select m.mat_fecha, m.mat_pago, m.alu_dni,h.hor_turno from Registro_Clases rc inner join Clase c on rc.cla_id = c.cla_id " +
                                     "inner join Horario h on h.hor_id = c.hor_id " +
                                     "inner join Ciclo_Academico ca on ca.cic_id = c.cic_id " +
@@ -82,14 +83,15 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
                 {
                     turno = resultadoSQL.GetString(3);
                     matricula = obtenerMatricula(resultadoSQL);
+                    cicloAcademico.Matriculas.Add(matricula);
                     if(turno.Equals("Mañana"))
                     {
-                        cicloAcademico.MatriculasMañana.Add(matricula);
+                        totalMatriculasMañana++;
                     }
                     else
                     {
-                        if(turno.Equals("Tarde"))
-                            cicloAcademico.MatriculasTarde.Add(matricula);
+                        if (turno.Equals("Tarde"))
+                            totalMatriculasTarde++;
                     }
                 }
             }
@@ -105,7 +107,6 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
         {
             List<Clase> listaDeClases = new List<Clase>();
             Clase clase = null;
-            //List<Matricula> listaMatriculas = new List<Matricula>();
             string consultaSQL = "select c.cla_codigo, cur.cur_nombre, p.per_nombre, p.per_apellido_pat, p.per_apellido_mat,h.hor_dia, h.hor_inicio, h.hor_fin, h.hor_turno from Clase c " +
                                     "inner join Horario h on c.hor_id = h.hor_id " +
                                     "inner join Curso cur on c.cur_id = cur.cur_id " +

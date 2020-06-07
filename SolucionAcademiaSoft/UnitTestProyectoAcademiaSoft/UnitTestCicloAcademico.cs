@@ -9,8 +9,6 @@ namespace UnitTestProyectoAcademiaSoft
     [TestClass]
     public class UnitTestCicloAcademico
     {
-        //              RECONTRA PUTOS
-
         //-----REGLA esValidoRegistro()
         [TestMethod]
         public void esValidoRegistroTest1()
@@ -69,8 +67,7 @@ namespace UnitTestProyectoAcademiaSoft
         {
             List<Matricula> listaMatriculas = crearMatriculas();
             CicloAcademico ca = new CicloAcademico();
-            ca.MatriculasMañana = listaMatriculas;
-            ca.MatriculasTarde = listaMatriculas;
+            ca.Matriculas = listaMatriculas;
             string dniAlumno = "73737373";
             bool resultadoEsperado = true;
             bool resultadoFinal = ca.estaAlumnoMatriculado(dniAlumno);
@@ -82,8 +79,7 @@ namespace UnitTestProyectoAcademiaSoft
         {
             List<Matricula> listaMatriculas = crearMatriculas();
             CicloAcademico ca = new CicloAcademico();
-            ca.MatriculasMañana = listaMatriculas;
-            ca.MatriculasTarde = listaMatriculas;
+            ca.Matriculas = listaMatriculas;
             string dniAlumno = "12131415";
             bool resultadoEsperado = false;
             bool resultadoFinal = ca.estaAlumnoMatriculado(dniAlumno);
@@ -95,8 +91,7 @@ namespace UnitTestProyectoAcademiaSoft
         {
             List<Matricula> listaMatriculas = crearMatriculas();
             CicloAcademico ca = new CicloAcademico();
-            ca.MatriculasMañana = listaMatriculas;
-            ca.MatriculasTarde = listaMatriculas;
+            ca.Matriculas = listaMatriculas;
             string dniAlumno = "75757575";
             bool resultadoEsperado = true;
             bool resultadoFinal = ca.estaAlumnoMatriculado(dniAlumno);
@@ -108,8 +103,7 @@ namespace UnitTestProyectoAcademiaSoft
         {
             List<Matricula> listaMatriculas = crearMatriculas();
             CicloAcademico ca = new CicloAcademico();
-            ca.MatriculasMañana = listaMatriculas;
-            ca.MatriculasTarde = listaMatriculas;
+            ca.Matriculas = listaMatriculas;
             string dniAlumno = "99669966";
             bool resultadoEsperado = false;
             bool resultadoFinal = ca.estaAlumnoMatriculado(dniAlumno);
