@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AcademiaSoft.CapaDominio.Contratos;
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
     public class MatriculaDAO

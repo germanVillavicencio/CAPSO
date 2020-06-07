@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contratos\IAlumnoDAO.cs" />
+    <Compile Include="Contratos\ICicloAcademicoDAO.cs" />
+    <Compile Include="Contratos\IGestorDAO.cs" />
+    <Compile Include="Contratos\IMatriculaDAO.cs" />
+    <Compile Include="Contratos\IUsuarioDAO.cs" />
     <Compile Include="Entidades\Alumno.cs" />
     <Compile Include="Entidades\CicloAcademico.cs" />
     <Compile Include="Entidades\Clase.cs" />

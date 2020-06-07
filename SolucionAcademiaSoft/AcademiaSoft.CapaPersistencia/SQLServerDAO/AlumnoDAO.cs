@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AcademiaSoft.CapaDominio.Entidades;
+using AcademiaSoft.CapaDominio.Contratos;
 
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {

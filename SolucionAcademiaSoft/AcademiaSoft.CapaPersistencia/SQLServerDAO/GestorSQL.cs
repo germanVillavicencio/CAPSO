@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AcademiaSoft.CapaDominio.Contratos;
 using System.Data.SqlClient;
 using System.Data;
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
