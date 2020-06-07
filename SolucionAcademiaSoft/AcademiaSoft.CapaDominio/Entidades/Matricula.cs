@@ -39,11 +39,17 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
         //Regla de negocio para el pago
         //Si el alumno se matricula a los 3 primeros dias, entonces se le hará un descuento del 15% del costo de matricula
-        public void calcularDescuento()
+        public double calcularDescuento()
         {
-            DateTime fechaActual = new DateTime();
+            DateTime fechaActual = DateTime.Today.Date;
             if (fechaActual >= cicloAcademico.FechaInicioMatricula && fechaActual <= cicloAcademico.FechaInicioMatricula.AddDays(3))
-                Pago = precio - (precio * 0.15);
+            {
+                return precio * 0.15;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
     }
