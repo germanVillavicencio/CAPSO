@@ -38,7 +38,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
         public bool esValidoRegistro(int cantidadAlumnosRegistrados)
         {
-            return (totalDeAlumnos>cantidadAlumnosRegistrados);
+            return (cantidadAlumnosRegistrados <= totalDeAlumnos);
         }
 
         public bool estaAlumnoMatriculado(string dni)
@@ -56,11 +56,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         {
             DateTime fechaActual = DateTime.Today;
 
-            if (fechaInicioMatricula.AddDays(20)>= fechaActual && fechaInicioMatricula<= fechaActual)
-            {
-                return true;
-            }
-            return false;
+            return (fechaInicioMatricula <= fechaActual && fechaInicioMatricula.AddDays(20) >= fechaActual);
         }
 
         public DateTime calcularFechaInicioClases()
