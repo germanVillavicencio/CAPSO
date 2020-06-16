@@ -13,7 +13,7 @@ namespace UnitTestProyectoAcademiaSoft
         [TestMethod]
         public void esValidoRegistroTest1()
         {
-            int cantidadDeAlumnosRegistrado = 30; 
+            int cantidadDeAlumnosRegistrado = 29; 
             CicloAcademico ca = new CicloAcademico();
             ca.TotalDeAlumnos = 30 ;
             bool resultadoEsperado = true;  //limite
@@ -24,7 +24,7 @@ namespace UnitTestProyectoAcademiaSoft
         [TestMethod]
         public void esValidoRegistroTest2()
         {
-            int cantidadDeAlumnosRegistrado = 32;
+            int cantidadDeAlumnosRegistrado = 31;
             CicloAcademico ca = new CicloAcademico();
             ca.TotalDeAlumnos = 30;
             bool resultadoEsperado = false;  // + del limite
