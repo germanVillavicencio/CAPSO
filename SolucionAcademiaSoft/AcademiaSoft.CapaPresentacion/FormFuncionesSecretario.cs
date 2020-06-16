@@ -19,7 +19,7 @@ namespace AcademiaSoft.CapaPresentacion
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//para mostrar el formulario de registro de matrícula
         {
             
             RegistrarMatriculaServicio registrarMatriculaServicio = new RegistrarMatriculaServicio();

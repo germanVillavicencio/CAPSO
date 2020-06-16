@@ -21,7 +21,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 
         public Alumno buscarPorDni(string dni)
         {
-            Alumno alumno;
+            Alumno alumno = null;
 
             string consultaSQL = "select p.per_dni, p.per_nombre, p.per_apellido_pat, p.per_apellido_mat, p.per_direccion, p.per_celular, per_fecha_nac, p.per_correo, a.alu_id_card from Persona p inner join Alumno a on (p.per_dni = a.per_dni) where a.per_dni = '" + dni + "'";
             try

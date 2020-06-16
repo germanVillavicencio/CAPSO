@@ -45,5 +45,18 @@ namespace UnitTestProyectoAcademiaSoft
             double resultado = matricula.calcularDescuento();
             Assert.AreEqual(resultadoEsperado, resultado);
         }
+
+        [TestMethod]
+        public void Test1_CalcularPago()
+        {
+            Matricula matricula = new Matricula();
+            CicloAcademico cicloAcademico = new CicloAcademico();
+            cicloAcademico.FechaInicioMatricula = new DateTime(2020, 06, 15);
+            matricula.CicloAcademico = cicloAcademico;
+            matricula.Precio = 600;
+            double resultado_esperado = 510;
+            double resultado_obtenido = matricula.calcularPago();
+            Assert.AreEqual(resultado_esperado, resultado_obtenido);
+        }
     }
 }

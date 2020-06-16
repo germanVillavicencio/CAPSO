@@ -8,7 +8,6 @@ namespace AcademiaSoft.CapaDominio.Contratos
 {
     public interface IMatriculaDAO
     {
-        int calcularAlumnosRegistrados(string periodo);
         void guardarMatricula(Matricula matricula, string turno);
 
     }

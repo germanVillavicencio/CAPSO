@@ -12,7 +12,6 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
     {
         private SqlConnection conexion;
         private SqlTransaction transaccion;
-        private MysqlConnection co;
 
         public void abrirConexion()
         {

@@ -37,24 +37,12 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
         }
 
         public Boolean verificarVacantes(ref CicloAcademico cicloAcademico, ref String mensaje, ref int totalMatriculasMañana, ref int totalMatriculasTarde)
-        {
-            gestorDAO.abrirConexion();
-            cicloAcademico = null;// ciclo academico actual
-            List<CicloAcademico> ciclosAcademicos = cicloAcademicoDAO.buscarCiclosAcademicos();
+        {    
+            cicloAcademico = obtenerCicloActual();
 
-            foreach (CicloAcademico ciclo in ciclosAcademicos)
+            if (cicloAcademico != null)
             {
-                if (ciclo.esValidoFechaMatricula())
-                {
-                    cicloAcademico = ciclo;
-                    break;
-                }
-                    
-            }
-            
-            if(cicloAcademico != null)
-            {
-                gestorDAO.iniciarTransaccion();
+                gestorDAO.abrirConexion();
                 cicloAcademico.Matriculas = new List<Matricula>();
                 cicloAcademico = cicloAcademicoDAO.obtenerMatriculasDeUnCiclo(cicloAcademico,ref totalMatriculasMañana, ref totalMatriculasTarde);
                 gestorDAO.cerrarConexion();
@@ -77,14 +65,40 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
                         mensaje = "Solo hay vacantes disponibles para el TURNO TARDE";
                         return true;
                     }
+                    mensaje = "Sin vacantes disponibles";
                 }
             }
+            else
+            {
+                mensaje = "No existe ciclo academico disponible";
+            }
 
-            mensaje = "SIN VACANTES DISPONIBLES";
+           
             return false;
         }
 
-        public bool verificarAlumnoMatriculado(string dni, CicloAcademico cicloAcademico)
+        public CicloAcademico obtenerCicloActual()
+        {
+            gestorDAO.abrirConexion();
+            CicloAcademico cicloAcademico;
+            cicloAcademico = null;// ciclo academico actual
+            List<CicloAcademico> ciclosAcademicos = cicloAcademicoDAO.buscarCiclosAcademicos();
+
+            foreach (CicloAcademico ciclo in ciclosAcademicos)
+            {
+                if (ciclo.esValidoFechaMatricula())
+                {
+                    cicloAcademico = ciclo;
+                    break;
+                }
+
+            }
+            gestorDAO.cerrarConexion();
+
+            return cicloAcademico;
+        }
+
+        public bool verificarAlumnoMatriculado(string dni, CicloAcademico cicloAcademico)//verifico si el alumno ya está matricula en el ciclo actual
         {
             if (cicloAcademico.estaAlumnoMatriculado(dni))
             {
@@ -107,6 +121,7 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
 
             if (!estaAlumnoRegistrado)
             {
+                matricula.Pago = matricula.calcularPago();
                 gestorDAO.abrirConexion();
                 alumnoDAO.guardarAlumno(matricula.Alumno);
                 gestorDAO.cerrarConexion();

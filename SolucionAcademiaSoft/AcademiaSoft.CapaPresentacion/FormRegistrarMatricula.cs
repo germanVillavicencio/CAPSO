@@ -55,7 +55,7 @@ namespace AcademiaSoft.CapaPresentacion
             }
         }
 
-        private void buttonBuscarAlumno_Click(object sender, EventArgs e)
+        private void buttonBuscarAlumno_Click(object sender, EventArgs e)//Busca alumnos
         {
             string dniAlumno = textDni.Text.Trim();
             try
@@ -67,7 +67,7 @@ namespace AcademiaSoft.CapaPresentacion
                 if(alumno != null)
                 {
                     if(registrarMatriculaServicio.verificarAlumnoMatriculado(dniAlumno,this.cicloAcademico))
-                    {
+                    {   //si está matriculado
                         limpiarDatosDelAlumno();
                         groupAlumnoDatosPersonales.Enabled = false;
                         groupAlumnoContacto.Enabled = false;
@@ -77,7 +77,7 @@ namespace AcademiaSoft.CapaPresentacion
                         
                     }
                     else
-                    {
+                    {   //si no está matriculado en el ciclo actual
                         alumno.Dni = textDni.Text;
                         textNombres.Text = alumno.Nombre;
                         textApellidoPaterno.Text = alumno.ApellidoPaterno;
@@ -88,7 +88,7 @@ namespace AcademiaSoft.CapaPresentacion
                         datePickerFechaNacimiento.Value = alumno.FechaDeNacimiento;
                         groupAlumnoDatosPersonales.Enabled = false;
                         groupAlumnoContacto.Enabled = false;
-                        groupMatricula.Enabled = true;
+                        groupMatricula.Enabled = true;//se habilita para elegir el turno
                         this.estaAlumnoRegistrado = true;
                     }
                 }
@@ -144,18 +144,19 @@ namespace AcademiaSoft.CapaPresentacion
                 this.alumno.Correo = textCorreo.Text.Trim();
                 this.alumno.FechaDeNacimiento = datePickerFechaNacimiento.Value;
             }
+            RegistrarMatriculaServicio registrarMatriculaServicio = new RegistrarMatriculaServicio();
 
             Matricula nuevaMatricula = new Matricula();
             nuevaMatricula.Secretario = new Secretario();
             nuevaMatricula.Alumno = this.alumno;
             nuevaMatricula.Secretario.Dni = this.dniSecretario;
-            nuevaMatricula.Pago = this.precioPagar;
+            nuevaMatricula.Precio = this.precioPagar;
             nuevaMatricula.Fecha = DateTime.Today;
             nuevaMatricula.CicloAcademico = this.cicloAcademico;
 
             try
             {
-                RegistrarMatriculaServicio registrarMatriculaServicio = new RegistrarMatriculaServicio();
+                
                 registrarMatriculaServicio.guardarMatricula(nuevaMatricula, estaAlumnoRegistrado, turnoSeleccionado);
                 MessageBox.Show("Se ha matriculado correctamente al alumno");
                 groupAlumnoDatosPersonales.Enabled = false;
@@ -180,7 +181,7 @@ namespace AcademiaSoft.CapaPresentacion
                 textPrecio.Text = "S/.500.00";
                 this.precioPagar = 500.00;
                 this.turnoSeleccionado = "Mañana";
-                dataGridClases.Rows.Clear();
+                dataGridClases.Rows.Clear();//Limpiar la tabla donde se muestran las clases
                 foreach (Clase clase in this.listaDeClasesMañana)
                 {
                     Object[] filaClase = { clase.Codigo, clase.Curso.Nombre, clase.Docente.Nombre + " " + clase.Docente.ApellidoPaterno + " " + clase.Docente.ApellidoMaterno, clase.Horario.Dia + " " + clase.Horario.Inicio + " - " +clase.Horario.Fin};
@@ -192,7 +193,7 @@ namespace AcademiaSoft.CapaPresentacion
                 textPrecio.Text = "S/.600.00";
                 this.precioPagar = 600.00;
                 this.turnoSeleccionado = "Tarde";
-                dataGridClases.Rows.Clear();
+                dataGridClases.Rows.Clear();//Limpiar la tabla donde se muestran las clases
                 foreach (Clase clase in this.listaDeClasesTarde)
                 {
                     Object[] filaClase = { clase.Codigo, clase.Curso.Nombre, clase.Docente.Nombre + " " + clase.Docente.ApellidoPaterno + " " + clase.Docente.ApellidoMaterno, clase.Horario.Dia + " " + clase.Horario.Inicio + " - " + clase.Horario.Fin };
@@ -201,7 +202,7 @@ namespace AcademiaSoft.CapaPresentacion
             }
         }
 
-        //SOLO PERMITE INGRESAR NUMEROS EN EL CAMPO DNI
+        //SOLO PERMITE INGRESAR NUMEROS EN EL CAMPO DNI MIENTRAS SE ESCRIBE
         private void textDni_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar==8)
@@ -210,7 +211,7 @@ namespace AcademiaSoft.CapaPresentacion
                 e.Handled = true;
         }
 
-        //SOLO PERMITE INGRESAR NUMEROS EN EL CAMPO TELEFONO
+        //SOLO PERMITE INGRESAR NUMEROS EN EL CAMPO TELEFONO MIENTRAS SE ESCRIBE 
         private void textTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8)

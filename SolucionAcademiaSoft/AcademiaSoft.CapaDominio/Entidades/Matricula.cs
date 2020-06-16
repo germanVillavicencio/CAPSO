@@ -52,6 +52,11 @@ namespace AcademiaSoft.CapaDominio.Entidades
             }
         }
 
+        public double calcularPago()
+        {
+            return precio - calcularDescuento();
+        }
+
     }
 
 }
