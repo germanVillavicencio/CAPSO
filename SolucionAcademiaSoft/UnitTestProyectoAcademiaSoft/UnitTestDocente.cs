@@ -9,7 +9,7 @@ namespace UnitTestProyectoAcademiaSoft
     {
 
         [TestMethod]
-        public void Test3_CalcularSueldo()
+        public void Test1_CalcularSueldo()
         {
             Docente docente = new Docente();
             docente.HorasTrabajadas = 20;

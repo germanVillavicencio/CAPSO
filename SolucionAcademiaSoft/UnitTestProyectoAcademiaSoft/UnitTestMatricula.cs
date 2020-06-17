@@ -13,21 +13,21 @@ namespace UnitTestProyectoAcademiaSoft
         {
             Matricula matricula = new Matricula();
             CicloAcademico cicloAcademico = new CicloAcademico();
-            cicloAcademico.FechaInicioMatricula = new DateTime(2020, 06, 06);
+            cicloAcademico.FechaInicioMatricula = DateTime.Today.AddDays(-3);
             matricula.CicloAcademico = cicloAcademico;
             matricula.Precio = 1000;
-            double resultadoEsperado = 0;
+            double resultadoEsperado = 150;
             double resultado = matricula.calcularDescuento();
             Assert.AreEqual(resultadoEsperado, resultado);
         }
 
 
         [TestMethod]
-        public void Test3_CalcularDescuento()
+        public void Test2_CalcularDescuento()
         {
             Matricula matricula = new Matricula();
             CicloAcademico cicloAcademico = new CicloAcademico();
-            cicloAcademico.FechaInicioMatricula = new DateTime(2020, 06, 15);
+            cicloAcademico.FechaInicioMatricula = DateTime.Today;
             matricula.CicloAcademico = cicloAcademico;
             matricula.Precio = 1000;
             double resultadoEsperado = 150;
