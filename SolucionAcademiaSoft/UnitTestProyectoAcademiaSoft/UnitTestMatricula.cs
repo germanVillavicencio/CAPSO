@@ -11,9 +11,9 @@ namespace UnitTestProyectoAcademiaSoft
         [TestMethod]
         public void Test1_CalcularDescuento()
         {
-            Matricula matricula = new Matricula();
+            Matricula matricula = new Matricula();    //RESTAMOS 3 DIAS PARA PROBAR LIMITE
             CicloAcademico cicloAcademico = new CicloAcademico();
-            cicloAcademico.FechaInicioMatricula = DateTime.Today.AddDays(-3);
+            cicloAcademico.FechaInicioMatricula = DateTime.Today.AddDays(-3); 
             matricula.CicloAcademico = cicloAcademico;
             matricula.Precio = 1000;
             double resultadoEsperado = 150;
@@ -34,6 +34,20 @@ namespace UnitTestProyectoAcademiaSoft
             double resultado = matricula.calcularDescuento();
             Assert.AreEqual(resultadoEsperado, resultado);
         }
+
+        [TestMethod]
+        public void Test3_CalcularDescuento()
+        {
+            Matricula matricula = new Matricula();
+            CicloAcademico cicloAcademico = new CicloAcademico();
+            cicloAcademico.FechaInicioMatricula = new DateTime(2020, 06, 12);
+            matricula.CicloAcademico = cicloAcademico;
+            matricula.Precio = 1000;
+            double resultadoEsperado = 0;
+            double resultado = matricula.calcularDescuento();
+            Assert.AreEqual(resultadoEsperado, resultado);
+        }
+
 
         //CALCULAR PAGO
         [TestMethod]
