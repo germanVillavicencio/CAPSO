@@ -42,7 +42,9 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public double calcularDescuento()
         {
             DateTime fechaActual = DateTime.Today.Date;
-            if (fechaActual >= cicloAcademico.FechaInicioMatricula && fechaActual <= cicloAcademico.FechaInicioMatricula.AddDays(3))
+            DateTime fechaLimite = cicloAcademico.FechaInicioMatricula.AddDays(3);
+
+            if (fechaActual >= cicloAcademico.FechaInicioMatricula && fechaActual <= fechaLimite)
             {
                 return precio * 0.15;
             }

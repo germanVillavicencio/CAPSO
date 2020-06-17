@@ -35,6 +35,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public string Especialidad { get => especialidad; set => especialidad = value; }
         public List<Clase> ListaDeClases { get => listaDeClases; set => listaDeClases = value; }
 
+        //V(G) = 1
         public double calcularSueldo()
         {
             return HorasTrabajadas * PagoPorHora;

@@ -7,27 +7,6 @@ namespace UnitTestProyectoAcademiaSoft
     [TestClass]
     public class UnitTestDocente
     {
-        [TestMethod]
-        public void Test1_CalcularSueldo()
-        {
-            Docente docente = new Docente();
-            docente.HorasTrabajadas = 0;
-            docente.PagoPorHora = 20;
-            double resultadoEsperado = 0;
-            double resultado = docente.calcularSueldo();
-            Assert.AreEqual(resultadoEsperado, resultado);
-        }
-
-        [TestMethod]
-        public void Test2_CalcularSueldo()
-        { 
-            Docente docente = new Docente();
-            docente.HorasTrabajadas = 20;
-            docente.PagoPorHora = 0;
-            double resultadoEsperado = 0;
-            double resultado = docente.calcularSueldo();
-            Assert.AreEqual(resultadoEsperado, resultado);
-        }
 
         [TestMethod]
         public void Test3_CalcularSueldo()

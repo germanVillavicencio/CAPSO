@@ -16,26 +16,5 @@ namespace UnitTestProyectoAcademiaSoft
             int resultado = persona.calcularEdad();
             Assert.AreEqual(resultadoEsperado, resultado);
         }
-
-        [TestMethod]
-        public void Test2_CalcularEdad()
-        {
-            Persona persona = new Persona();
-            persona.FechaDeNacimiento = new DateTime(1996, 06 , 06);
-            int resultadoEsperado = 24;
-            int resultado = persona.calcularEdad();
-            Assert.AreEqual(resultadoEsperado, resultado);
-        }
-
-        [TestMethod]
-        public void Test3_CalcularEdad()
-        {
-            Persona persona = new Persona();
-            persona.FechaDeNacimiento = new DateTime(2002, 12 , 31);
-            int resultadoEsperado = 17;
-            int resultado = persona.calcularEdad();
-            Assert.AreEqual(resultadoEsperado, resultado);
-        }
-
     }
 }

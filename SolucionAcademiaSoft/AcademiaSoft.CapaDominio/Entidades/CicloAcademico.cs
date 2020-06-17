@@ -36,11 +36,20 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public DateTime FechaInicioMatricula { get => fechaInicioMatricula; set => fechaInicioMatricula = value; }
         public List<Matricula> Matriculas { get => matriculas; set => matriculas = value; }
 
+        //V(G) = 2
         public bool esValidoRegistro(int cantidadAlumnosRegistrados)
         {
-            return (cantidadAlumnosRegistrados < totalDeAlumnos);
+            bool esValido;
+
+            if (cantidadAlumnosRegistrados < totalDeAlumnos)
+                esValido = true;
+            else
+                esValido = false;
+
+            return esValido;
         }
 
+        //V(G) = 2
         public bool estaAlumnoMatriculado(string dni)
         {
             foreach(Matricula m in matriculas)
@@ -52,18 +61,27 @@ namespace AcademiaSoft.CapaDominio.Entidades
             return false;
         }
 
+        //V(G) = 2
         public bool esValidoFechaMatricula()
         {
-            DateTime fechaActual = DateTime.Today;//fecha de hoy
-            //fecha actual tiene que estar en un rango de 20 dias desde la fecha de inicio de matricula
-            return ( fechaActual >= fechaInicioMatricula  && fechaActual <=fechaInicioMatricula.AddDays(20));
+            DateTime fechaActual = DateTime.Today;
+
+            DateTime fechaFinMatricula = fechaInicioMatricula.AddDays(20);
+
+            if ( fechaActual >= fechaInicioMatricula  && fechaActual <= fechaFinMatricula)
+                return true;
+            else
+                return false;
+
         }
 
+        //V(G) = 1
         public DateTime calcularFechaInicioClases()
         {
-            return fechaInicioMatricula.AddDays(14);//Dos semanas despues de inicio de pago de matricula
+            return fechaInicioMatricula.AddDays(14);//Dos semanas despues de la fecha de inicio de matricula
         }
 
+        //V(G) = 1
         public DateTime calcularFechaTerminoClases()
         {
             return fechaInicioMatricula.AddDays(132);//18 semanas mas 6 dias despues del pago de matricula
