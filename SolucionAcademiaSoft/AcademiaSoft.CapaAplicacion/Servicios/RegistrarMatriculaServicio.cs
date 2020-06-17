@@ -77,7 +77,7 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             return false;
         }
 
-        public CicloAcademico obtenerCicloActual()
+        private CicloAcademico obtenerCicloActual()
         {
             gestorDAO.abrirConexion();
             CicloAcademico cicloAcademico;
