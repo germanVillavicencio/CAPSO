@@ -11,21 +11,18 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private string inicio;
         private string fin;
         private string dia;
-        private string turno;
 
         public Horario() { }
 
-        public Horario(string inicio, string fin, string dia, string turno)
+        public Horario(string inicio, string fin, string dia)
         {
             this.inicio = inicio;
             this.fin = fin;
             this.Dia = dia;
-            this.Turno = turno;
         }
 
         public string Inicio { get => inicio; set => inicio = value; }
         public string Fin { get => fin; set => fin = value; }
         public string Dia { get => dia; set => dia = value; }
-        public string Turno { get => turno; set => turno = value; }
     }
 }

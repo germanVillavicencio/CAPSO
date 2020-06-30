@@ -36,54 +36,43 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             return alumno;
         }
 
-        public Boolean verificarVacantes(ref CicloAcademico cicloAcademico, ref String mensaje, ref int totalMatriculasMañana, ref int totalMatriculasTarde)
-        {    
-            cicloAcademico = obtenerCicloActual();
+        public int verificarVacantes(CicloAcademico cicloAcademico)
+        {
+            int numero = -1;//no hay vacantes por defecto
+            int totalMatriculasDia = 0;
+            int totalMatriculasTarde = 0;
 
-            if (cicloAcademico != null)
+            gestorDAO.abrirConexion();
+            totalMatriculasDia = cicloAcademico.calcularMatriculasTurnoDia();
+            totalMatriculasTarde = cicloAcademico.calcularMatriculasTurnoTarde();
+            gestorDAO.cerrarConexion();
+
+            if (cicloAcademico.esValidoRegistro(totalMatriculasDia) && cicloAcademico.esValidoRegistro(totalMatriculasTarde))
             {
-                gestorDAO.abrirConexion();
-                cicloAcademico.Matriculas = new List<Matricula>();
-                cicloAcademico = cicloAcademicoDAO.obtenerMatriculasDeUnCiclo(cicloAcademico,ref totalMatriculasMañana, ref totalMatriculasTarde);
-                gestorDAO.cerrarConexion();
-
-                if (cicloAcademico.esValidoRegistro(totalMatriculasMañana) && cicloAcademico.esValidoRegistro(totalMatriculasTarde))
-                {
-                    mensaje = "Vacantes disponibles para AMBOS TURNOS";
-                    return true;
-                }
-                else
-                {
-                    if(cicloAcademico.esValidoRegistro(totalMatriculasMañana))
-                    {
-                        mensaje = "Solo hay vacantes disponibles para el TURNO MAÑANA";
-                        return true;
-                    }
-
-                    if (cicloAcademico.esValidoRegistro(totalMatriculasTarde))
-                    {
-                        mensaje = "Solo hay vacantes disponibles para el TURNO TARDE";
-                        return true;
-                    }
-                    mensaje = "Sin vacantes disponibles";
-                }
+                numero = 0;//vacantes en ambos turnos
             }
             else
             {
-                mensaje = "No existe ciclo academico disponible";
+                if (cicloAcademico.esValidoRegistro(totalMatriculasDia))
+                {
+                    numero = 1;//vacantes solo en la mañana
+                }
+
+                if (cicloAcademico.esValidoRegistro(totalMatriculasTarde))
+                {
+                    numero = 2;//vacantes solo en la tarde
+                }
             }
 
-           
-            return false;
+            return numero;//no hay vacantes
         }
 
-        private CicloAcademico obtenerCicloActual()
+        public CicloAcademico obtenerCicloActual()
         {
             gestorDAO.abrirConexion();
             CicloAcademico cicloAcademico;
             cicloAcademico = null;// ciclo academico actual
             List<CicloAcademico> ciclosAcademicos = cicloAcademicoDAO.buscarCiclosAcademicos();
-
             foreach (CicloAcademico ciclo in ciclosAcademicos)
             {
                 if (ciclo.esValidoFechaMatricula())
@@ -105,6 +94,16 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
                 return true;
             }
             return false;
+        }
+
+        public List<Matricula> obtenerMatriculas(string periodo)
+        {
+            List<Matricula> matriculas;
+            gestorDAO.abrirConexion();
+            matriculas = matriculaDAO.obtenerMatriculasDeUnCiclo(periodo);
+            gestorDAO.cerrarConexion();
+
+            return matriculas;
         }
 
         public List<Clase> obtenerClases(string periodo)

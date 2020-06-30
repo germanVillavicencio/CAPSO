@@ -23,23 +23,30 @@ namespace AcademiaSoft.CapaPresentacion
         {
             
             RegistrarMatriculaServicio registrarMatriculaServicio = new RegistrarMatriculaServicio();
-            
             try
             {
-                CicloAcademico cicloActual = new CicloAcademico();
-                Boolean vacantesDisponibles = false;
-                String mensaje = "";
-                int totalMatriculasMañana = 0;
-                int totalMatriculasTarde = 0;
-                vacantesDisponibles = registrarMatriculaServicio.verificarVacantes(ref cicloActual, ref mensaje, ref totalMatriculasMañana, ref totalMatriculasTarde);
-
-                MessageBox.Show(mensaje);
-                if (vacantesDisponibles == true)
+                CicloAcademico
+                cicloActual = null;
+                int vacantesDisponibles=0;
+                cicloActual = registrarMatriculaServicio.obtenerCicloActual();
+                if (cicloActual != null)
                 {
+                    cicloActual.ListaMatriculas = registrarMatriculaServicio.obtenerMatriculas(cicloActual.Periodo);
+                    vacantesDisponibles = registrarMatriculaServicio.verificarVacantes(cicloActual);
+                }
+                else
+                {
+                    MessageBox.Show("no hay ciclo disponible");
+                }
+                if (vacantesDisponibles >= 0)
+                {
+                    MessageBox.Show("Si hay vacantes");
                     cicloActual.Clases = registrarMatriculaServicio.obtenerClases(cicloActual.Periodo);
-                    FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual, totalMatriculasMañana, totalMatriculasTarde);
+                    FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual);
                     formRegistrarMatricula.ShowDialog();
                 }
+                else
+                    MessageBox.Show("No hay vacantes disponibles");
 
             }
             catch (Exception err)

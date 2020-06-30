@@ -28,11 +28,11 @@ namespace AcademiaSoft.CapaPresentacion
         double precioPagar = 0.0;
         string turnoSeleccionado = "";
         string dniSecretario = "11111111";
-        public FormRegistrarMatricula(CicloAcademico ciclo, int totalMatriculasManaña, int totalMatriculasTarde)
+        public FormRegistrarMatricula(CicloAcademico ciclo)
         {
             this.cicloAcademico = ciclo;
-            this.numeroMatriculasMañana = totalMatriculasManaña;
-            this.numeroMatriculasTarde = totalMatriculasTarde;
+            this.numeroMatriculasMañana = ciclo.calcularMatriculasTurnoDia();
+            this.numeroMatriculasTarde = ciclo.calcularMatriculasTurnoTarde();
             llenarListaDeClase();
             InitializeComponent();
             if (this.numeroMatriculasMañana < cicloAcademico.TotalDeAlumnos && this.numeroMatriculasTarde < cicloAcademico.TotalDeAlumnos)
@@ -118,16 +118,18 @@ namespace AcademiaSoft.CapaPresentacion
 
         private void llenarListaDeClase()
         {
+            string horaFin;
             foreach(Clase clase in this.cicloAcademico.Clases)
             {
-                if (clase.Horario.Turno.Equals("Mañana"))
-                    this.listaDeClasesMañana.Add(clase);
-                else
+                horaFin = clase.Horario.Fin.Substring(0,2);
+                if (String.Compare(horaFin, "13") < 0)
                 {
-                    if (clase.Horario.Turno.Equals("Tarde"))
-                        this.listaDeClasesTarde.Add(clase);
+                    this.listaDeClasesMañana.Add(clase);
                 }
-                    
+                else if (String.Compare(horaFin, "13") > 0)
+                {
+                    this.listaDeClasesTarde.Add(clase);
+                }
             }
         }
 

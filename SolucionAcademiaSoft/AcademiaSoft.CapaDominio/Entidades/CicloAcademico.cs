@@ -14,7 +14,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private DateTime fechaFin;
         private DateTime fechaInicioMatricula;
         private List<Clase> clases;
-        private List<Matricula> matriculas;
+        private List<Matricula> listaMatriculas;
 
         public CicloAcademico() { }
         public CicloAcademico(string periodo, int totalDeAlumnos, DateTime fechaInicio, DateTime fechaFin, DateTime fechaInicioMatricula)
@@ -25,7 +25,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
             this.FechaFin = fechaFin;
             this.FechaInicioMatricula = fechaInicioMatricula;
             this.Clases = new List<Clase>();
-            this.Matriculas = new List<Matricula>();
+            this.ListaMatriculas = new List<Matricula>();
         }
 
         public string Periodo { get => periodo; set => periodo = value; }
@@ -34,7 +34,8 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public DateTime FechaFin { get => fechaFin; set => fechaFin = value; }
         public List<Clase> Clases { get => clases; set => clases = value; }
         public DateTime FechaInicioMatricula { get => fechaInicioMatricula; set => fechaInicioMatricula = value; }
-        public List<Matricula> Matriculas { get => matriculas; set => matriculas = value; }
+        public List<Matricula> ListaMatriculas { get => listaMatriculas; set => listaMatriculas = value; }
+
 
         //V(G) = 2
         public bool esValidoRegistro(int cantidadAlumnosRegistrados)
@@ -52,7 +53,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         //V(G) = 2
         public bool estaAlumnoMatriculado(string dni)
         {
-            foreach(Matricula m in matriculas)
+            foreach(Matricula m in listaMatriculas)
             {
                 if (m.Alumno.Dni.Equals(dni))
                     return true;
@@ -64,7 +65,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         //V(G) = 2
         public bool esValidoFechaMatricula()
         {
-            DateTime fechaActual = DateTime.Today;
+            DateTime fechaActual = new DateTime(2020, 06, 10);//DateTime.Today;
 
             DateTime fechaFinMatricula = fechaInicioMatricula.AddDays(20);
 
@@ -85,6 +86,31 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public DateTime calcularFechaTerminoClases()
         {
             return fechaInicioMatricula.AddDays(132);//18 semanas mas 6 dias despues del pago de matricula
+        }
+
+
+        public int calcularMatriculasTurnoDia()
+        {
+            int totalDia = 0;
+            foreach(Matricula matricula in listaMatriculas)
+            {
+                if (matricula.Turno.Equals("mañana"))
+                    totalDia++;
+            }
+
+            return totalDia;
+        }
+
+        public int calcularMatriculasTurnoTarde()
+        {
+            int totalTarde = 0;
+            foreach (Matricula matricula in listaMatriculas)
+            {
+                if (matricula.Turno.Equals("tarde"))
+                    totalTarde++;
+            }
+
+            return totalTarde;
         }
     }
 }

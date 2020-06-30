@@ -40,5 +40,68 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
                 throw new Exception("Ocurrio un problema al guardar la matricula.", err);
             }
         }
+
+        public List<Matricula> obtenerMatriculasDeUnCiclo(string periodo)
+        {
+            List<Matricula> listaMatricula = new List<Matricula>();
+            Matricula matricula;
+            string consultaSQL = "select m.mat_fecha, m.mat_pago, m.alu_dni, m.mat_turno from Registro_Clases rc inner join Clase c on rc.cla_id = c.cla_id " +
+                                    "inner join Horario h on h.hor_id = c.hor_id " +
+                                    "inner join Ciclo_Academico ca on ca.cic_id = c.cic_id " +
+                                    "inner join Matricula m on m.mat_codigo = rc.mat_codigo " +
+                                    "where ca.cic_periodo = '" + periodo + "' " +
+                                    "group by rc.mat_codigo, m.mat_turno, m.alu_dni, m.mat_fecha, m.mat_pago";
+
+            try
+            {
+                SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
+                while (resultadoSQL.Read())
+                {
+                    matricula = obtenerMatricula(resultadoSQL);
+                    listaMatricula.Add(matricula);
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+
+            return listaMatricula;
+        }
+
+        public List<Matricula> listarMatriculasActuales()
+        {
+            Matricula matricula = null;
+            List<Matricula> listaMatriculas = new List<Matricula>();
+            string consultaSQL = "SELECT m.mat_fecha, m.mat_pago, alu_dni, m.mat_turno FROM Matricula m inner join Ciclo_Academico ca ON (m.cic_id = ca.cic_id) WHERE ca.cic_fecha_inicio<=CONVERT(DATE,GETDATE()) and ca.cic_fecha_fin>=CONVERT(DATE,GETDATE())";
+
+            try
+            {
+                SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
+                while (resultadoSQL.Read())
+                {
+                    matricula = obtenerMatricula(resultadoSQL);
+                    listaMatriculas.Add(matricula);
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+
+            return listaMatriculas;
+        }
+
+        private Matricula obtenerMatricula(SqlDataReader resultadoSQL)
+        {
+            Matricula matricula = new Matricula();
+            matricula.Alumno = new Alumno();
+            matricula.Fecha = resultadoSQL.GetDateTime(0);
+            matricula.Pago = double.Parse(resultadoSQL.GetDecimal(1).ToString());
+            matricula.Alumno.Dni = resultadoSQL.GetString(2);
+            matricula.Turno = resultadoSQL.GetString(3);
+            return matricula;
+        }
+
     }
 }
