@@ -5,19 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AcademiaSoft.CapaDominio.Entidades;
+using AcademiaSoft.CapaDominio.Contratos;
 using AcademiaSoft.CapaPersistencia.SQLServerDAO;
 
 namespace AcademiaSoft.CapaAplicacion.Servicios
 {
     public class IniciarSesionServicio
     {
-        private GestorSQL gestorSQL;
+        private IGestorDAO gestorDAO;
+        private IUsuarioDAO usuarioDAO;
 
         public IniciarSesionServicio()
         {
-            gestorSQL = new GestorSQL();
+            gestorDAO = new GestorSQL();
+            usuarioDAO = new UsuarioDAO(gestorDAO);
         }
 
-
+        public Usuario buscarUsuario(string nickname)
+        {
+            gestorDAO.abrirConexion();
+            Usuario usuario = usuarioDAO.buscarUsuario(nickname);
+            gestorDAO.cerrarConexion();
+            
+            return usuario;
+        }
     }
 }

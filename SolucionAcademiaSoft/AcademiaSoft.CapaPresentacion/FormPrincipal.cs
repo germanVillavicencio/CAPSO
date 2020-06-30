@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AcademiaSoft.CapaAplicacion.Servicios;
+using AcademiaSoft.CapaDominio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,10 +22,31 @@ namespace AcademiaSoft.CapaPresentacion
 
         private void buttonIniciarSesion_Click(object sender, EventArgs e)
         {
+            Usuario usuario;
             string nick = textNick.Text.Trim();
             string password = textPassword.Text.Trim();
-            FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario();
-            formFuncionesSecretario.ShowDialog();
+            
+            try
+            {
+                IniciarSesionServicio iniciarSesionServicio = new IniciarSesionServicio();
+                usuario = iniciarSesionServicio.buscarUsuario(nick);
+                if (usuario.esUsuarioValido(nick, password))
+                {
+                    FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario();
+                    formFuncionesSecretario.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese las credenciales correctas");
+                }
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            /*FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario();
+            formFuncionesSecretario.ShowDialog();*/
         }
 
         private void buttonRegistrarUsuario_Click(object sender, EventArgs e)
