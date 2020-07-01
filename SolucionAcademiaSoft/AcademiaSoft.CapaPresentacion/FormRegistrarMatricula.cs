@@ -165,6 +165,7 @@ namespace AcademiaSoft.CapaPresentacion
                 groupAlumnoDatosPersonales.Enabled = false;
                 groupAlumnoContacto.Enabled = false;
                 groupMatricula.Enabled = false;
+                this.Close();
 
             }
             catch (Exception err)
