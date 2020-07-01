@@ -45,12 +45,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
         {
             List<Matricula> listaMatricula = new List<Matricula>();
             Matricula matricula;
-            string consultaSQL = "select m.mat_fecha, m.mat_pago, m.alu_dni, m.mat_turno from Registro_Clases rc inner join Clase c on rc.cla_id = c.cla_id " +
-                                    "inner join Horario h on h.hor_id = c.hor_id " +
-                                    "inner join Ciclo_Academico ca on ca.cic_id = c.cic_id " +
-                                    "inner join Matricula m on m.mat_codigo = rc.mat_codigo " +
-                                    "where ca.cic_periodo = '" + periodo + "' " +
-                                    "group by rc.mat_codigo, m.mat_turno, m.alu_dni, m.mat_fecha, m.mat_pago";
+            string consultaSQL = "select m.mat_fecha, m.mat_pago, m.alu_dni, m.mat_turno from Ciclo_Academico ca inner join Matricula m on ca.cic_id = m.cic_id where ca.cic_periodo = '"+ periodo + "' ";
 
             try
             {

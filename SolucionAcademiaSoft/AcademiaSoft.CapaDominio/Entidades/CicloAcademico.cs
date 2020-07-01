@@ -94,7 +94,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
             int totalDia = 0;
             foreach(Matricula matricula in listaMatriculas)
             {
-                if (matricula.Turno.Equals("mañana"))
+                if (matricula.Turno.Equals("Mañana"))
                     totalDia++;
             }
 
@@ -106,7 +106,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
             int totalTarde = 0;
             foreach (Matricula matricula in listaMatriculas)
             {
-                if (matricula.Turno.Equals("tarde"))
+                if (matricula.Turno.Equals("Tarde"))
                     totalTarde++;
             }
 

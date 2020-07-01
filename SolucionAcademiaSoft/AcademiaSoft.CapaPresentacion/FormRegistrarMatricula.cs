@@ -89,7 +89,7 @@ namespace AcademiaSoft.CapaPresentacion
                         groupAlumnoDatosPersonales.Enabled = false;
                         groupAlumnoContacto.Enabled = false;
                         groupMatricula.Enabled = true;//se habilita para elegir el turno
-                        this.estaAlumnoRegistrado = true;
+                        this.estaAlumnoRegistrado = false;
                     }
                 }
             }
@@ -100,6 +100,7 @@ namespace AcademiaSoft.CapaPresentacion
                 groupAlumnoDatosPersonales.Enabled = true;
                 groupAlumnoContacto.Enabled = true;
                 groupMatricula.Enabled = true;
+                this.estaAlumnoRegistrado = false;
                 return;
 
             }
@@ -159,7 +160,7 @@ namespace AcademiaSoft.CapaPresentacion
             try
             {
                 
-                registrarMatriculaServicio.guardarMatricula(nuevaMatricula, estaAlumnoRegistrado, turnoSeleccionado);
+                registrarMatriculaServicio.guardarMatricula(nuevaMatricula, this.estaAlumnoRegistrado, turnoSeleccionado);
                 MessageBox.Show("Se ha matriculado correctamente al alumno");
                 groupAlumnoDatosPersonales.Enabled = false;
                 groupAlumnoContacto.Enabled = false;
