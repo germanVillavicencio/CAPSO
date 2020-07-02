@@ -26,8 +26,6 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             matriculaDAO = new MatriculaDAO(gestorDAO);
         }
 
-        
-
         public Alumno buscarPorDni(string dni)
         {
             gestorDAO.abrirConexion();
@@ -101,6 +99,7 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             List<Matricula> matriculas;
             gestorDAO.abrirConexion();
             matriculas = matriculaDAO.obtenerMatriculasDeUnCiclo(periodo);
+            //matriculas = matriculaDAO.obtenerMatriculasYAlumnosDeUnCiclo(periodo);
             gestorDAO.cerrarConexion();
 
             return matriculas;

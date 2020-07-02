@@ -9,7 +9,7 @@ namespace AcademiaSoft.CapaDominio.Contratos
     public interface IMatriculaDAO
     {
         void guardarMatricula(Matricula matricula, string turno);
-        List<Matricula> listarMatriculasActuales();
         List<Matricula> obtenerMatriculasDeUnCiclo(string periodo);
+        List<Matricula> obtenerMatriculasYAlumnosDeUnCiclo(string periodo);
     }
 }

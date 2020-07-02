@@ -64,19 +64,21 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return listaMatricula;
         }
 
-        public List<Matricula> listarMatriculasActuales()
+        public List<Matricula> obtenerMatriculasYAlumnosDeUnCiclo(string periodo)
         {
-            Matricula matricula = null;
-            List<Matricula> listaMatriculas = new List<Matricula>();
-            string consultaSQL = "SELECT m.mat_fecha, m.mat_pago, alu_dni, m.mat_turno FROM Matricula m inner join Ciclo_Academico ca ON (m.cic_id = ca.cic_id) WHERE ca.cic_fecha_inicio<=CONVERT(DATE,GETDATE()) and ca.cic_fecha_fin>=CONVERT(DATE,GETDATE())";
+            List<Matricula> listaMatricula = new List<Matricula>();
+            Matricula matricula;
+            string consultaSQL = "select m.mat_codigo, m.mat_fecha, m.mat_pago, m.mat_turno, p.per_dni, p.per_nombre, p.per_apellido_mat, p.per_apellido_pat " +
+                                    "from Matricula m inner join Ciclo_Academico c on m.cic_id = c.cic_id inner join Persona p on m.alu_dni = p.per_dni "+
+                                    "where c.cic_periodo = '" + periodo + "' ";
 
             try
             {
                 SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
                 while (resultadoSQL.Read())
                 {
-                    matricula = obtenerMatricula(resultadoSQL);
-                    listaMatriculas.Add(matricula);
+                    matricula = obtenerMatriculaYAlumno(resultadoSQL);
+                    listaMatricula.Add(matricula);
                 }
             }
             catch (Exception err)
@@ -84,7 +86,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
                 throw err;
             }
 
-            return listaMatriculas;
+            return listaMatricula;
         }
 
         private Matricula obtenerMatricula(SqlDataReader resultadoSQL)
@@ -95,6 +97,23 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             matricula.Pago = double.Parse(resultadoSQL.GetDecimal(1).ToString());
             matricula.Alumno.Dni = resultadoSQL.GetString(2);
             matricula.Turno = resultadoSQL.GetString(3);
+            return matricula;
+        }
+
+        private Matricula obtenerMatriculaYAlumno(SqlDataReader resultadoSQL)
+        {
+            Matricula matricula = new Matricula();
+            matricula.Alumno = new Alumno();
+
+            matricula.Codigo = resultadoSQL.GetInt32(0);
+            matricula.Fecha = resultadoSQL.GetDateTime(1);
+            matricula.Pago = double.Parse(resultadoSQL.GetDecimal(2).ToString());
+            matricula.Turno = resultadoSQL.GetString(3);
+            matricula.Alumno.Dni = resultadoSQL.GetString(4);
+            matricula.Alumno.Nombre = resultadoSQL.GetString(5);
+            matricula.Alumno.ApellidoPaterno = resultadoSQL.GetString(6);
+            matricula.Alumno.ApellidoMaterno = resultadoSQL.GetString(7);
+
             return matricula;
         }
 

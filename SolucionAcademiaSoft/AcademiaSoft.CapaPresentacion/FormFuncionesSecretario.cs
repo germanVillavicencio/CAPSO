@@ -56,5 +56,16 @@ namespace AcademiaSoft.CapaPresentacion
 
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            List<CicloAcademico> ciclos = null;
+            ListarMatriculasServicio listarMatriculasServicio = new ListarMatriculasServicio();
+
+            ciclos = listarMatriculasServicio.obtenerCiclosAcademcios();
+
+            FormReporteMatriculas formReporteMatriculas = new FormReporteMatriculas(ciclos);
+            formReporteMatriculas.ShowDialog();
+        }
     }
 }

@@ -70,6 +70,12 @@
     <Compile Include="FormRegistrarUsuario.Designer.cs">
       <DependentUpon>FormRegistrarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReporteMatriculas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReporteMatriculas.Designer.cs">
+      <DependentUpon>FormReporteMatriculas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormFuncionesSecretario.resx">
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRegistrarUsuario.resx">
       <DependentUpon>FormRegistrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReporteMatriculas.resx">
+      <DependentUpon>FormReporteMatriculas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

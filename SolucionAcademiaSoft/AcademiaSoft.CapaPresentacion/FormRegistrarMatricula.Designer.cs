@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupAlumno = new System.Windows.Forms.GroupBox();
             this.buttonBuscarAlumno = new System.Windows.Forms.Button();
             this.textDni = new System.Windows.Forms.TextBox();
@@ -52,6 +49,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupMatricula = new System.Windows.Forms.GroupBox();
+            this.textPrecio = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.buttonRegistrarMatricula = new System.Windows.Forms.Button();
             this.dataGridClases = new System.Windows.Forms.DataGridView();
             this.dataCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,8 +59,7 @@
             this.dataHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxTurno = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textPrecio = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupAlumno.SuspendLayout();
             this.groupAlumnoContacto.SuspendLayout();
             this.groupAlumnoDatosPersonales.SuspendLayout();
@@ -77,7 +75,7 @@
             this.groupAlumno.Controls.Add(this.label1);
             this.groupAlumno.Controls.Add(this.groupAlumnoDatosPersonales);
             this.groupAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupAlumno.Location = new System.Drawing.Point(22, 20);
+            this.groupAlumno.Location = new System.Drawing.Point(22, 124);
             this.groupAlumno.Margin = new System.Windows.Forms.Padding(2);
             this.groupAlumno.Name = "groupAlumno";
             this.groupAlumno.Padding = new System.Windows.Forms.Padding(2);
@@ -315,7 +313,7 @@
             this.groupMatricula.Controls.Add(this.comboBoxTurno);
             this.groupMatricula.Enabled = false;
             this.groupMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupMatricula.Location = new System.Drawing.Point(22, 364);
+            this.groupMatricula.Location = new System.Drawing.Point(22, 463);
             this.groupMatricula.Margin = new System.Windows.Forms.Padding(2);
             this.groupMatricula.Name = "groupMatricula";
             this.groupMatricula.Padding = new System.Windows.Forms.Padding(2);
@@ -323,6 +321,28 @@
             this.groupMatricula.TabIndex = 1;
             this.groupMatricula.TabStop = false;
             this.groupMatricula.Text = "Datos de la Matricula";
+            // 
+            // textPrecio
+            // 
+            this.textPrecio.Enabled = false;
+            this.textPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPrecio.Location = new System.Drawing.Point(548, 30);
+            this.textPrecio.Margin = new System.Windows.Forms.Padding(2);
+            this.textPrecio.MaxLength = 8;
+            this.textPrecio.Name = "textPrecio";
+            this.textPrecio.Size = new System.Drawing.Size(120, 23);
+            this.textPrecio.TabIndex = 12;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(492, 33);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 17);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Precio:";
             // 
             // buttonRegistrarMatricula
             // 
@@ -339,39 +359,15 @@
             // 
             // dataGridClases
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridClases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridClases.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridClases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataCodigo,
             this.dataCurso,
             this.dataDocente,
             this.dataHorario});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridClases.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridClases.Location = new System.Drawing.Point(21, 71);
             this.dataGridClases.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridClases.Name = "dataGridClases";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridClases.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridClases.RowHeadersWidth = 51;
             this.dataGridClases.RowTemplate.Height = 24;
             this.dataGridClases.Size = new System.Drawing.Size(647, 152);
@@ -428,33 +424,22 @@
             this.comboBoxTurno.TabIndex = 0;
             this.comboBoxTurno.SelectionChangeCommitted += new System.EventHandler(this.comboBoxTurno_SelectionChangeCommitted);
             // 
-            // label10
+            // label11
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(492, 33);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 17);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "Precio:";
-            // 
-            // textPrecio
-            // 
-            this.textPrecio.Enabled = false;
-            this.textPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textPrecio.Location = new System.Drawing.Point(548, 30);
-            this.textPrecio.Margin = new System.Windows.Forms.Padding(2);
-            this.textPrecio.MaxLength = 8;
-            this.textPrecio.Name = "textPrecio";
-            this.textPrecio.Size = new System.Drawing.Size(120, 23);
-            this.textPrecio.TabIndex = 12;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(222, 23);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(288, 31);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "NUEVA MATRICULA";
             // 
             // FormRegistrarMatricula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 662);
+            this.ClientSize = new System.Drawing.Size(723, 773);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.groupMatricula);
             this.Controls.Add(this.groupAlumno);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -470,6 +455,7 @@
             this.groupMatricula.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClases)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -506,5 +492,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataHorario;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textPrecio;
+        private System.Windows.Forms.Label label11;
     }
 }
