@@ -47,7 +47,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(118, 33);
+            this.label11.Location = new System.Drawing.Point(138, 32);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(395, 31);
             this.label11.TabIndex = 3;
@@ -67,7 +67,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(360, 100);
+            this.label2.Location = new System.Drawing.Point(408, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 20);
             this.label2.TabIndex = 5;
@@ -90,7 +90,7 @@
             this.comboBoxTurn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTurn.FormattingEnabled = true;
-            this.comboBoxTurn.Location = new System.Drawing.Point(419, 96);
+            this.comboBoxTurn.Location = new System.Drawing.Point(467, 100);
             this.comboBoxTurn.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTurn.Name = "comboBoxTurn";
             this.comboBoxTurn.Size = new System.Drawing.Size(147, 24);
@@ -99,6 +99,8 @@
             // 
             // dataGridMatriculas
             // 
+            this.dataGridMatriculas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridMatriculas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridMatriculas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMatriculas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataCodigo,
@@ -112,7 +114,7 @@
             this.dataGridMatriculas.Name = "dataGridMatriculas";
             this.dataGridMatriculas.RowHeadersWidth = 51;
             this.dataGridMatriculas.RowTemplate.Height = 24;
-            this.dataGridMatriculas.Size = new System.Drawing.Size(531, 382);
+            this.dataGridMatriculas.Size = new System.Drawing.Size(579, 382);
             this.dataGridMatriculas.TabIndex = 8;
             // 
             // dataCodigo
@@ -120,51 +122,56 @@
             this.dataCodigo.HeaderText = "Codigo";
             this.dataCodigo.MinimumWidth = 6;
             this.dataCodigo.Name = "dataCodigo";
-            this.dataCodigo.Width = 125;
+            this.dataCodigo.Width = 65;
             // 
             // dataCurso
             // 
             this.dataCurso.HeaderText = "Fecha";
             this.dataCurso.MinimumWidth = 6;
             this.dataCurso.Name = "dataCurso";
-            this.dataCurso.Width = 150;
+            this.dataCurso.Width = 62;
             // 
             // dataDocente
             // 
             this.dataDocente.HeaderText = "Pago";
             this.dataDocente.MinimumWidth = 6;
             this.dataDocente.Name = "dataDocente";
-            this.dataDocente.Width = 150;
+            this.dataDocente.Width = 57;
             // 
             // dataHorario
             // 
             this.dataHorario.HeaderText = "Turno";
             this.dataHorario.MinimumWidth = 6;
             this.dataHorario.Name = "dataHorario";
-            this.dataHorario.Width = 150;
+            this.dataHorario.Width = 60;
             // 
             // dataDniAlumno
             // 
             this.dataDniAlumno.HeaderText = "DNI Alumno";
             this.dataDniAlumno.Name = "dataDniAlumno";
+            this.dataDniAlumno.Width = 89;
             // 
             // dataAlumnoNombres
             // 
             this.dataAlumnoNombres.HeaderText = "Nombres";
             this.dataAlumnoNombres.Name = "dataAlumnoNombres";
+            this.dataAlumnoNombres.Width = 74;
             // 
             // FormReporteMatriculas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 555);
+            this.ClientSize = new System.Drawing.Size(658, 555);
             this.Controls.Add(this.dataGridMatriculas);
             this.Controls.Add(this.comboBoxTurn);
             this.Controls.Add(this.comboBoxCiclo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label11);
+            this.MaximumSize = new System.Drawing.Size(674, 594);
+            this.MinimumSize = new System.Drawing.Size(674, 594);
             this.Name = "FormReporteMatriculas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte de Matriculas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMatriculas)).EndInit();
             this.ResumeLayout(false);

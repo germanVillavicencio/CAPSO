@@ -32,12 +32,12 @@ namespace AcademiaSoft.CapaPresentacion
                 usuario = iniciarSesionServicio.buscarUsuario(nick);
                 if (usuario.esUsuarioValido(nick, password))
                 {
-                    FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario();
+                    FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario(usuario.Persona.Dni);
                     formFuncionesSecretario.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Ingrese las credenciales correctas");
+                    MessageBox.Show("Contraseña Incorrecta","Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch(Exception err)
@@ -45,7 +45,7 @@ namespace AcademiaSoft.CapaPresentacion
                 MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
-            /*FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario();
+           /* FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario();
             formFuncionesSecretario.ShowDialog();*/
         }
 

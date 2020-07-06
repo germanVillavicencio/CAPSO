@@ -16,7 +16,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
         private int codigo;
         private DateTime fecha;
-        private double precio;//lo que cuesta
         private double pago;//el monto descontado, lo que pagas
         private string turno;
 
@@ -35,13 +34,12 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public List<Examen> ListaDeExamenes { get => listaDeExamenes; set => listaDeExamenes = value; }
         public CicloAcademico CicloAcademico { get => cicloAcademico; set => cicloAcademico = value; }
         public List<Clase> ListaDeClases { get => listaDeClases; set => listaDeClases = value; }
-        public double Precio { get => precio; set => precio = value; }
         public double Pago { get => pago; set => pago = value; }
         public string Turno { get => turno; set => turno = value; }
 
         //Regla de negocio para el pago
         //Si el alumno se matricula a los 3 primeros dias, entonces se le hará un descuento del 15% del costo de matricula
-        public double calcularDescuento()
+        public double calcularDescuento(double precio)
         {
             DateTime fechaActual = DateTime.Today.Date;
             DateTime fechaLimite = cicloAcademico.FechaInicioMatricula.AddDays(3);
@@ -56,9 +54,9 @@ namespace AcademiaSoft.CapaDominio.Entidades
             }
         }
 
-        public double calcularPago()
+        public double calcularPago(double precio)
         {
-            return precio - calcularDescuento();
+            return precio - calcularDescuento(precio);
         }
 
     }

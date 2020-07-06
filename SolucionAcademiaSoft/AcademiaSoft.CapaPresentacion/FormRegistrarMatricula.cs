@@ -24,17 +24,26 @@ namespace AcademiaSoft.CapaPresentacion
         int numeroMatriculasMañana = 0;
         int numeroMatriculasTarde = 0;
 
-        Boolean estaAlumnoRegistrado = false;
-        double precioPagar = 0.0;
         string turnoSeleccionado = "";
-        string dniSecretario = "11111111";
-        public FormRegistrarMatricula(CicloAcademico ciclo)
+        string dniSecretario = "";
+
+        RegistrarMatriculaServicio registrarMatriculaServicio;
+        public FormRegistrarMatricula(CicloAcademico ciclo, string dni)
         {
             this.cicloAcademico = ciclo;
+            this.dniSecretario = dni;
             this.numeroMatriculasMañana = ciclo.calcularMatriculasTurnoDia();
             this.numeroMatriculasTarde = ciclo.calcularMatriculasTurnoTarde();
             llenarListaDeClase();
             InitializeComponent();
+
+            MaximizeBox = false;
+            registrarMatriculaServicio = new RegistrarMatriculaServicio();
+            textPrecio.Text = "S/." + this.cicloAcademico.Precio;
+            textPeriodoAcademico.Text = this.cicloAcademico.Periodo;
+            textInicioDeClases.Text = registrarMatriculaServicio.obtenerFechaDeInicioDeClases(ciclo);
+            textFinDeClases.Text = registrarMatriculaServicio.obtenerFechaDeFinDeClases(ciclo);
+
             if (this.numeroMatriculasMañana < cicloAcademico.TotalDeAlumnos && this.numeroMatriculasTarde < cicloAcademico.TotalDeAlumnos)
             {
                 this.comboBoxTurno.Items.AddRange(new object[] { "Mañana", "Tarde" });
@@ -60,7 +69,6 @@ namespace AcademiaSoft.CapaPresentacion
             string dniAlumno = textDni.Text.Trim();
             try
             {
-                RegistrarMatriculaServicio registrarMatriculaServicio = new RegistrarMatriculaServicio();
                 alumno = new Alumno();
                 alumno = registrarMatriculaServicio.buscarPorDni(dniAlumno);
 
@@ -72,9 +80,8 @@ namespace AcademiaSoft.CapaPresentacion
                         groupAlumnoDatosPersonales.Enabled = false;
                         groupAlumnoContacto.Enabled = false;
                         groupMatricula.Enabled = false;
-                        this.estaAlumnoRegistrado = true;
-                        MessageBox.Show("El alumno ya se encuentra matriculado en este ciclo academico");
-                        
+                        MessageBox.Show("El alumno ya se encuentra matriculado en este ciclo academico", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                     }
                     else
                     {   //si no está matriculado en el ciclo actual
@@ -89,7 +96,6 @@ namespace AcademiaSoft.CapaPresentacion
                         groupAlumnoDatosPersonales.Enabled = false;
                         groupAlumnoContacto.Enabled = false;
                         groupMatricula.Enabled = true;//se habilita para elegir el turno
-                        this.estaAlumnoRegistrado = false;
                     }
                 }
             }
@@ -97,10 +103,9 @@ namespace AcademiaSoft.CapaPresentacion
             {
                 MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 limpiarDatosDelAlumno();
-                groupAlumnoDatosPersonales.Enabled = true;
-                groupAlumnoContacto.Enabled = true;
-                groupMatricula.Enabled = true;
-                this.estaAlumnoRegistrado = false;
+                groupAlumnoDatosPersonales.Enabled = false;
+                groupAlumnoContacto.Enabled = false;
+                groupMatricula.Enabled = false;
                 return;
 
             }
@@ -136,31 +141,17 @@ namespace AcademiaSoft.CapaPresentacion
 
         private void buttonRegistrarMatricula_Click(object sender, EventArgs e)
         {
-            if(this.estaAlumnoRegistrado==false)
-            {
-                this.alumno.Dni = textDni.Text;
-                this.alumno.Nombre = textNombres.Text.Trim();
-                this.alumno.ApellidoPaterno = textApellidoPaterno.Text.Trim();
-                this.alumno.ApellidoMaterno = textApellidoMaterno.Text.Trim();
-                this.alumno.Direccion = textDireccion.Text.Trim();
-                this.alumno.Celular = textTelefono.Text;
-                this.alumno.Correo = textCorreo.Text.Trim();
-                this.alumno.FechaDeNacimiento = datePickerFechaNacimiento.Value;
-            }
-            RegistrarMatriculaServicio registrarMatriculaServicio = new RegistrarMatriculaServicio();
-
             Matricula nuevaMatricula = new Matricula();
             nuevaMatricula.Secretario = new Secretario();
             nuevaMatricula.Alumno = this.alumno;
             nuevaMatricula.Secretario.Dni = this.dniSecretario;
-            nuevaMatricula.Precio = this.precioPagar;
             nuevaMatricula.Fecha = DateTime.Today;
             nuevaMatricula.CicloAcademico = this.cicloAcademico;
 
             try
             {
                 
-                registrarMatriculaServicio.guardarMatricula(nuevaMatricula, this.estaAlumnoRegistrado, turnoSeleccionado);
+                registrarMatriculaServicio.guardarMatricula(nuevaMatricula, turnoSeleccionado);
                 MessageBox.Show("Se ha matriculado correctamente al alumno");
                 groupAlumnoDatosPersonales.Enabled = false;
                 groupAlumnoContacto.Enabled = false;
@@ -182,8 +173,6 @@ namespace AcademiaSoft.CapaPresentacion
         {
             if (comboBoxTurno.Text == "Mañana")
             {
-                textPrecio.Text = "S/.500.00";
-                this.precioPagar = 500.00;
                 this.turnoSeleccionado = "Mañana";
                 dataGridClases.Rows.Clear();//Limpiar la tabla donde se muestran las clases
                 foreach (Clase clase in this.listaDeClasesMañana)
@@ -194,8 +183,6 @@ namespace AcademiaSoft.CapaPresentacion
             }
             else if (comboBoxTurno.Text == "Tarde")
             {
-                textPrecio.Text = "S/.600.00";
-                this.precioPagar = 600.00;
                 this.turnoSeleccionado = "Tarde";
                 dataGridClases.Rows.Clear();//Limpiar la tabla donde se muestran las clases
                 foreach (Clase clase in this.listaDeClasesTarde)

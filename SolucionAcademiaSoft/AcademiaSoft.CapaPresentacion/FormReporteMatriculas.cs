@@ -30,7 +30,7 @@ namespace AcademiaSoft.CapaPresentacion
             {
                 comboBoxCiclo.Items.Add(ciclo.Periodo);
             }
-
+            MaximizeBox = false;
         }
 
         private void comboBoxCiclo_SelectionChangeCommitted(object sender, EventArgs e)

@@ -15,9 +15,9 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico cicloAcademico = new CicloAcademico();
             cicloAcademico.FechaInicioMatricula = DateTime.Today.AddDays(-4); 
             matricula.CicloAcademico = cicloAcademico;
-            matricula.Precio = 1000;
+            double precio = 1000;
             double resultadoEsperado = 0;
-            double resultado = matricula.calcularDescuento();
+            double resultado = matricula.calcularDescuento(precio);
             Assert.AreEqual(resultadoEsperado, resultado);
         }
 
@@ -29,9 +29,9 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico cicloAcademico = new CicloAcademico();
             cicloAcademico.FechaInicioMatricula = DateTime.Today;
             matricula.CicloAcademico = cicloAcademico;
-            matricula.Precio = 1000;
+            double precio = 1000;
             double resultadoEsperado = 150;
-            double resultado = matricula.calcularDescuento();
+            double resultado = matricula.calcularDescuento(precio);
             Assert.AreEqual(resultadoEsperado, resultado);
         }
 
@@ -43,9 +43,9 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico cicloAcademico = new CicloAcademico();
             cicloAcademico.FechaInicioMatricula = new DateTime(2020, 06, 15);
             matricula.CicloAcademico = cicloAcademico;
-            matricula.Precio = 600;
+            double precio = 1000;
             double resultado_esperado = 510;
-            double resultado_obtenido = matricula.calcularPago();
+            double resultado_obtenido = matricula.calcularPago(precio);
             Assert.AreEqual(resultado_esperado, resultado_obtenido);
         }
     }

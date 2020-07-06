@@ -10,6 +10,5 @@ namespace AcademiaSoft.CapaDominio.Contratos
     {
         void guardarMatricula(Matricula matricula, string turno);
         List<Matricula> obtenerMatriculasDeUnCiclo(string periodo);
-        List<Matricula> obtenerMatriculasYAlumnosDeUnCiclo(string periodo);
     }
 }

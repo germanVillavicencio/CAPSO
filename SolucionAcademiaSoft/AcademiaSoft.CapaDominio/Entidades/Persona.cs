@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace AcademiaSoft.CapaDominio.Entidades
 {
@@ -33,6 +34,48 @@ namespace AcademiaSoft.CapaDominio.Entidades
             edad = DateTime.Today.AddTicks(-fechaDeNacimiento.Ticks).Year - 1;
 
             return edad;
+        }
+
+        public bool esCorreoValido()
+        {
+            String expresion;
+            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(correo, expresion))
+            {
+                if (Regex.Replace(correo, expresion, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool sonSoloNumeros(string palabra)
+        {
+            char[] cadena = palabra.ToCharArray();
+            for (int i = 0; i < cadena.Length; i++)
+            {
+                if (cadena[i] < 48 || cadena[i] > 57)
+                    return false;
+            }
+
+            return true;
+        }
+
+        //La fecha de nacimiento no puede ser mayor al día actual y en su defecto el alumno no puede ser menor de 12 años para poder matricularse
+        public bool esFechaDeNacimientoValida()
+        {
+            if(fechaDeNacimiento.Date >= DateTime.Today.Date)
+                return false;
+            else
+                return true;
         }
     }
 }

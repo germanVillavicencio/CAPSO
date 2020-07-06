@@ -58,6 +58,12 @@
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRegistrarAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegistrarAlumno.Designer.cs">
+      <DependentUpon>FormRegistrarAlumno.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRegistrarMatricula.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegistrarAlumno.resx">
+      <DependentUpon>FormRegistrarAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRegistrarMatricula.resx">
       <DependentUpon>FormRegistrarMatricula.cs</DependentUpon>

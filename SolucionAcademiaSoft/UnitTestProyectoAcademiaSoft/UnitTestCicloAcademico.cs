@@ -61,7 +61,7 @@ namespace UnitTestProyectoAcademiaSoft
         {
             List<Matricula> listaMatriculas = crearMatriculas();
             CicloAcademico ca = new CicloAcademico();
-            ca.Matriculas = listaMatriculas;
+            ca.ListaMatriculas = listaMatriculas;
             string dniAlumno = "73737373";
             bool resultadoEsperado = true;
             bool resultadoFinal = ca.estaAlumnoMatriculado(dniAlumno);
@@ -73,7 +73,7 @@ namespace UnitTestProyectoAcademiaSoft
         {
             List<Matricula> listaMatriculas = crearMatriculas();
             CicloAcademico ca = new CicloAcademico();
-            ca.Matriculas = listaMatriculas;
+            ca.ListaMatriculas = listaMatriculas;
             string dniAlumno = "12131415";
             bool resultadoEsperado = false;
             bool resultadoFinal = ca.estaAlumnoMatriculado(dniAlumno);

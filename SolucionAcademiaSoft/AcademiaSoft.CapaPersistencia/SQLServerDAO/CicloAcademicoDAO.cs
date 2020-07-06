@@ -23,7 +23,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             List<CicloAcademico> ciclosAcademicos = new List<CicloAcademico>();
             CicloAcademico cicloAcademico;
 
-            string consultaSQL = "select cic_periodo, cic_max_alum, cic_inicio_matricula from Ciclo_Academico";
+            string consultaSQL = "select cic_periodo, cic_max_alum, cic_inicio_matricula, cic_precio from Ciclo_Academico";
             try
             {
                 SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
@@ -91,6 +91,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             cicloAcademico.Periodo = resultadoSQL.GetString(0);
             cicloAcademico.TotalDeAlumnos = resultadoSQL.GetInt32(1);
             cicloAcademico.FechaInicioMatricula = resultadoSQL.GetDateTime(2);
+            cicloAcademico.Precio = double.Parse(resultadoSQL.GetDecimal(3).ToString());
             return cicloAcademico;
         }
     }

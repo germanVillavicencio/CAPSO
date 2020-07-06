@@ -60,6 +60,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxTurno = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textPeriodoAcademico = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textInicioDeClases = new System.Windows.Forms.TextBox();
+            this.textFinDeClases = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupAlumno.SuspendLayout();
             this.groupAlumnoContacto.SuspendLayout();
             this.groupAlumnoDatosPersonales.SuspendLayout();
@@ -88,7 +94,7 @@
             // 
             this.buttonBuscarAlumno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBuscarAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBuscarAlumno.Location = new System.Drawing.Point(583, 55);
+            this.buttonBuscarAlumno.Location = new System.Drawing.Point(583, 47);
             this.buttonBuscarAlumno.Margin = new System.Windows.Forms.Padding(2);
             this.buttonBuscarAlumno.Name = "buttonBuscarAlumno";
             this.buttonBuscarAlumno.Size = new System.Drawing.Size(85, 28);
@@ -100,7 +106,7 @@
             // textDni
             // 
             this.textDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDni.Location = new System.Drawing.Point(420, 60);
+            this.textDni.Location = new System.Drawing.Point(416, 52);
             this.textDni.Margin = new System.Windows.Forms.Padding(2);
             this.textDni.MaxLength = 8;
             this.textDni.Name = "textDni";
@@ -193,7 +199,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(367, 62);
+            this.label1.Location = new System.Drawing.Point(364, 55);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 20);
@@ -359,6 +365,8 @@
             // 
             // dataGridClases
             // 
+            this.dataGridClases.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridClases.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridClases.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridClases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataCodigo,
@@ -378,28 +386,28 @@
             this.dataCodigo.HeaderText = "Codigo";
             this.dataCodigo.MinimumWidth = 6;
             this.dataCodigo.Name = "dataCodigo";
-            this.dataCodigo.Width = 125;
+            this.dataCodigo.Width = 84;
             // 
             // dataCurso
             // 
             this.dataCurso.HeaderText = "Curso";
             this.dataCurso.MinimumWidth = 6;
             this.dataCurso.Name = "dataCurso";
-            this.dataCurso.Width = 150;
+            this.dataCurso.Width = 76;
             // 
             // dataDocente
             // 
             this.dataDocente.HeaderText = "Docente";
             this.dataDocente.MinimumWidth = 6;
             this.dataDocente.Name = "dataDocente";
-            this.dataDocente.Width = 150;
+            this.dataDocente.Width = 95;
             // 
             // dataHorario
             // 
             this.dataHorario.HeaderText = "Horario";
             this.dataHorario.MinimumWidth = 6;
             this.dataHorario.Name = "dataHorario";
-            this.dataHorario.Width = 150;
+            this.dataHorario.Width = 86;
             // 
             // label9
             // 
@@ -428,22 +436,101 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(222, 23);
+            this.label11.Location = new System.Drawing.Point(26, 27);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(288, 31);
             this.label11.TabIndex = 2;
             this.label11.Text = "NUEVA MATRICULA";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.SystemColors.Control;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Maroon;
+            this.label12.Location = new System.Drawing.Point(383, 34);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(200, 24);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Periodo Académico:";
+            // 
+            // textPeriodoAcademico
+            // 
+            this.textPeriodoAcademico.Enabled = false;
+            this.textPeriodoAcademico.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPeriodoAcademico.Location = new System.Drawing.Point(587, 34);
+            this.textPeriodoAcademico.Margin = new System.Windows.Forms.Padding(2);
+            this.textPeriodoAcademico.MaxLength = 8;
+            this.textPeriodoAcademico.Name = "textPeriodoAcademico";
+            this.textPeriodoAcademico.Size = new System.Drawing.Size(120, 23);
+            this.textPeriodoAcademico.TabIndex = 13;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label13.Location = new System.Drawing.Point(39, 84);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(124, 20);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "Inicio de Clases:";
+            // 
+            // textInicioDeClases
+            // 
+            this.textInicioDeClases.Enabled = false;
+            this.textInicioDeClases.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textInicioDeClases.Location = new System.Drawing.Point(175, 81);
+            this.textInicioDeClases.Margin = new System.Windows.Forms.Padding(2);
+            this.textInicioDeClases.MaxLength = 8;
+            this.textInicioDeClases.Name = "textInicioDeClases";
+            this.textInicioDeClases.Size = new System.Drawing.Size(177, 23);
+            this.textInicioDeClases.TabIndex = 15;
+            // 
+            // textFinDeClases
+            // 
+            this.textFinDeClases.Enabled = false;
+            this.textFinDeClases.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textFinDeClases.Location = new System.Drawing.Point(530, 81);
+            this.textFinDeClases.Margin = new System.Windows.Forms.Padding(2);
+            this.textFinDeClases.MaxLength = 8;
+            this.textFinDeClases.Name = "textFinDeClases";
+            this.textFinDeClases.Size = new System.Drawing.Size(177, 23);
+            this.textFinDeClases.TabIndex = 17;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label14.Location = new System.Drawing.Point(417, 81);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(109, 20);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Fin de Clases:";
             // 
             // FormRegistrarMatricula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 773);
+            this.Controls.Add(this.textFinDeClases);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.textInicioDeClases);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.textPeriodoAcademico);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.groupMatricula);
             this.Controls.Add(this.groupAlumno);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(739, 812);
+            this.MinimumSize = new System.Drawing.Size(739, 812);
             this.Name = "FormRegistrarMatricula";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Matricula";
             this.groupAlumno.ResumeLayout(false);
             this.groupAlumno.PerformLayout();
@@ -493,5 +580,11 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textPrecio;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textPeriodoAcademico;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textInicioDeClases;
+        private System.Windows.Forms.TextBox textFinDeClases;
+        private System.Windows.Forms.Label label14;
     }
 }

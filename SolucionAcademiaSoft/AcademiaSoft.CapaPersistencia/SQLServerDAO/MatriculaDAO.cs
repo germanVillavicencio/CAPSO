@@ -20,14 +20,13 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 
         public void guardarMatricula(Matricula matricula, string turno) {
 
-            string consultaSQL = "execute registrarMatricula @par_precio, @par_pago, @par_dni_secretario, @par_dni_alumno, @par_ciclo, @par_turno";
+            string consultaSQL = "execute registrarMatricula @par_pago, @par_dni_secretario, @par_dni_alumno, @par_ciclo, @par_turno";
 
             try
             {
                 SqlCommand comando;
                 //Guardar la matricula
                 comando = gestorSQL.obtenerComandoSQL(consultaSQL);
-                comando.Parameters.AddWithValue("@par_precio", matricula.Precio);
                 comando.Parameters.AddWithValue("@par_pago", matricula.Pago);
                 comando.Parameters.AddWithValue("@par_dni_secretario", matricula.Secretario.Dni);
                 comando.Parameters.AddWithValue("@par_dni_alumno", matricula.Alumno.Dni);
@@ -45,7 +44,9 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
         {
             List<Matricula> listaMatricula = new List<Matricula>();
             Matricula matricula;
-            string consultaSQL = "select m.mat_fecha, m.mat_pago, m.alu_dni, m.mat_turno from Ciclo_Academico ca inner join Matricula m on ca.cic_id = m.cic_id where ca.cic_periodo = '"+ periodo + "' ";
+            string consultaSQL = "select m.mat_codigo, m.mat_fecha, m.mat_pago, m.mat_turno, p.per_dni, p.per_nombre, p.per_apellido_mat, p.per_apellido_pat " +
+                                    "from Matricula m inner join Ciclo_Academico c on m.cic_id = c.cic_id inner join Persona p on m.alu_dni = p.per_dni "+
+                                    "where c.cic_periodo = '" + periodo + "' ";
 
             try
             {
@@ -64,43 +65,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return listaMatricula;
         }
 
-        public List<Matricula> obtenerMatriculasYAlumnosDeUnCiclo(string periodo)
-        {
-            List<Matricula> listaMatricula = new List<Matricula>();
-            Matricula matricula;
-            string consultaSQL = "select m.mat_codigo, m.mat_fecha, m.mat_pago, m.mat_turno, p.per_dni, p.per_nombre, p.per_apellido_mat, p.per_apellido_pat " +
-                                    "from Matricula m inner join Ciclo_Academico c on m.cic_id = c.cic_id inner join Persona p on m.alu_dni = p.per_dni "+
-                                    "where c.cic_periodo = '" + periodo + "' ";
-
-            try
-            {
-                SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
-                while (resultadoSQL.Read())
-                {
-                    matricula = obtenerMatriculaYAlumno(resultadoSQL);
-                    listaMatricula.Add(matricula);
-                }
-            }
-            catch (Exception err)
-            {
-                throw err;
-            }
-
-            return listaMatricula;
-        }
-
         private Matricula obtenerMatricula(SqlDataReader resultadoSQL)
-        {
-            Matricula matricula = new Matricula();
-            matricula.Alumno = new Alumno();
-            matricula.Fecha = resultadoSQL.GetDateTime(0);
-            matricula.Pago = double.Parse(resultadoSQL.GetDecimal(1).ToString());
-            matricula.Alumno.Dni = resultadoSQL.GetString(2);
-            matricula.Turno = resultadoSQL.GetString(3);
-            return matricula;
-        }
-
-        private Matricula obtenerMatriculaYAlumno(SqlDataReader resultadoSQL)
         {
             Matricula matricula = new Matricula();
             matricula.Alumno = new Alumno();

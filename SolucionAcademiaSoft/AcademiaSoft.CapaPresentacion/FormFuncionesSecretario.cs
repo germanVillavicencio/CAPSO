@@ -14,9 +14,12 @@ namespace AcademiaSoft.CapaPresentacion
 {
     public partial class FormFuncionesSecretario : Form
     {
-        public FormFuncionesSecretario()
+        string dniSecreatario;
+        public FormFuncionesSecretario(string dni)
         {
             InitializeComponent();
+            dniSecreatario = dni;
+            MaximizeBox = false;
         }
 
         private void button1_Click(object sender, EventArgs e)//para mostrar el formulario de registro de matrícula
@@ -42,7 +45,7 @@ namespace AcademiaSoft.CapaPresentacion
                 {
                     MessageBox.Show("Si hay vacantes");
                     cicloActual.Clases = registrarMatriculaServicio.obtenerClases(cicloActual.Periodo);
-                    FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual);
+                    FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual, dniSecreatario);
                     formRegistrarMatricula.ShowDialog();
                 }
                 else
@@ -66,6 +69,12 @@ namespace AcademiaSoft.CapaPresentacion
 
             FormReporteMatriculas formReporteMatriculas = new FormReporteMatriculas(ciclos);
             formReporteMatriculas.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormRegistrarAlumno formRegistrarAlumno = new FormRegistrarAlumno();
+            formRegistrarAlumno.ShowDialog();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
         {
             Usuario usuario = null;
 
-            string consultaSQL = "select usu_nick, usu_password, usu_tipo from usuario where usu_nick = '" + nickname + "'";
+            string consultaSQL = "select u.usu_nick, u.usu_password, u.usu_tipo, p.per_dni from usuario u inner join Persona p on u.per_dni = p.per_dni where usu_nick = '" + nickname + "'";
 
             try
             {
@@ -47,9 +47,11 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
         public Usuario obtenerAlumno(SqlDataReader resultadoSQL)
         {
             Usuario usuario = new Usuario();
+            usuario.Persona = new Persona();
             usuario.Nickname = resultadoSQL.GetString(0);
             usuario.Password = resultadoSQL.GetString(1);
             usuario.Tipo = resultadoSQL.GetByte(2);
+            usuario.Persona.Dni = resultadoSQL.GetString(3);
 
             return usuario;
         }

@@ -10,6 +10,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
     {
         private String periodo;
         private int totalDeAlumnos;
+        private double precio;
         private DateTime fechaInicio;
         private DateTime fechaFin;
         private DateTime fechaInicioMatricula;
@@ -17,9 +18,10 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private List<Matricula> listaMatriculas;
 
         public CicloAcademico() { }
-        public CicloAcademico(string periodo, int totalDeAlumnos, DateTime fechaInicio, DateTime fechaFin, DateTime fechaInicioMatricula)
+        public CicloAcademico(string periodo, double precio, int totalDeAlumnos, DateTime fechaInicio, DateTime fechaFin, DateTime fechaInicioMatricula)
         {
             this.Periodo = periodo;
+            this.Precio = precio;
             this.TotalDeAlumnos = totalDeAlumnos;
             this.FechaInicio = fechaInicio;
             this.FechaFin = fechaFin;
@@ -35,6 +37,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public List<Clase> Clases { get => clases; set => clases = value; }
         public DateTime FechaInicioMatricula { get => fechaInicioMatricula; set => fechaInicioMatricula = value; }
         public List<Matricula> ListaMatriculas { get => listaMatriculas; set => listaMatriculas = value; }
+        public double Precio { get => precio; set => precio = value; }
 
 
         //V(G) = 2

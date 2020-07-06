@@ -114,21 +114,25 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             return listaDeClases;
         }
 
-        public void guardarMatricula(Matricula matricula, bool estaAlumnoRegistrado, string turno) {
+        public void guardarMatricula(Matricula matricula, string turno) {
+
             gestorDAO.abrirConexion();
-
-            if (!estaAlumnoRegistrado)
-            {
-                matricula.Pago = matricula.calcularPago();
-                gestorDAO.abrirConexion();
-                alumnoDAO.guardarAlumno(matricula.Alumno);
-                gestorDAO.cerrarConexion();
-            }
-
+            matricula.Pago = matricula.calcularPago(matricula.CicloAcademico.Precio);
             gestorDAO.abrirConexion();
             matriculaDAO.guardarMatricula(matricula,turno);
 
             gestorDAO.cerrarConexion(); 
         }
+
+        public string obtenerFechaDeInicioDeClases(CicloAcademico ciclo)
+        {
+            return ciclo.calcularFechaInicioClases().ToShortDateString();
+        }
+
+        public string obtenerFechaDeFinDeClases(CicloAcademico ciclo)
+        {
+            return ciclo.calcularFechaTerminoClases().ToShortDateString();
+        }
+
     }
 }
