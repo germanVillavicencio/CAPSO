@@ -33,7 +33,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
                 }
                 else
                 {
-                    throw new Exception("Alumno no encontrado.");
+                    throw new Exception("Alumno no registrado.");
                 }
             }
             catch (Exception err)

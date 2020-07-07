@@ -36,20 +36,19 @@ namespace AcademiaSoft.CapaPresentacion
                 {
                     cicloActual.ListaMatriculas = registrarMatriculaServicio.obtenerMatriculas(cicloActual.Periodo);
                     vacantesDisponibles = registrarMatriculaServicio.verificarVacantes(cicloActual);
+                    if (vacantesDisponibles >= 0)
+                    {
+                        cicloActual.Clases = registrarMatriculaServicio.obtenerClases(cicloActual.Periodo);
+                        FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual, dniSecreatario);
+                        formRegistrarMatricula.ShowDialog();
+                    }
+                    else
+                        MessageBox.Show("No hay vacantes disponibles", "Sistema AcademiaSoft");
                 }
                 else
                 {
                     MessageBox.Show("No existe un ciclo disponible para matricular.", "Sistema AcademiaSoft");
                 }
-                if (vacantesDisponibles >= 0)
-                {
-                    MessageBox.Show("Si hay vacantes");
-                    cicloActual.Clases = registrarMatriculaServicio.obtenerClases(cicloActual.Periodo);
-                    FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual, dniSecreatario);
-                    formRegistrarMatricula.ShowDialog();
-                }
-                else
-                    MessageBox.Show("No hay vacantes disponibles", "Sistema AcademiaSoft");
 
             }
             catch (Exception err)

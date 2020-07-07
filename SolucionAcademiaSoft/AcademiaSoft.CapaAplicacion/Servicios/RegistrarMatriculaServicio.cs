@@ -115,12 +115,10 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
 
         public void guardarMatricula(Matricula matricula, string turno) {
 
-            gestorDAO.abrirConexion();
             matricula.Pago = matricula.calcularPago(matricula.CicloAcademico.Precio);
             gestorDAO.abrirConexion();
             matriculaDAO.guardarMatricula(matricula,turno);
-
-            gestorDAO.cerrarConexion(); 
+            gestorDAO.cerrarConexion();
         }
 
         public string obtenerFechaDeInicioDeClases(CicloAcademico ciclo)

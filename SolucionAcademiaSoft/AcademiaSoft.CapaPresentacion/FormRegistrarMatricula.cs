@@ -80,7 +80,7 @@ namespace AcademiaSoft.CapaPresentacion
                         groupAlumnoDatosPersonales.Enabled = false;
                         groupAlumnoContacto.Enabled = false;
                         groupMatricula.Enabled = false;
-                        MessageBox.Show("El alumno ya se encuentra matriculado en este ciclo academico", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("El alumno ya se encuentra matriculado en el ciclo actual.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     }
                     else
@@ -152,7 +152,7 @@ namespace AcademiaSoft.CapaPresentacion
             {
                 
                 registrarMatriculaServicio.guardarMatricula(nuevaMatricula, turnoSeleccionado);
-                MessageBox.Show("Se ha matriculado correctamente al alumno");
+                MessageBox.Show("Se ha matriculado correctamente al alumno.\n\n Descuento: " + nuevaMatricula.calcularDescuento(cicloAcademico.Precio), "Sistema AcademiaSoft");
                 groupAlumnoDatosPersonales.Enabled = false;
                 groupAlumnoContacto.Enabled = false;
                 groupMatricula.Enabled = false;
