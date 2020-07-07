@@ -26,25 +26,31 @@ namespace AcademiaSoft.CapaPresentacion
             string nick = textNick.Text.Trim();
             string password = textPassword.Text.Trim();
             
-            try
+            if(nick == "")
             {
-                IniciarSesionServicio iniciarSesionServicio = new IniciarSesionServicio();
-                usuario = iniciarSesionServicio.buscarUsuario(nick);
-                if (usuario.esUsuarioValido(nick, password))
+                MessageBox.Show("Ingrese un nombre de usuario, por favor.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if(password=="")
                 {
-                    FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario(usuario.Persona.Dni);
-                    formFuncionesSecretario.ShowDialog();
+                    MessageBox.Show("Ingrese una contraseña, por favor.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Contraseña Incorrecta","Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        IniciarSesionServicio iniciarSesionServicio = new IniciarSesionServicio();
+                        usuario = iniciarSesionServicio.buscarUsuario(nick, password);
+                        FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario(usuario.Persona.Dni);
+                        formFuncionesSecretario.ShowDialog();
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
-            catch(Exception err)
-            {
-                MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
            /* FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario();
             formFuncionesSecretario.ShowDialog();*/
         }

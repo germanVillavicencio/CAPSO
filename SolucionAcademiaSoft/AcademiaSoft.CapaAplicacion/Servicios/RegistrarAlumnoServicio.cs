@@ -38,7 +38,7 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
                 throw new Exception("No se puede guardar porque el celular ingresado no contiene solo digitos numéricos.");
             if (!alumno.esFechaDeNacimientoValida())
                 throw new Exception("No se puede guardar porque la fecha de nacimiento es mayor o igual a la fecha actual.");
-            if (alumno.calcularEdad() < 12)
+            if (alumno.esEdadValida())
                 throw new Exception("No se puede guardar porque la edad del alumno es menor a 12.");
             gestorDAO.abrirConexion();
             alumnoDAO.guardarAlumno(alumno);

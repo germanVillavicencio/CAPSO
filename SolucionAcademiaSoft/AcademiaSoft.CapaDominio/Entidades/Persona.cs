@@ -69,16 +69,22 @@ namespace AcademiaSoft.CapaDominio.Entidades
             return true;
         }
 
-        //La fecha de nacimiento no puede ser mayor al día actual y en su defecto el alumno no puede ser menor de 12 años para poder matricularse
+        //La fecha de nacimiento no puede ser mayor al día actual
         public bool esFechaDeNacimientoValida()
         {
             if (fechaDeNacimiento.Date >= DateTime.Today.Date)
                 return false;
             else
-                if (fechaDeNacimiento.AddYears(12) > DateTime.Today) //si es mayor aun no cumple los 12 años.
-                    return false;
-                else
-                    return true;
+                return true;
+        }
+
+        //Un alumno menor de 14 años no se puede registrar
+        public bool esEdadValida()
+        {
+            if (calcularEdad() < 14)
+                return false;
+            else
+                return true;
         }
     }
 }

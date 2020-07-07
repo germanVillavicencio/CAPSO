@@ -21,10 +21,13 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             usuarioDAO = new UsuarioDAO(gestorDAO);
         }
 
-        public Usuario buscarUsuario(string nickname)
+        public Usuario buscarUsuario(string nickname, string password)
         {
             gestorDAO.abrirConexion();
             Usuario usuario = usuarioDAO.buscarUsuario(nickname);
+            if (!usuario.esUsuarioValido(nickname, password))
+                throw new Exception("Contraseña Incorrecta.");
+
             gestorDAO.cerrarConexion();
             
             return usuario;

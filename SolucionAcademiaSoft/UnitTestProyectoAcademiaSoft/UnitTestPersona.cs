@@ -11,7 +11,7 @@ namespace UnitTestProyectoAcademiaSoft
         public void Test1_CalcularEdad()
         {
             Persona persona = new Persona();
-            persona.FechaDeNacimiento = new DateTime(1996, 05 , 15);
+            persona.FechaDeNacimiento = new DateTime(1996, 05, 15);
             int resultadoEsperado = 24;
             int resultado = persona.calcularEdad();
             Assert.AreEqual(resultadoEsperado, resultado);
@@ -72,7 +72,7 @@ namespace UnitTestProyectoAcademiaSoft
         public void Test1_esFechaDeNacimientoValida()
         {
             Persona persona = new Persona();
-            persona.FechaDeNacimiento = new DateTime(2020, 07, 15);
+            persona.FechaDeNacimiento = new DateTime(2021, 07, 15);
             bool resultadoEsperado = false;
             bool resultado = persona.esFechaDeNacimientoValida();
             Assert.AreEqual(resultadoEsperado, resultado);
@@ -89,12 +89,22 @@ namespace UnitTestProyectoAcademiaSoft
         }
 
         [TestMethod]
-        public void Test3_esFechaDeNacimientoValida()
+        public void Test3_esEdadValida()
         {
             Persona persona = new Persona();
-            persona.FechaDeNacimiento = new DateTime(2009, 07, 06);
+            persona.FechaDeNacimiento = new DateTime(1997, 07, 05);
+            bool resultadoEsperado = true;
+            bool resultado = persona.esEdadValida();
+            Assert.AreEqual(resultadoEsperado, resultado);
+        }
+
+        [TestMethod]
+        public void Test4_esEdadValida()
+        {
+            Persona persona = new Persona();
+            persona.FechaDeNacimiento = new DateTime(2010, 07, 05);
             bool resultadoEsperado = false;
-            bool resultado = persona.esFechaDeNacimientoValida();
+            bool resultado = persona.esEdadValida();
             Assert.AreEqual(resultadoEsperado, resultado);
         }
 

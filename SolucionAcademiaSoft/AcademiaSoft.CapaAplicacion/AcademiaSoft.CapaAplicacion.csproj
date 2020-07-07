@@ -45,7 +45,7 @@
     <Compile Include="Servicios\IniciarSesionServicio.cs" />
     <Compile Include="Servicios\RegistrarAlumnoServicio.cs" />
     <Compile Include="Servicios\RegistrarMatriculaServicio.cs" />
-    <Compile Include="Servicios\ListarMatriculasServicio.cs" />
+    <Compile Include="Servicios\GenerarReporteDeMatriculasServicio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AcademiaSoft.CapaDominio\AcademiaSoft.CapaDominio.csproj">

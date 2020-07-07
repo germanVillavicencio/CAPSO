@@ -99,7 +99,6 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             List<Matricula> matriculas;
             gestorDAO.abrirConexion();
             matriculas = matriculaDAO.obtenerMatriculasDeUnCiclo(periodo);
-            //matriculas = matriculaDAO.obtenerMatriculasYAlumnosDeUnCiclo(periodo);
             gestorDAO.cerrarConexion();
 
             return matriculas;

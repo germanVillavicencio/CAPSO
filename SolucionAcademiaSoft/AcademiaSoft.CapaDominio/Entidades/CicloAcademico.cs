@@ -91,7 +91,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
             return fechaInicioMatricula.AddDays(132);//18 semanas mas 6 dias despues del pago de matricula
         }
 
-
         public int calcularMatriculasTurnoDia()
         {
             int totalDia = 0;

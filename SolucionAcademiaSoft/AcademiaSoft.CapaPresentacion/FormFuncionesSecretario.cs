@@ -62,13 +62,30 @@ namespace AcademiaSoft.CapaPresentacion
 
         private void button2_Click(object sender, EventArgs e)
         {
-            List<CicloAcademico> ciclos = null;
-            ListarMatriculasServicio listarMatriculasServicio = new ListarMatriculasServicio();
+            List<CicloAcademico> ciclos = new List<CicloAcademico>();
+            GenerarReporteDeMatriculasServicio listarMatriculasServicio = new GenerarReporteDeMatriculasServicio();
 
-            ciclos = listarMatriculasServicio.obtenerCiclosAcademcios();
+            try
+            {
+                ciclos = listarMatriculasServicio.obtenerCiclosAcademicos();
 
-            FormReporteMatriculas formReporteMatriculas = new FormReporteMatriculas(ciclos);
-            formReporteMatriculas.ShowDialog();
+                if(ciclos.Count == 0)
+                {
+                    MessageBox.Show("No existen ciclos académicos registrados.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    FormReporteMatriculas formReporteMatriculas = new FormReporteMatriculas(ciclos);
+                    formReporteMatriculas.ShowDialog();
+                }
+
+                
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

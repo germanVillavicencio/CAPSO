@@ -24,24 +24,32 @@ namespace AcademiaSoft.CapaPresentacion
         private void buttonBuscarAlumno_Click(object sender, EventArgs e)
         {
             string dniAlumno = textDni.Text.Trim();
-            try
-            {
-                RegistrarAlumnoServicio registrarMatriculaServicio = new RegistrarAlumnoServicio();
-                alumno = new Alumno();
-                alumno = registrarMatriculaServicio.buscarPorDni(dniAlumno);
 
-                if (alumno != null)
-                {
-                    MessageBox.Show("El alumno ya se encuentra registrado en el sistema.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    groupDatosAlumno.Enabled = false;
-                }
-            }
-            catch (Exception err)
+            if (dniAlumno.Length != 8)
             {
-                MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpiarDatosDelAlumno();
-                groupDatosAlumno.Enabled = true;
-                textDni.Enabled = false;
+                MessageBox.Show("El DNI tiene que tener 8 caracteres.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                try
+                {
+                    RegistrarAlumnoServicio registrarMatriculaServicio = new RegistrarAlumnoServicio();
+                    alumno = new Alumno();
+                    alumno = registrarMatriculaServicio.buscarPorDni(dniAlumno);
+
+                    if (alumno != null)
+                    {
+                        MessageBox.Show("El alumno ya se encuentra registrado en el sistema.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        groupDatosAlumno.Enabled = false;
+                    }
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limpiarDatosDelAlumno();
+                    groupDatosAlumno.Enabled = true;
+                    textDni.Enabled = false;
+                }
             }
         }
 

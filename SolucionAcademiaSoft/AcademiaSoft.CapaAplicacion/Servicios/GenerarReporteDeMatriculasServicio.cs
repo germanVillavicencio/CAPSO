@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace AcademiaSoft.CapaAplicacion.Servicios
 {
-    public class ListarMatriculasServicio
+    public class GenerarReporteDeMatriculasServicio
     {
         private IGestorDAO gestorDAO;
         private ICicloAcademicoDAO cicloAcademicoDAO;
         private IMatriculaDAO matriculaDAO;
 
-        public ListarMatriculasServicio()
+        public GenerarReporteDeMatriculasServicio()
         {
             gestorDAO = new GestorSQL();
             cicloAcademicoDAO = new CicloAcademicoDAO(gestorDAO);
             matriculaDAO = new MatriculaDAO(gestorDAO);
         }
 
-        public List<CicloAcademico> obtenerCiclosAcademcios()
+        public List<CicloAcademico> obtenerCiclosAcademicos()
         {
             gestorDAO.abrirConexion();
-            List<CicloAcademico> ciclos = null;
+            List<CicloAcademico> ciclos = new List<CicloAcademico>();
             ciclos = cicloAcademicoDAO.buscarCiclosAcademicos();
             gestorDAO.cerrarConexion();
 

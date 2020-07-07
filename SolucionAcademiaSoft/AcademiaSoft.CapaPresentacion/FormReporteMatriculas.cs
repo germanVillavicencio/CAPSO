@@ -36,7 +36,7 @@ namespace AcademiaSoft.CapaPresentacion
         private void comboBoxCiclo_SelectionChangeCommitted(object sender, EventArgs e)
         {
             string periodo = comboBoxCiclo.Text;
-            ListarMatriculasServicio listarMatriculasServicio = new ListarMatriculasServicio();
+            GenerarReporteDeMatriculasServicio listarMatriculasServicio = new GenerarReporteDeMatriculasServicio();
             listaDeMatriculas = listarMatriculasServicio.obtenerMatriculasDeUnCiclo(periodo);
 
             turno = comboBoxTurn.Text;
