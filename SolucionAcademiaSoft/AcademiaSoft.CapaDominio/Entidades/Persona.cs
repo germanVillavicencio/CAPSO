@@ -62,7 +62,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
             char[] cadena = palabra.ToCharArray();
             for (int i = 0; i < cadena.Length; i++)
             {
-                if (cadena[i] < 48 || cadena[i] > 57)
+                if (!char.IsDigit(cadena[i]))
                     return false;
             }
 
@@ -85,6 +85,19 @@ namespace AcademiaSoft.CapaDominio.Entidades
                 return false;
             else
                 return true;
+        }
+
+        public bool esNombreValido(string palabra)
+        {
+            var existeCaracteresNoValidos = palabra.ToCharArray().Any(c => !char.IsLetter(c));
+
+            char[] cadena = palabra.ToCharArray();
+            for (int i = 0; i < cadena.Length; i++)
+            {
+                if (!char.IsLetter(cadena[i]) && !char.IsWhiteSpace(cadena[i]))
+                    return false;
+            }
+            return true;
         }
     }
 }

@@ -131,7 +131,7 @@ namespace UnitTestProyectoAcademiaSoft
         public void esValidoFechaMatriculaTest3()
         {
             CicloAcademico ca = new CicloAcademico();
-            ca.FechaInicioMatricula = new DateTime(2020, 06, 17); //fecha de entrega de S11 primer dia
+            ca.FechaInicioMatricula = DateTime.Today; //fecha de entrega de S11 primer dia
             bool resultadoEsperado = true;
             bool resultadoFinal = ca.esValidoFechaMatricula();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
@@ -141,7 +141,7 @@ namespace UnitTestProyectoAcademiaSoft
         public void esValidoFechaMatriculaTest4()
         {
             CicloAcademico ca = new CicloAcademico();
-            ca.FechaInicioMatricula = new DateTime(2020, 05, 28); //ultimo dia
+            ca.FechaInicioMatricula = DateTime.Today.AddDays(-20); //ultimo dia
             bool resultadoEsperado = true;
             bool resultadoFinal = ca.esValidoFechaMatricula();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);

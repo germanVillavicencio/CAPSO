@@ -68,7 +68,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         //V(G) = 2
         public bool esValidoFechaMatricula()
         {
-            DateTime fechaActual = new DateTime(2020, 06, 10);//DateTime.Today;
+            DateTime fechaActual = DateTime.Today;
 
             DateTime fechaFinMatricula = fechaInicioMatricula.AddDays(20);
 

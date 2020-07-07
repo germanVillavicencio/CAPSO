@@ -39,7 +39,7 @@ namespace AcademiaSoft.CapaPresentacion
                 }
                 else
                 {
-                    MessageBox.Show("no hay ciclo disponible");
+                    MessageBox.Show("No existe un ciclo disponible para matricular.", "Sistema AcademiaSoft");
                 }
                 if (vacantesDisponibles >= 0)
                 {
@@ -49,7 +49,7 @@ namespace AcademiaSoft.CapaPresentacion
                     formRegistrarMatricula.ShowDialog();
                 }
                 else
-                    MessageBox.Show("No hay vacantes disponibles");
+                    MessageBox.Show("No hay vacantes disponibles", "Sistema AcademiaSoft");
 
             }
             catch (Exception err)

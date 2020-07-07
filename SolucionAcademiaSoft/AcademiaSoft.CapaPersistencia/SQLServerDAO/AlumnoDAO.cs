@@ -64,7 +64,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             }
             catch(Exception err)
             {
-                throw new Exception("Ocurrio un problema al guardar el alumno.",err);
+                throw new Exception("El alumno ya se encuentra registrado en el sistema.",err);
             }
         }
 

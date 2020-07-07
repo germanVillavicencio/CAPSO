@@ -20,26 +20,33 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             alumnoDAO = new AlumnoDAO(gestorDAO);
         }
 
-        public Alumno buscarPorDni(string dni)
-        {
-            gestorDAO.abrirConexion();
-            Alumno alumno = alumnoDAO.buscarPorDni(dni);
-            gestorDAO.cerrarConexion();
-            return alumno;
-        }
-
         public void guardarAlumno(Alumno alumno)
         {
-            if (!alumno.esCorreoValido())
-                throw new Exception("No se puede guardar porque el correo no tiene un formato válido.");
+            if (alumno.Dni.Length != 8)
+                throw new Exception("No se puede guardar porque el DNI no es una cadena de 8 digitos.");
             if (!alumno.sonSoloNumeros(alumno.Dni))
-                throw new Exception("No se puede guardar porque el DNI ingresado no contiene solo digitos numéricos.");
-            if (!alumno.sonSoloNumeros(alumno.Celular))
-                throw new Exception("No se puede guardar porque el celular ingresado no contiene solo digitos numéricos.");
+                throw new Exception("No se puede guardar porque el DNI ingresado no contiene solo digitos.");
+            if (alumno.Nombre.Length == 0)
+                throw new Exception("No se puede guardar porque el nombre no puede ser una cadena vacía.");
+            if (!alumno.esNombreValido(alumno.Nombre))
+                throw new Exception("No se puede guardar porque el nombre no tiene un formato válido.");
+            if (alumno.ApellidoPaterno.Length == 0)
+                throw new Exception("No se puede guardar porque el apellido paterno no puede ser una cadena vacía.");
+            if (!alumno.esNombreValido(alumno.ApellidoPaterno))
+                throw new Exception("No se puede guardar porque el apellido paterno no tiene un formato válido.");
+            if (alumno.ApellidoMaterno.Length == 0)
+                throw new Exception("No se puede guardar porque el apellido materno no puede ser una cadena vacía.");
+            if (!alumno.esNombreValido(alumno.ApellidoMaterno))
+                throw new Exception("No se puede guardar porque el apellido materno no tiene un formato válido.");
             if (!alumno.esFechaDeNacimientoValida())
                 throw new Exception("No se puede guardar porque la fecha de nacimiento es mayor o igual a la fecha actual.");
-            if (alumno.esEdadValida())
+            if (!alumno.esEdadValida())
                 throw new Exception("No se puede guardar porque la edad del alumno es menor a 14.");
+            if (!alumno.sonSoloNumeros(alumno.Celular))
+                throw new Exception("No se puede guardar porque el celular ingresado no contiene solo digitos.");
+            if (!alumno.esCorreoValido())
+                throw new Exception("No se puede guardar porque el correo no tiene un formato válido.");
+            
             gestorDAO.abrirConexion();
             alumnoDAO.guardarAlumno(alumno);
             gestorDAO.cerrarConexion();

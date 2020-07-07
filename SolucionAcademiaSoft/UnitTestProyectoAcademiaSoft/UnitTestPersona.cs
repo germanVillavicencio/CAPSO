@@ -108,7 +108,25 @@ namespace UnitTestProyectoAcademiaSoft
             Assert.AreEqual(resultadoEsperado, resultado);
         }
 
+        [TestMethod]
+        public void Test1_esNombreValido()
+        {
+            Persona persona = new Persona();
+            persona.Nombre = "Germ@n";
+            bool resultadoEsperado = false;
+            bool resultado = persona.esNombreValido(persona.Nombre);
+            Assert.AreEqual(resultadoEsperado, resultado);
+        }
 
+        [TestMethod]
+        public void Test2_esNombreValido()
+        {
+            Persona persona = new Persona();
+            persona.Nombre = "German";
+            bool resultadoEsperado = true;
+            bool resultado = persona.esNombreValido(persona.Nombre);
+            Assert.AreEqual(resultadoEsperado, resultado);
+        }
 
     }
 }

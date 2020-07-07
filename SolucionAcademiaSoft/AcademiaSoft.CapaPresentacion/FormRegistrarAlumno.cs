@@ -14,43 +14,10 @@ namespace AcademiaSoft.CapaPresentacion
 {
     public partial class FormRegistrarAlumno : Form
     {
-        Alumno alumno;
         public FormRegistrarAlumno()
         {
             InitializeComponent();
             MaximizeBox = false;
-        }
-
-        private void buttonBuscarAlumno_Click(object sender, EventArgs e)
-        {
-            string dniAlumno = textDni.Text.Trim();
-
-            if (dniAlumno.Length != 8)
-            {
-                MessageBox.Show("El DNI tiene que tener 8 caracteres.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                try
-                {
-                    RegistrarAlumnoServicio registrarMatriculaServicio = new RegistrarAlumnoServicio();
-                    alumno = new Alumno();
-                    alumno = registrarMatriculaServicio.buscarPorDni(dniAlumno);
-
-                    if (alumno != null)
-                    {
-                        MessageBox.Show("El alumno ya se encuentra registrado en el sistema.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        groupDatosAlumno.Enabled = false;
-                    }
-                }
-                catch (Exception err)
-                {
-                    MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    limpiarDatosDelAlumno();
-                    groupDatosAlumno.Enabled = true;
-                    textDni.Enabled = false;
-                }
-            }
         }
 
         private void limpiarDatosDelAlumno()
@@ -82,6 +49,7 @@ namespace AcademiaSoft.CapaPresentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Alumno alumno = new Alumno();
             alumno.Dni = textDni.Text;
             alumno.Nombre = textNombres.Text.Trim();
             alumno.ApellidoPaterno = textApellidoPaterno.Text.Trim();
@@ -95,14 +63,13 @@ namespace AcademiaSoft.CapaPresentacion
             {
                 RegistrarAlumnoServicio registrarAlumnoServicio = new RegistrarAlumnoServicio();
                 registrarAlumnoServicio.guardarAlumno(alumno);
-                MessageBox.Show("Se ha registrado correctamente al alumno.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Se ha registrado correctamente al alumno.\n\n"+"Edad del Alumno: "+ alumno.calcularEdad(), "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
 
             }
             catch (Exception err)
             {
                 MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                groupDatosAlumno.Enabled = true;
                 return;
             }
 
