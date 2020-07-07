@@ -39,7 +39,7 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             if (!alumno.esFechaDeNacimientoValida())
                 throw new Exception("No se puede guardar porque la fecha de nacimiento es mayor o igual a la fecha actual.");
             if (alumno.esEdadValida())
-                throw new Exception("No se puede guardar porque la edad del alumno es menor a 12.");
+                throw new Exception("No se puede guardar porque la edad del alumno es menor a 14.");
             gestorDAO.abrirConexion();
             alumnoDAO.guardarAlumno(alumno);
             gestorDAO.cerrarConexion();
