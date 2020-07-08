@@ -11,7 +11,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private Secretario secretario;
         private Alumno alumno;
         private CicloAcademico cicloAcademico;
-        private List<Examen> listaDeExamenes;
         private List<Clase> listaDeClases;
 
         private int codigo;
@@ -31,7 +30,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public DateTime Fecha { get => fecha; set => fecha = value; }
         public Secretario Secretario { get => secretario; set => secretario = value; }
         public Alumno Alumno { get => alumno; set => alumno = value; }
-        public List<Examen> ListaDeExamenes { get => listaDeExamenes; set => listaDeExamenes = value; }
         public CicloAcademico CicloAcademico { get => cicloAcademico; set => cicloAcademico = value; }
         public List<Clase> ListaDeClases { get => listaDeClases; set => listaDeClases = value; }
         public double Pago { get => pago; set => pago = value; }
