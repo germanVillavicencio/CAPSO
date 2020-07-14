@@ -13,7 +13,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
         private SqlConnection conexion;
         private SqlTransaction transaccion;
 
-        public void abrirConexion()
+        public void AbrirConexion()
         {
             try
             {
@@ -28,7 +28,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 
         }
 
-        public void cerrarConexion()
+        public void CerrarConexion()
         {
             try
             {
@@ -41,11 +41,11 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 
         }
 
-        public void iniciarTransaccion()
+        public void IniciarTransaccion()
         {
             try
             {
-                abrirConexion();
+                AbrirConexion();
                 transaccion = conexion.BeginTransaction();
             }
             catch (Exception err)
@@ -54,7 +54,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             }
         }
 
-        public void terminarTransaccion()
+        public void TerminarTransaccion()
         {
             try
             {
@@ -67,7 +67,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             }
         }
 
-        public void cancelarTransaccion()
+        public void CancelarTransaccion()
         {
             try
             {
@@ -80,7 +80,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             }
         }
 
-        public SqlDataReader ejecutarConsulta(String sentenciaSQL)
+        public SqlDataReader EjecutarConsulta(String sentenciaSQL)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             }
         }
 
-        public SqlCommand obtenerComandoSQL(String sentenciaSQL)
+        public SqlCommand ObtenerComandoSQL(String sentenciaSQL)
         {
             try
             {
@@ -114,7 +114,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             }
         }
 
-        public SqlCommand obtenerComandoDeProcedimiento(String procedimientoAlmacenado)
+        public SqlCommand ObtenerComandoDeProcedimiento(String procedimientoAlmacenado)
         {
             try
             {

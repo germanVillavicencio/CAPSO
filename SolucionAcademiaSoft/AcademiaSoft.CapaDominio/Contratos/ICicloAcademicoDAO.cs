@@ -10,7 +10,7 @@ namespace AcademiaSoft.CapaDominio.Contratos
 {
     public interface ICicloAcademicoDAO
     {
-        List<CicloAcademico> buscarCiclosAcademicos();
-        List<Clase> obtenerClasesDeUnCiclo(string periodo);
+        List<CicloAcademico> BuscarCiclosAcademicos();
+        List<Clase> ObtenerClasesDeUnCiclo(string periodo);
     }
 }

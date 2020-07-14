@@ -32,17 +32,17 @@ namespace AcademiaSoft.CapaPresentacion
         {
             this.cicloAcademico = ciclo;
             this.dniSecretario = dni;
-            this.numeroMatriculasMañana = ciclo.calcularMatriculasTurnoDia();
-            this.numeroMatriculasTarde = ciclo.calcularMatriculasTurnoTarde();
-            llenarListaDeClase();
+            this.numeroMatriculasMañana = ciclo.CalcularMatriculasPorTurno("Mañana");
+            this.numeroMatriculasTarde = ciclo.CalcularMatriculasPorTurno("Tarde");
+            LlenarListaDeClase();
             InitializeComponent();
 
             MaximizeBox = false;
             registrarMatriculaServicio = new RegistrarMatriculaServicio();
             textPrecio.Text = "S/." + this.cicloAcademico.Precio;
             textPeriodoAcademico.Text = this.cicloAcademico.Periodo;
-            textInicioDeClases.Text = registrarMatriculaServicio.obtenerFechaDeInicioDeClases(ciclo);
-            textFinDeClases.Text = registrarMatriculaServicio.obtenerFechaDeFinDeClases(ciclo);
+            textInicioDeClases.Text = registrarMatriculaServicio.ObtenerFechaDeInicioDeClases(ciclo);
+            textFinDeClases.Text = registrarMatriculaServicio.ObtenerFechaDeFinDeClases(ciclo);
 
             if (this.numeroMatriculasMañana < cicloAcademico.TotalDeAlumnos && this.numeroMatriculasTarde < cicloAcademico.TotalDeAlumnos)
             {
@@ -64,19 +64,20 @@ namespace AcademiaSoft.CapaPresentacion
             }
         }
 
-        private void buttonBuscarAlumno_Click(object sender, EventArgs e)//Busca alumnos
+        //VERIFICA QUE EL ALUMNO SE ENCUENTRE REGISTRADO PERO NO MATRICULADO EN EL CICLO ACTUAL
+        private void ButtonBuscarAlumno_Click(object sender, EventArgs e)
         {
             string dniAlumno = textDni.Text.Trim();
             try
             {
                 alumno = new Alumno();
-                alumno = registrarMatriculaServicio.buscarPorDni(dniAlumno);
+                alumno = registrarMatriculaServicio.BuscarPorDni(dniAlumno);
 
                 if(alumno != null)
                 {
-                    if(registrarMatriculaServicio.verificarAlumnoMatriculado(dniAlumno,this.cicloAcademico))
-                    {   //si está matriculado
-                        limpiarDatosDelAlumno();
+                    if(registrarMatriculaServicio.VerificarAlumnoMatriculado(dniAlumno,this.cicloAcademico))
+                    {   
+                        LimpiarDatosDelAlumno();
                         groupAlumnoDatosPersonales.Enabled = false;
                         groupAlumnoContacto.Enabled = false;
                         groupMatricula.Enabled = false;
@@ -84,7 +85,7 @@ namespace AcademiaSoft.CapaPresentacion
 
                     }
                     else
-                    {   //si no está matriculado en el ciclo actual
+                    {   
                         alumno.Dni = textDni.Text;
                         textNombres.Text = alumno.Nombre;
                         textApellidoPaterno.Text = alumno.ApellidoPaterno;
@@ -95,14 +96,14 @@ namespace AcademiaSoft.CapaPresentacion
                         datePickerFechaNacimiento.Value = alumno.FechaDeNacimiento;
                         groupAlumnoDatosPersonales.Enabled = false;
                         groupAlumnoContacto.Enabled = false;
-                        groupMatricula.Enabled = true;//se habilita para elegir el turno
+                        groupMatricula.Enabled = true;
                     }
                 }
             }
             catch (Exception err)
             {
                 MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                limpiarDatosDelAlumno();
+                LimpiarDatosDelAlumno();
                 groupAlumnoDatosPersonales.Enabled = false;
                 groupAlumnoContacto.Enabled = false;
                 groupMatricula.Enabled = false;
@@ -111,7 +112,7 @@ namespace AcademiaSoft.CapaPresentacion
             }
         }
 
-        private void limpiarDatosDelAlumno()
+        private void LimpiarDatosDelAlumno()
         {
             textNombres.Text = "";
             textApellidoPaterno.Text = "";
@@ -122,7 +123,7 @@ namespace AcademiaSoft.CapaPresentacion
             datePickerFechaNacimiento.Value = DateTime.Now;
         }
 
-        private void llenarListaDeClase()
+        private void LlenarListaDeClase()
         {
             string horaFin;
             foreach(Clase clase in this.cicloAcademico.Clases)
@@ -139,7 +140,7 @@ namespace AcademiaSoft.CapaPresentacion
             }
         }
 
-        private void buttonRegistrarMatricula_Click(object sender, EventArgs e)
+        private void ButtonRegistrarMatricula_Click(object sender, EventArgs e)
         {
             Matricula nuevaMatricula = new Matricula();
             nuevaMatricula.Secretario = new Secretario();
@@ -151,8 +152,8 @@ namespace AcademiaSoft.CapaPresentacion
             try
             {
                 
-                registrarMatriculaServicio.guardarMatricula(nuevaMatricula, turnoSeleccionado);
-                MessageBox.Show("Se ha matriculado correctamente al alumno.\n\n Descuento: " + nuevaMatricula.calcularDescuento(cicloAcademico.Precio), "Sistema AcademiaSoft");
+                registrarMatriculaServicio.GuardarMatricula(nuevaMatricula, turnoSeleccionado);
+                MessageBox.Show("Se ha matriculado correctamente al alumno.\n\nDescuento: " + nuevaMatricula.CalcularDescuento(cicloAcademico.Precio)+"\nPago: "+nuevaMatricula.CalcularPago(cicloAcademico.Precio), "Sistema AcademiaSoft");
                 groupAlumnoDatosPersonales.Enabled = false;
                 groupAlumnoContacto.Enabled = false;
                 groupMatricula.Enabled = false;
@@ -162,19 +163,17 @@ namespace AcademiaSoft.CapaPresentacion
             catch (Exception err)
             {
                 MessageBox.Show(this, err.Message, "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                groupAlumnoDatosPersonales.Enabled = true;
-                groupAlumnoContacto.Enabled = true;
                 groupMatricula.Enabled = true;
                 return;
             }
         }
 
-        private void comboBoxTurno_SelectionChangeCommitted(object sender, EventArgs e)
+        private void ComboBoxTurno_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (comboBoxTurno.Text == "Mañana")
             {
                 this.turnoSeleccionado = "Mañana";
-                dataGridClases.Rows.Clear();//Limpiar la tabla donde se muestran las clases
+                dataGridClases.Rows.Clear();
                 foreach (Clase clase in this.listaDeClasesMañana)
                 {
                     Object[] filaClase = { clase.Codigo, clase.Curso.Nombre, clase.Docente.Nombre + " " + clase.Docente.ApellidoPaterno + " " + clase.Docente.ApellidoMaterno, clase.Horario.Dia + " " + clase.Horario.Inicio + " - " +clase.Horario.Fin};
@@ -184,7 +183,7 @@ namespace AcademiaSoft.CapaPresentacion
             else if (comboBoxTurno.Text == "Tarde")
             {
                 this.turnoSeleccionado = "Tarde";
-                dataGridClases.Rows.Clear();//Limpiar la tabla donde se muestran las clases
+                dataGridClases.Rows.Clear();
                 foreach (Clase clase in this.listaDeClasesTarde)
                 {
                     Object[] filaClase = { clase.Codigo, clase.Curso.Nombre, clase.Docente.Nombre + " " + clase.Docente.ApellidoPaterno + " " + clase.Docente.ApellidoMaterno, clase.Horario.Dia + " " + clase.Horario.Inicio + " - " + clase.Horario.Fin };
@@ -192,9 +191,7 @@ namespace AcademiaSoft.CapaPresentacion
                 }
             }
         }
-
-        //SOLO PERMITE INGRESAR NUMEROS EN EL CAMPO DNI MIENTRAS SE ESCRIBE
-        private void textDni_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextDni_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar==8)
                 e.Handled = false;
@@ -202,8 +199,7 @@ namespace AcademiaSoft.CapaPresentacion
                 e.Handled = true;
         }
 
-        //SOLO PERMITE INGRESAR NUMEROS EN EL CAMPO TELEFONO MIENTRAS SE ESCRIBE 
-        private void textTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8)
                 e.Handled = false;

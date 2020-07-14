@@ -14,13 +14,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
         public Horario() { }
 
-        public Horario(string inicio, string fin, string dia)
-        {
-            this.inicio = inicio;
-            this.fin = fin;
-            this.Dia = dia;
-        }
-
         public string Inicio { get => inicio; set => inicio = value; }
         public string Fin { get => fin; set => fin = value; }
         public string Dia { get => dia; set => dia = value; }

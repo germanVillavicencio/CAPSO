@@ -101,7 +101,7 @@
             this.buttonBuscarAlumno.TabIndex = 2;
             this.buttonBuscarAlumno.Text = "Buscar";
             this.buttonBuscarAlumno.UseVisualStyleBackColor = true;
-            this.buttonBuscarAlumno.Click += new System.EventHandler(this.buttonBuscarAlumno_Click);
+            this.buttonBuscarAlumno.Click += new System.EventHandler(this.ButtonBuscarAlumno_Click);
             // 
             // textDni
             // 
@@ -112,7 +112,7 @@
             this.textDni.Name = "textDni";
             this.textDni.Size = new System.Drawing.Size(149, 23);
             this.textDni.TabIndex = 0;
-            this.textDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textDni_KeyPress);
+            this.textDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextDni_KeyPress);
             // 
             // groupAlumnoContacto
             // 
@@ -162,7 +162,7 @@
             this.textTelefono.Name = "textTelefono";
             this.textTelefono.Size = new System.Drawing.Size(282, 23);
             this.textTelefono.TabIndex = 3;
-            this.textTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textTelefono_KeyPress);
+            this.textTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextTelefono_KeyPress);
             // 
             // label7
             // 
@@ -361,7 +361,7 @@
             this.buttonRegistrarMatricula.TabIndex = 3;
             this.buttonRegistrarMatricula.Text = "Registrar Matricula";
             this.buttonRegistrarMatricula.UseVisualStyleBackColor = true;
-            this.buttonRegistrarMatricula.Click += new System.EventHandler(this.buttonRegistrarMatricula_Click);
+            this.buttonRegistrarMatricula.Click += new System.EventHandler(this.ButtonRegistrarMatricula_Click);
             // 
             // dataGridClases
             // 
@@ -430,7 +430,7 @@
             this.comboBoxTurno.Name = "comboBoxTurno";
             this.comboBoxTurno.Size = new System.Drawing.Size(147, 24);
             this.comboBoxTurno.TabIndex = 0;
-            this.comboBoxTurno.SelectionChangeCommitted += new System.EventHandler(this.comboBoxTurno_SelectionChangeCommitted);
+            this.comboBoxTurno.SelectionChangeCommitted += new System.EventHandler(this.ComboBoxTurno_SelectionChangeCommitted);
             // 
             // label11
             // 

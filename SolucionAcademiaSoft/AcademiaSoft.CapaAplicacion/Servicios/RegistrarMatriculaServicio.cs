@@ -13,10 +13,10 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
 {
     public class RegistrarMatriculaServicio
     {
-        private IGestorDAO gestorDAO;
-        private IAlumnoDAO alumnoDAO;
-        private ICicloAcademicoDAO cicloAcademicoDAO;
-        private IMatriculaDAO matriculaDAO;
+        private readonly IGestorDAO gestorDAO;
+        private readonly IAlumnoDAO alumnoDAO;
+        private readonly ICicloAcademicoDAO cicloAcademicoDAO;
+        private readonly IMatriculaDAO matriculaDAO;
 
         public RegistrarMatriculaServicio()
         {
@@ -26,37 +26,37 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             matriculaDAO = new MatriculaDAO(gestorDAO);
         }
 
-        public Alumno buscarPorDni(string dni)
+        public Alumno BuscarPorDni(string dni)
         {
-            gestorDAO.abrirConexion();
-            Alumno alumno = alumnoDAO.buscarPorDni(dni);
-            gestorDAO.cerrarConexion();
+            gestorDAO.AbrirConexion();
+            Alumno alumno = alumnoDAO.BuscarPorDni(dni);
+            gestorDAO.CerrarConexion();
             return alumno;
         }
 
-        public int verificarVacantes(CicloAcademico cicloAcademico)
+        public int VerificarVacantes(CicloAcademico cicloAcademico)
         {
             int numero = -1;//no hay vacantes por defecto
             int totalMatriculasDia = 0;
             int totalMatriculasTarde = 0;
 
-            gestorDAO.abrirConexion();
-            totalMatriculasDia = cicloAcademico.calcularMatriculasTurnoDia();
-            totalMatriculasTarde = cicloAcademico.calcularMatriculasTurnoTarde();
-            gestorDAO.cerrarConexion();
+            gestorDAO.AbrirConexion();
+            totalMatriculasDia = cicloAcademico.CalcularMatriculasPorTurno("Mañana");
+            totalMatriculasTarde = cicloAcademico.CalcularMatriculasPorTurno("Tarde");
+            gestorDAO.CerrarConexion();
 
-            if (cicloAcademico.esValidoRegistro(totalMatriculasDia) && cicloAcademico.esValidoRegistro(totalMatriculasTarde))
+            if (cicloAcademico.EsValidoRegistro(totalMatriculasDia) && cicloAcademico.EsValidoRegistro(totalMatriculasTarde))
             {
                 numero = 0;//vacantes en ambos turnos
             }
             else
             {
-                if (cicloAcademico.esValidoRegistro(totalMatriculasDia))
+                if (cicloAcademico.EsValidoRegistro(totalMatriculasDia))
                 {
                     numero = 1;//vacantes solo en la mañana
                 }
 
-                if (cicloAcademico.esValidoRegistro(totalMatriculasTarde))
+                if (cicloAcademico.EsValidoRegistro(totalMatriculasTarde))
                 {
                     numero = 2;//vacantes solo en la tarde
                 }
@@ -65,70 +65,74 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             return numero;//no hay vacantes
         }
 
-        public CicloAcademico obtenerCicloActual()
+        public CicloAcademico ObtenerCicloActual()
         {
-            gestorDAO.abrirConexion();
+            gestorDAO.AbrirConexion();
             CicloAcademico cicloAcademico;
             cicloAcademico = null;// ciclo academico actual
-            List<CicloAcademico> ciclosAcademicos = cicloAcademicoDAO.buscarCiclosAcademicos();
+            List<CicloAcademico> ciclosAcademicos = cicloAcademicoDAO.BuscarCiclosAcademicos();
             foreach (CicloAcademico ciclo in ciclosAcademicos)
             {
-                if (ciclo.esValidoFechaMatricula())
+                if (ciclo.EsValidoFechaMatricula())
                 {
                     cicloAcademico = ciclo;
                     break;
                 }
 
             }
-            gestorDAO.cerrarConexion();
+            gestorDAO.CerrarConexion();
 
             return cicloAcademico;
         }
-
-        public bool verificarAlumnoMatriculado(string dni, CicloAcademico cicloAcademico)//verifico si el alumno ya está matricula en el ciclo actual
+        //Verifica si el alumno ya está matricula en el ciclo actual
+        public bool VerificarAlumnoMatriculado(string dni, CicloAcademico cicloAcademico)
         {
-            if (cicloAcademico.estaAlumnoMatriculado(dni))
+            if (cicloAcademico.EstaAlumnoMatriculado(dni))
             {
                 return true;
             }
             return false;
         }
 
-        public List<Matricula> obtenerMatriculas(string periodo)
+        public List<Matricula> ObtenerMatriculas(string periodo)
         {
             List<Matricula> matriculas;
-            gestorDAO.abrirConexion();
-            matriculas = matriculaDAO.obtenerMatriculasDeUnCiclo(periodo);
-            gestorDAO.cerrarConexion();
+            gestorDAO.AbrirConexion();
+            matriculas = matriculaDAO.ObtenerMatriculasDeUnCiclo(periodo);
+            gestorDAO.CerrarConexion();
 
             return matriculas;
         }
 
-        public List<Clase> obtenerClases(string periodo)
+        public List<Clase> ObtenerClases(string periodo)
         {
             List<Clase> listaDeClases = new List<Clase>();
-            gestorDAO.abrirConexion();
-            listaDeClases = cicloAcademicoDAO.obtenerClasesDeUnCiclo(periodo);
-            gestorDAO.cerrarConexion();
+            gestorDAO.AbrirConexion();
+            listaDeClases = cicloAcademicoDAO.ObtenerClasesDeUnCiclo(periodo);
+            gestorDAO.CerrarConexion();
             return listaDeClases;
         }
 
-        public void guardarMatricula(Matricula matricula, string turno) {
+        public void GuardarMatricula(Matricula matricula, string turno) {
 
-            matricula.Pago = matricula.calcularPago(matricula.CicloAcademico.Precio);
-            gestorDAO.abrirConexion();
-            matriculaDAO.guardarMatricula(matricula,turno);
-            gestorDAO.cerrarConexion();
+            if(turno=="")
+            {
+                throw new Exception ("No se ha escogido ningún turno para el horario de clases.");
+            }
+            matricula.Pago = matricula.CalcularPago(matricula.CicloAcademico.Precio);
+            gestorDAO.AbrirConexion();
+            matriculaDAO.GuardarMatricula(matricula,turno);
+            gestorDAO.CerrarConexion();
         }
 
-        public string obtenerFechaDeInicioDeClases(CicloAcademico ciclo)
+        public string ObtenerFechaDeInicioDeClases(CicloAcademico ciclo)
         {
-            return ciclo.calcularFechaInicioClases().ToShortDateString();
+            return ciclo.CalcularFechaInicioClases().ToShortDateString();
         }
 
-        public string obtenerFechaDeFinDeClases(CicloAcademico ciclo)
+        public string ObtenerFechaDeFinDeClases(CicloAcademico ciclo)
         {
-            return ciclo.calcularFechaTerminoClases().ToShortDateString();
+            return ciclo.CalcularFechaTerminoClases().ToShortDateString();
         }
 
     }

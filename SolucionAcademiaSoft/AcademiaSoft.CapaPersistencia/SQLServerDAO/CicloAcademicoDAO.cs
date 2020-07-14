@@ -11,13 +11,13 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
     public class CicloAcademicoDAO : ICicloAcademicoDAO
     {
-        private GestorSQL gestorSQL;
+        private readonly GestorSQL gestorSQL;
 
         public CicloAcademicoDAO(IGestorDAO gestorSQL)
         {
             this.gestorSQL = (GestorSQL)gestorSQL;
         }
-        public List<CicloAcademico> buscarCiclosAcademicos()
+        public List<CicloAcademico> BuscarCiclosAcademicos()
         {
 
             List<CicloAcademico> ciclosAcademicos = new List<CicloAcademico>();
@@ -26,10 +26,10 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             string consultaSQL = "select cic_periodo, cic_max_alum, cic_inicio_matricula, cic_precio from Ciclo_Academico";
             try
             {
-                SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
                 while (resultadoSQL.Read())
                 {
-                    cicloAcademico = obtenerCicloAcademico(resultadoSQL);
+                    cicloAcademico = ObtenerCicloAcademico(resultadoSQL);
                     ciclosAcademicos.Add(cicloAcademico);
                 }
             }
@@ -40,7 +40,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return ciclosAcademicos;
         }
 
-        public List<Clase> obtenerClasesDeUnCiclo(string periodo)
+        public List<Clase> ObtenerClasesDeUnCiclo(string periodo)
         {
             List<Clase> listaDeClases = new List<Clase>();
             Clase clase = null;
@@ -54,10 +54,10 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 
             try
             {
-                SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
                 while (resultadoSQL.Read())
                 {
-                    clase = obtenerClase(resultadoSQL);
+                    clase = ObtenerClase(resultadoSQL);
                     listaDeClases.Add(clase);
                 }
             }
@@ -69,7 +69,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return listaDeClases;
         }
 
-        private Clase obtenerClase(SqlDataReader resultadoSQL)
+        private Clase ObtenerClase(SqlDataReader resultadoSQL)
         {
             Clase clase = new Clase();
 
@@ -85,13 +85,15 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return clase;
         }
 
-        private CicloAcademico obtenerCicloAcademico(SqlDataReader resultadoSQL)
+        private CicloAcademico ObtenerCicloAcademico(SqlDataReader resultadoSQL)
         {
-            CicloAcademico cicloAcademico = new CicloAcademico();
-            cicloAcademico.Periodo = resultadoSQL.GetString(0);
-            cicloAcademico.TotalDeAlumnos = resultadoSQL.GetInt32(1);
-            cicloAcademico.FechaInicioMatricula = resultadoSQL.GetDateTime(2);
-            cicloAcademico.Precio = double.Parse(resultadoSQL.GetDecimal(3).ToString());
+            CicloAcademico cicloAcademico = new CicloAcademico
+            {
+                Periodo = resultadoSQL.GetString(0),
+                TotalDeAlumnos = resultadoSQL.GetInt32(1),
+                FechaInicioMatricula = resultadoSQL.GetDateTime(2),
+                Precio = double.Parse(resultadoSQL.GetDecimal(3).ToString())
+            };
             return cicloAcademico;
         }
     }

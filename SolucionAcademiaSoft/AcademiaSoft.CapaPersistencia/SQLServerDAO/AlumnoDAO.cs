@@ -12,24 +12,24 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
     public class AlumnoDAO : IAlumnoDAO
     {
-        private GestorSQL gestorSQL;
+        private readonly GestorSQL gestorSQL;
 
         public AlumnoDAO(IGestorDAO gestorSQL)
         {
             this.gestorSQL = (GestorSQL)gestorSQL;
         }
 
-        public Alumno buscarPorDni(string dni)
+        public Alumno BuscarPorDni(string dni)
         {
-            Alumno alumno = null;
+            Alumno alumno;
 
             string consultaSQL = "select p.per_dni, p.per_nombre, p.per_apellido_pat, p.per_apellido_mat, p.per_direccion, p.per_celular, per_fecha_nac, p.per_correo, a.alu_id_card from Persona p inner join Alumno a on (p.per_dni = a.per_dni) where a.per_dni = '" + dni + "'";
             try
             {
-                SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
                 if (resultadoSQL.Read())
                 {
-                    alumno = obtenerAlumno(resultadoSQL);
+                    alumno = ObtenerAlumno(resultadoSQL);
                 }
                 else
                 {
@@ -44,14 +44,36 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return alumno;
         }
 
-        public void guardarAlumno(Alumno alumno)
+        public bool EsValidoCorreo(string correo)
+        {
+            string consultaSQL = "SELECT per_correo from Persona where per_correo = '"+correo+"'";
+
+            try
+            {
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
+                if (resultadoSQL.Read())
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+
+        public void GuardarAlumno(Alumno alumno)
         {
             string consultaSQL = "execute registrarAlumno @par_dni, @par_nombre, @par_apellido_pat, @par_apellido_mat, @par_direccion, @par_celular, @par_fecha_nac, @par_correo";
        
             try {
                 SqlCommand comando;
                 //Guardar la alumno
-                comando = gestorSQL.obtenerComandoSQL(consultaSQL);
+                comando = gestorSQL.ObtenerComandoSQL(consultaSQL);
                 comando.Parameters.AddWithValue("@par_dni", alumno.Dni);
                 comando.Parameters.AddWithValue("@par_nombre", alumno.Nombre);
                 comando.Parameters.AddWithValue("@par_apellido_pat", alumno.ApellidoPaterno);
@@ -68,7 +90,8 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             }
         }
 
-        private Alumno obtenerAlumno(SqlDataReader resultadoSQL)
+
+        private Alumno ObtenerAlumno(SqlDataReader resultadoSQL)
         {
             Alumno alumno = new Alumno();
             alumno.Dni = resultadoSQL.GetString(0);

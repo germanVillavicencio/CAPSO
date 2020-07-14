@@ -20,18 +20,7 @@ namespace AcademiaSoft.CapaPresentacion
             MaximizeBox = false;
         }
 
-        private void limpiarDatosDelAlumno()
-        {
-            textNombres.Text = "";
-            textApellidoPaterno.Text = "";
-            textApellidoMaterno.Text = "";
-            textDireccion.Text = "";
-            textTelefono.Text = "";
-            textCorreo.Text = "";
-            datePickerFechaNacimiento.Value = DateTime.Now;
-        }
-
-        private void textDni_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextDni_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8)
                 e.Handled = false;
@@ -39,7 +28,7 @@ namespace AcademiaSoft.CapaPresentacion
                 e.Handled = true;
         }
 
-        private void textTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8)
                 e.Handled = false;
@@ -47,7 +36,7 @@ namespace AcademiaSoft.CapaPresentacion
                 e.Handled = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             Alumno alumno = new Alumno();
             alumno.Dni = textDni.Text;
@@ -62,8 +51,8 @@ namespace AcademiaSoft.CapaPresentacion
             try
             {
                 RegistrarAlumnoServicio registrarAlumnoServicio = new RegistrarAlumnoServicio();
-                registrarAlumnoServicio.guardarAlumno(alumno);
-                MessageBox.Show("Se ha registrado correctamente al alumno.\n\n"+"Edad del Alumno: "+ alumno.calcularEdad(), "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                registrarAlumnoServicio.GuardarAlumno(alumno);
+                MessageBox.Show("Se ha registrado correctamente al alumno.\n\n"+"Edad del Alumno: "+ alumno.CalcularEdad(), "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
 
             }

@@ -9,6 +9,6 @@ namespace AcademiaSoft.CapaDominio.Contratos
 {
     public interface IUsuarioDAO
     {
-        Usuario buscarUsuario(string nickname);
+        Usuario BuscarUsuario(string nickname);
     }
 }

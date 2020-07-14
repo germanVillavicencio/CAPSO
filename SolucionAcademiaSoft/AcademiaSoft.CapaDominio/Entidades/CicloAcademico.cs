@@ -18,30 +18,19 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private List<Matricula> listaMatriculas;
 
         public CicloAcademico() { }
-        public CicloAcademico(string periodo, double precio, int totalDeAlumnos, DateTime fechaInicio, DateTime fechaFin, DateTime fechaInicioMatricula)
-        {
-            this.Periodo = periodo;
-            this.Precio = precio;
-            this.TotalDeAlumnos = totalDeAlumnos;
-            this.FechaInicio = fechaInicio;
-            this.FechaFin = fechaFin;
-            this.FechaInicioMatricula = fechaInicioMatricula;
-            this.Clases = new List<Clase>();
-            this.ListaMatriculas = new List<Matricula>();
-        }
 
         public string Periodo { get => periodo; set => periodo = value; }
         public int TotalDeAlumnos { get => totalDeAlumnos; set => totalDeAlumnos = value; }
-        public DateTime FechaInicio { get => fechaInicio; set => fechaInicio = value; }
-        public DateTime FechaFin { get => fechaFin; set => fechaFin = value; }
         public List<Clase> Clases { get => clases; set => clases = value; }
         public DateTime FechaInicioMatricula { get => fechaInicioMatricula; set => fechaInicioMatricula = value; }
         public List<Matricula> ListaMatriculas { get => listaMatriculas; set => listaMatriculas = value; }
         public double Precio { get => precio; set => precio = value; }
+        public DateTime FechaInicio { get => fechaInicio; set => fechaInicio = value; }
+        public DateTime FechaFin { get => fechaFin; set => fechaFin = value; }
 
 
         //V(G) = 2
-        public bool esValidoRegistro(int cantidadAlumnosRegistrados)
+        public bool EsValidoRegistro(int cantidadAlumnosRegistrados)
         {
             bool esValido;
 
@@ -54,7 +43,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         }
 
         //V(G) = 2
-        public bool estaAlumnoMatriculado(string dni)
+        public bool EstaAlumnoMatriculado(string dni)
         {
             foreach(Matricula m in listaMatriculas)
             {
@@ -66,7 +55,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         }
 
         //V(G) = 2
-        public bool esValidoFechaMatricula()
+        public bool EsValidoFechaMatricula()
         {
             DateTime fechaActual = DateTime.Today;
 
@@ -80,39 +69,27 @@ namespace AcademiaSoft.CapaDominio.Entidades
         }
 
         //V(G) = 1
-        public DateTime calcularFechaInicioClases()
+        public DateTime CalcularFechaInicioClases()
         {
             return fechaInicioMatricula.AddDays(14);//Dos semanas despues de la fecha de inicio de matricula
         }
 
         //V(G) = 1
-        public DateTime calcularFechaTerminoClases()
+        public DateTime CalcularFechaTerminoClases()
         {
             return fechaInicioMatricula.AddDays(132);//18 semanas mas 6 dias despues del pago de matricula
         }
 
-        public int calcularMatriculasTurnoDia()
+        public int CalcularMatriculasPorTurno(string turno)
         {
-            int totalDia = 0;
+            int total = 0;
             foreach(Matricula matricula in listaMatriculas)
             {
-                if (matricula.Turno.Equals("Mañana"))
-                    totalDia++;
+                if (matricula.Turno.Equals(turno))
+                    total++;
             }
 
-            return totalDia;
-        }
-
-        public int calcularMatriculasTurnoTarde()
-        {
-            int totalTarde = 0;
-            foreach (Matricula matricula in listaMatriculas)
-            {
-                if (matricula.Turno.Equals("Tarde"))
-                    totalTarde++;
-            }
-
-            return totalTarde;
+            return total;
         }
     }
 }

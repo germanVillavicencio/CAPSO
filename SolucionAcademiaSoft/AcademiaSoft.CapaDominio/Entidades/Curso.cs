@@ -14,11 +14,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
         private String codigo;
 
         public Curso() { }
-        public Curso(String nombre, String codigo)
-        {
-            this.nombre = nombre;
-            this.codigo = codigo;
-        }
 
         public string Nombre { get => nombre; set => nombre = value; }
         public String Codigo { get => codigo; set => codigo = value; }

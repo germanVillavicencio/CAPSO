@@ -20,7 +20,7 @@ namespace AcademiaSoft.CapaPresentacion
             MaximizeBox = false;
         }
 
-        private void buttonIniciarSesion_Click(object sender, EventArgs e)
+        private void ButtonIniciarSesion_Click(object sender, EventArgs e)
         {
             Usuario usuario;
             string nick = textNick.Text.Trim();
@@ -41,7 +41,7 @@ namespace AcademiaSoft.CapaPresentacion
                     try
                     {
                         IniciarSesionServicio iniciarSesionServicio = new IniciarSesionServicio();
-                        usuario = iniciarSesionServicio.buscarUsuario(nick, password);
+                        usuario = iniciarSesionServicio.BuscarUsuario(nick, password);
                         FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario(usuario.Persona.Dni);
                         formFuncionesSecretario.ShowDialog();
                     }
@@ -51,22 +51,14 @@ namespace AcademiaSoft.CapaPresentacion
                     }
                 }
             }
-           /* FormFuncionesSecretario formFuncionesSecretario = new FormFuncionesSecretario();
-            formFuncionesSecretario.ShowDialog();*/
         }
 
-        private void buttonRegistrarUsuario_Click(object sender, EventArgs e)
-        {
-            FormRegistrarUsuario formRegistrarUsuario = new FormRegistrarUsuario();
-            formRegistrarUsuario.ShowDialog();
-        }
-
-        private void pictureBox2_MouseHover(object sender, EventArgs e)
+        private void PictureBox2_MouseHover(object sender, EventArgs e)
         {
             textPassword.UseSystemPasswordChar = false;
         }
 
-        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        private void PictureBox2_MouseLeave(object sender, EventArgs e)
         {
             textPassword.UseSystemPasswordChar = true;
         }

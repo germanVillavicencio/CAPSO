@@ -83,7 +83,7 @@
             this.comboBoxCiclo.Name = "comboBoxCiclo";
             this.comboBoxCiclo.Size = new System.Drawing.Size(147, 24);
             this.comboBoxCiclo.TabIndex = 6;
-            this.comboBoxCiclo.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCiclo_SelectionChangeCommitted);
+            this.comboBoxCiclo.SelectionChangeCommitted += new System.EventHandler(this.ComboBoxCiclo_SelectionChangeCommitted);
             // 
             // comboBoxTurn
             // 
@@ -95,7 +95,7 @@
             this.comboBoxTurn.Name = "comboBoxTurn";
             this.comboBoxTurn.Size = new System.Drawing.Size(147, 24);
             this.comboBoxTurn.TabIndex = 7;
-            this.comboBoxTurn.SelectionChangeCommitted += new System.EventHandler(this.comboBoxTurn_SelectionChangeCommitted);
+            this.comboBoxTurn.SelectionChangeCommitted += new System.EventHandler(this.ComboBoxTurn_SelectionChangeCommitted);
             // 
             // dataGridMatriculas
             // 

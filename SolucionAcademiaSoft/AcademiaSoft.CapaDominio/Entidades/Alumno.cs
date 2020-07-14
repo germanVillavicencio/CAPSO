@@ -13,19 +13,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
         public Alumno() { }
 
-        public Alumno(int idCard, String nombre, String dni, DateTime fechaNac, String apellidoP, String apellidoM, String celular, String correo, String direccion)
-        {
-            this.IdCard = idCard;
-            Nombre = nombre;
-            Dni = dni;
-            FechaDeNacimiento = fechaNac;
-            ApellidoPaterno = apellidoP;
-            ApellidoPaterno = apellidoM;
-            Celular = celular;
-            Correo = correo;
-            Direccion = direccion;
-        }
-
         public int IdCard { get => idCard; set => idCard = value; }
+        public Matricula Matricula { get => matricula; set => matricula = value; }
     }
 }

@@ -11,14 +11,14 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
     public class UsuarioDAO : IUsuarioDAO
     {
-        private GestorSQL gestorSQL;
+        private readonly GestorSQL gestorSQL;
 
         public UsuarioDAO(IGestorDAO gestorSQL)
         {
             this.gestorSQL = (GestorSQL)gestorSQL;
         }
 
-        public Usuario buscarUsuario(string nickname)
+        public Usuario BuscarUsuario(string nickname)
         {
             Usuario usuario = null;
 
@@ -26,10 +26,10 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 
             try
             {
-                SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
                 if (resultadoSQL.Read())
                 {
-                    usuario = obtenerAlumno(resultadoSQL);
+                    usuario = ObtenerAlumno(resultadoSQL);
                 }
                 else
                 {
@@ -44,7 +44,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return usuario;
         }
 
-        public Usuario obtenerAlumno(SqlDataReader resultadoSQL)
+        public Usuario ObtenerAlumno(SqlDataReader resultadoSQL)
         {
             Usuario usuario = new Usuario();
             usuario.Persona = new Persona();

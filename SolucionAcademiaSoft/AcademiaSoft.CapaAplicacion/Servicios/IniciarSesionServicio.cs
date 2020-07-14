@@ -12,8 +12,8 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
 {
     public class IniciarSesionServicio
     {
-        private IGestorDAO gestorDAO;
-        private IUsuarioDAO usuarioDAO;
+        private readonly IGestorDAO gestorDAO;
+        private readonly IUsuarioDAO usuarioDAO;
 
         public IniciarSesionServicio()
         {
@@ -21,14 +21,14 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             usuarioDAO = new UsuarioDAO(gestorDAO);
         }
 
-        public Usuario buscarUsuario(string nickname, string password)
+        public Usuario BuscarUsuario(string nickname, string password)
         {
-            gestorDAO.abrirConexion();
-            Usuario usuario = usuarioDAO.buscarUsuario(nickname);
-            if (!usuario.esUsuarioValido(nickname, password))
+            gestorDAO.AbrirConexion();
+            Usuario usuario = usuarioDAO.BuscarUsuario(nickname);
+            if (!usuario.EsUsuarioValido(nickname, password))
                 throw new Exception("Contraseña Incorrecta.");
 
-            gestorDAO.cerrarConexion();
+            gestorDAO.CerrarConexion();
             
             return usuario;
         }

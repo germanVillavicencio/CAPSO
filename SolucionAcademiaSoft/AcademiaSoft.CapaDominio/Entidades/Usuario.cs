@@ -19,7 +19,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public Persona Persona { get => persona; set => persona = value; }
         public int Tipo { get => tipo; set => tipo = value; }
 
-        public bool esUsuarioValido(string nickname, string password)
+        public bool EsUsuarioValido(string nickname, string password)
         {
             return (this.nickname.Equals(nickname) && this.password.Equals(password)) ? true : false;
         }

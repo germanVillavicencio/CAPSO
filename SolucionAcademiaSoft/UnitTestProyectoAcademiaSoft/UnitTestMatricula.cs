@@ -17,7 +17,7 @@ namespace UnitTestProyectoAcademiaSoft
             matricula.CicloAcademico = cicloAcademico;
             double precio = 1000;
             double resultadoEsperado = 0;
-            double resultado = matricula.calcularDescuento(precio);
+            double resultado = matricula.CalcularDescuento(precio);
             Assert.AreEqual(resultadoEsperado, resultado);
         }
 
@@ -31,7 +31,7 @@ namespace UnitTestProyectoAcademiaSoft
             matricula.CicloAcademico = cicloAcademico;
             double precio = 1000;
             double resultadoEsperado = 150;
-            double resultado = matricula.calcularDescuento(precio);
+            double resultado = matricula.CalcularDescuento(precio);
             Assert.AreEqual(resultadoEsperado, resultado);
         }
 
@@ -45,7 +45,7 @@ namespace UnitTestProyectoAcademiaSoft
             matricula.CicloAcademico = cicloAcademico;
             double precio = 1000;
             double resultado_esperado = 510;
-            double resultado_obtenido = matricula.calcularPago(precio);
+            double resultado_obtenido = matricula.CalcularPago(precio);
             Assert.AreEqual(resultado_esperado, resultado_obtenido);
         }
     }

@@ -11,14 +11,14 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
     public class MatriculaDAO : IMatriculaDAO
     {
 
-        private GestorSQL gestorSQL;
+        private readonly GestorSQL gestorSQL;
 
         public MatriculaDAO(IGestorDAO gestorSQL)
         {
             this.gestorSQL = (GestorSQL)gestorSQL;
         }
 
-        public void guardarMatricula(Matricula matricula, string turno) {
+        public void GuardarMatricula(Matricula matricula, string turno) {
 
             string consultaSQL = "execute registrarMatricula @par_pago, @par_dni_secretario, @par_dni_alumno, @par_ciclo, @par_turno";
 
@@ -26,7 +26,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             {
                 SqlCommand comando;
                 //Guardar la matricula
-                comando = gestorSQL.obtenerComandoSQL(consultaSQL);
+                comando = gestorSQL.ObtenerComandoSQL(consultaSQL);
                 comando.Parameters.AddWithValue("@par_pago", matricula.Pago);
                 comando.Parameters.AddWithValue("@par_dni_secretario", matricula.Secretario.Dni);
                 comando.Parameters.AddWithValue("@par_dni_alumno", matricula.Alumno.Dni);
@@ -40,7 +40,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             }
         }
 
-        public List<Matricula> obtenerMatriculasDeUnCiclo(string periodo)
+        public List<Matricula> ObtenerMatriculasDeUnCiclo(string periodo)
         {
             List<Matricula> listaMatricula = new List<Matricula>();
             Matricula matricula;
@@ -50,10 +50,10 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 
             try
             {
-                SqlDataReader resultadoSQL = gestorSQL.ejecutarConsulta(consultaSQL);
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
                 while (resultadoSQL.Read())
                 {
-                    matricula = obtenerMatricula(resultadoSQL);
+                    matricula = ObtenerMatricula(resultadoSQL);
                     listaMatricula.Add(matricula);
                 }
             }
@@ -65,15 +65,17 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return listaMatricula;
         }
 
-        private Matricula obtenerMatricula(SqlDataReader resultadoSQL)
+        private Matricula ObtenerMatricula(SqlDataReader resultadoSQL)
         {
-            Matricula matricula = new Matricula();
-            matricula.Alumno = new Alumno();
+            Matricula matricula = new Matricula
+            {
+                Alumno = new Alumno(),
 
-            matricula.Codigo = resultadoSQL.GetInt32(0);
-            matricula.Fecha = resultadoSQL.GetDateTime(1);
-            matricula.Pago = double.Parse(resultadoSQL.GetDecimal(2).ToString());
-            matricula.Turno = resultadoSQL.GetString(3);
+                Codigo = resultadoSQL.GetInt32(0),
+                Fecha = resultadoSQL.GetDateTime(1),
+                Pago = double.Parse(resultadoSQL.GetDecimal(2).ToString()),
+                Turno = resultadoSQL.GetString(3)
+            };
             matricula.Alumno.Dni = resultadoSQL.GetString(4);
             matricula.Alumno.Nombre = resultadoSQL.GetString(5);
             matricula.Alumno.ApellidoPaterno = resultadoSQL.GetString(6);

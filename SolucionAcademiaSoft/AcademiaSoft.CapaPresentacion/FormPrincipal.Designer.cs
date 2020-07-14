@@ -36,7 +36,6 @@
             this.buttonIniciarSesion = new System.Windows.Forms.Button();
             this.textNick = new System.Windows.Forms.TextBox();
             this.textPassword = new System.Windows.Forms.TextBox();
-            this.buttonRegistrarUsuario = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -73,7 +72,7 @@
             this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label1.Location = new System.Drawing.Point(164, 124);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 28);
+            this.label1.Size = new System.Drawing.Size(236, 37);
             this.label1.TabIndex = 3;
             this.label1.Text = "INICIAR SESION";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -91,7 +90,7 @@
             this.buttonIniciarSesion.TabIndex = 4;
             this.buttonIniciarSesion.Text = "ACEPTAR";
             this.buttonIniciarSesion.UseVisualStyleBackColor = false;
-            this.buttonIniciarSesion.Click += new System.EventHandler(this.buttonIniciarSesion_Click);
+            this.buttonIniciarSesion.Click += new System.EventHandler(this.ButtonIniciarSesion_Click);
             // 
             // textNick
             // 
@@ -99,7 +98,7 @@
             this.textNick.Location = new System.Drawing.Point(142, 187);
             this.textNick.MaxLength = 16;
             this.textNick.Name = "textNick";
-            this.textNick.Size = new System.Drawing.Size(228, 26);
+            this.textNick.Size = new System.Drawing.Size(228, 30);
             this.textNick.TabIndex = 5;
             // 
             // textPassword
@@ -108,24 +107,9 @@
             this.textPassword.Location = new System.Drawing.Point(142, 251);
             this.textPassword.MaxLength = 16;
             this.textPassword.Name = "textPassword";
-            this.textPassword.Size = new System.Drawing.Size(228, 26);
+            this.textPassword.Size = new System.Drawing.Size(228, 30);
             this.textPassword.TabIndex = 6;
             this.textPassword.UseSystemPasswordChar = true;
-            // 
-            // buttonRegistrarUsuario
-            // 
-            this.buttonRegistrarUsuario.BackColor = System.Drawing.Color.Azure;
-            this.buttonRegistrarUsuario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonRegistrarUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonRegistrarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRegistrarUsuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRegistrarUsuario.Location = new System.Drawing.Point(658, 12);
-            this.buttonRegistrarUsuario.Name = "buttonRegistrarUsuario";
-            this.buttonRegistrarUsuario.Size = new System.Drawing.Size(132, 31);
-            this.buttonRegistrarUsuario.TabIndex = 7;
-            this.buttonRegistrarUsuario.Text = "REGISTRARSE";
-            this.buttonRegistrarUsuario.UseVisualStyleBackColor = false;
-            this.buttonRegistrarUsuario.Click += new System.EventHandler(this.buttonRegistrarUsuario_Click);
             // 
             // pictureBox2
             // 
@@ -137,8 +121,8 @@
             this.pictureBox2.Size = new System.Drawing.Size(35, 38);
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox2_MouseLeave);
-            this.pictureBox2.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
+            this.pictureBox2.MouseLeave += new System.EventHandler(this.PictureBox2_MouseLeave);
+            this.pictureBox2.MouseHover += new System.EventHandler(this.PictureBox2_MouseHover);
             // 
             // label2
             // 
@@ -147,7 +131,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(138, 164);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.Size = new System.Drawing.Size(85, 25);
             this.label2.TabIndex = 9;
             this.label2.Text = "Usuario:";
             // 
@@ -158,7 +142,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(138, 228);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 20);
+            this.label3.Size = new System.Drawing.Size(120, 25);
             this.label3.TabIndex = 10;
             this.label3.Text = "Contraseña:";
             // 
@@ -167,11 +151,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackgroundImage = global::AcademiaSoft.CapaPresentacion.Properties.Resources.Fondo_Login;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(802, 458);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.buttonRegistrarUsuario);
             this.Controls.Add(this.textPassword);
             this.Controls.Add(this.textNick);
             this.Controls.Add(this.buttonIniciarSesion);
@@ -198,7 +181,6 @@
         private System.Windows.Forms.Button buttonIniciarSesion;
         private System.Windows.Forms.TextBox textNick;
         private System.Windows.Forms.TextBox textPassword;
-        private System.Windows.Forms.Button buttonRegistrarUsuario;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

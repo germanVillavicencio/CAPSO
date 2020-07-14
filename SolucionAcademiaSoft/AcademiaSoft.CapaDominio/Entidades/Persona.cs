@@ -27,7 +27,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public string Direccion { get => direccion; set => direccion = value; }
         public string Celular { get => celular; set => celular = value; }
 
-        public int calcularEdad()
+        public int CalcularEdad()
         {
             int edad = 0;
 
@@ -36,7 +36,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
             return edad;
         }
 
-        public bool esCorreoValido()
+        public bool EsCorreoValido()
         {
             String expresion;
             expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
@@ -57,7 +57,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
             }
         }
 
-        public bool sonSoloNumeros(string palabra)
+        public bool SonSoloNumeros(string palabra)
         {
             char[] cadena = palabra.ToCharArray();
             for (int i = 0; i < cadena.Length; i++)
@@ -70,7 +70,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         }
 
         //La fecha de nacimiento no puede ser mayor al día actual
-        public bool esFechaDeNacimientoValida()
+        public bool EsFechaDeNacimientoValida()
         {
             if (fechaDeNacimiento.Date >= DateTime.Today.Date)
                 return false;
@@ -79,15 +79,15 @@ namespace AcademiaSoft.CapaDominio.Entidades
         }
 
         //Un alumno menor de 14 años no se puede registrar
-        public bool esEdadValida()
+        public bool EsEdadValida()
         {
-            if (calcularEdad() < 14)
+            if (CalcularEdad() < 14)
                 return false;
             else
                 return true;
         }
 
-        public bool esNombreValido(string palabra)
+        public bool EsNombreValido(string palabra)
         {
             var existeCaracteresNoValidos = palabra.ToCharArray().Any(c => !char.IsLetter(c));
 

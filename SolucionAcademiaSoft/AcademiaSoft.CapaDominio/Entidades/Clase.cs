@@ -19,10 +19,6 @@ namespace AcademiaSoft.CapaDominio.Entidades
             this.Horario = new Horario();
             this.curso = new Curso();
         }
-        public Clase(String codigo)
-        {
-            this.codigo = codigo;
-        }
 
         public String Codigo { get => codigo; set => codigo = value; }
         public Docente Docente { get => docente; set => docente = value; }

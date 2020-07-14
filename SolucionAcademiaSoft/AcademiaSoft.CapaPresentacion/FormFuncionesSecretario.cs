@@ -14,15 +14,15 @@ namespace AcademiaSoft.CapaPresentacion
 {
     public partial class FormFuncionesSecretario : Form
     {
-        string dniSecreatario;
+        string dniSecretario;
         public FormFuncionesSecretario(string dni)
         {
             InitializeComponent();
-            dniSecreatario = dni;
+            dniSecretario = dni;
             MaximizeBox = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)//para mostrar el formulario de registro de matrícula
+        private void Button1_Click(object sender, EventArgs e)//para mostrar el formulario de registro de matrícula
         {
             
             RegistrarMatriculaServicio registrarMatriculaServicio = new RegistrarMatriculaServicio();
@@ -31,15 +31,15 @@ namespace AcademiaSoft.CapaPresentacion
                 CicloAcademico
                 cicloActual = null;
                 int vacantesDisponibles=0;
-                cicloActual = registrarMatriculaServicio.obtenerCicloActual();
+                cicloActual = registrarMatriculaServicio.ObtenerCicloActual();
                 if (cicloActual != null)
                 {
-                    cicloActual.ListaMatriculas = registrarMatriculaServicio.obtenerMatriculas(cicloActual.Periodo);
-                    vacantesDisponibles = registrarMatriculaServicio.verificarVacantes(cicloActual);
+                    cicloActual.ListaMatriculas = registrarMatriculaServicio.ObtenerMatriculas(cicloActual.Periodo);
+                    vacantesDisponibles = registrarMatriculaServicio.VerificarVacantes(cicloActual);
                     if (vacantesDisponibles >= 0)
                     {
-                        cicloActual.Clases = registrarMatriculaServicio.obtenerClases(cicloActual.Periodo);
-                        FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual, dniSecreatario);
+                        cicloActual.Clases = registrarMatriculaServicio.ObtenerClases(cicloActual.Periodo);
+                        FormRegistrarMatricula formRegistrarMatricula = new FormRegistrarMatricula(cicloActual, dniSecretario);
                         formRegistrarMatricula.ShowDialog();
                     }
                     else
@@ -59,14 +59,14 @@ namespace AcademiaSoft.CapaPresentacion
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             List<CicloAcademico> ciclos = new List<CicloAcademico>();
             GenerarReporteDeMatriculasServicio listarMatriculasServicio = new GenerarReporteDeMatriculasServicio();
 
             try
             {
-                ciclos = listarMatriculasServicio.obtenerCiclosAcademicos();
+                ciclos = listarMatriculasServicio.ObtenerCiclosAcademicos();
 
                 if(ciclos.Count == 0)
                 {
@@ -87,7 +87,7 @@ namespace AcademiaSoft.CapaPresentacion
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             FormRegistrarAlumno formRegistrarAlumno = new FormRegistrarAlumno();
             formRegistrarAlumno.ShowDialog();

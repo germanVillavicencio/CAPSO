@@ -8,7 +8,8 @@ namespace AcademiaSoft.CapaDominio.Contratos
 {
     public interface IAlumnoDAO
     {
-        Alumno buscarPorDni(string dni);
-        void guardarAlumno(Alumno alumno);
+        Alumno BuscarPorDni(string dni);
+        void GuardarAlumno(Alumno alumno);
+        bool EsValidoCorreo(string correo);
     }
 }

@@ -10,10 +10,10 @@ namespace AcademiaSoft.CapaDominio.Contratos
 {
     public interface IGestorDAO
     {
-        void abrirConexion();
-        void cerrarConexion();
-        void iniciarTransaccion();
-        void terminarTransaccion();
-        void cancelarTransaccion();
+        void AbrirConexion();
+        void CerrarConexion();
+        void IniciarTransaccion();
+        void TerminarTransaccion();
+        void CancelarTransaccion();
     }
 }

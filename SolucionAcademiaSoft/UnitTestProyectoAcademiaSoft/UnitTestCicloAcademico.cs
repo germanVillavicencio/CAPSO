@@ -17,7 +17,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.TotalDeAlumnos = 30;
             bool resultadoEsperado = true;  //limite
-            bool resultadoFinal = ca.esValidoRegistro(cantidadDeAlumnosRegistrado);
+            bool resultadoFinal = ca.EsValidoRegistro(cantidadDeAlumnosRegistrado);
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -28,7 +28,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.TotalDeAlumnos = 30;
             bool resultadoEsperado = false;  // + del limite
-            bool resultadoFinal = ca.esValidoRegistro(cantidadDeAlumnosRegistrado);
+            bool resultadoFinal = ca.EsValidoRegistro(cantidadDeAlumnosRegistrado);
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -64,7 +64,7 @@ namespace UnitTestProyectoAcademiaSoft
             ca.ListaMatriculas = listaMatriculas;
             string dniAlumno = "73737373";
             bool resultadoEsperado = true;
-            bool resultadoFinal = ca.estaAlumnoMatriculado(dniAlumno);
+            bool resultadoFinal = ca.EstaAlumnoMatriculado(dniAlumno);
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -76,7 +76,7 @@ namespace UnitTestProyectoAcademiaSoft
             ca.ListaMatriculas = listaMatriculas;
             string dniAlumno = "12131415";
             bool resultadoEsperado = false;
-            bool resultadoFinal = ca.estaAlumnoMatriculado(dniAlumno);
+            bool resultadoFinal = ca.EstaAlumnoMatriculado(dniAlumno);
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -113,7 +113,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.FechaInicioMatricula = new DateTime(2020, 05, 03);
             bool resultadoEsperado = false;
-            bool resultadoFinal = ca.esValidoFechaMatricula();
+            bool resultadoFinal = ca.EsValidoFechaMatricula();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -123,7 +123,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.FechaInicioMatricula = new DateTime(2020, 05, 15);
             bool resultadoEsperado = false;
-            bool resultadoFinal = ca.esValidoFechaMatricula();
+            bool resultadoFinal = ca.EsValidoFechaMatricula();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -133,7 +133,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.FechaInicioMatricula = DateTime.Today; //fecha de entrega de S11 primer dia
             bool resultadoEsperado = true;
-            bool resultadoFinal = ca.esValidoFechaMatricula();
+            bool resultadoFinal = ca.EsValidoFechaMatricula();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -143,7 +143,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.FechaInicioMatricula = DateTime.Today.AddDays(-20); //ultimo dia
             bool resultadoEsperado = true;
-            bool resultadoFinal = ca.esValidoFechaMatricula();
+            bool resultadoFinal = ca.EsValidoFechaMatricula();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -155,7 +155,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.FechaInicioMatricula = new DateTime(2020, 05, 10);
             DateTime resultadoEsperado = new DateTime(2020, 05, 24); //+14 dias
-            DateTime resultadoFinal = ca.calcularFechaInicioClases();
+            DateTime resultadoFinal = ca.CalcularFechaInicioClases();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -165,7 +165,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.FechaInicioMatricula = new DateTime(2020, 05, 16);
             DateTime resultadoEsperado = new DateTime(2020, 05, 30); //+14 dias
-            DateTime resultadoFinal = ca.calcularFechaInicioClases();
+            DateTime resultadoFinal = ca.CalcularFechaInicioClases();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
         /*
@@ -187,7 +187,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.FechaInicioMatricula = new DateTime(2020, 06, 04);
             DateTime resultadoEsperado = new DateTime(2020, 10, 14); // +132 dias
-            DateTime resultadoFinal = ca.calcularFechaTerminoClases();
+            DateTime resultadoFinal = ca.CalcularFechaTerminoClases();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -197,7 +197,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.FechaInicioMatricula = new DateTime(2020, 05, 30);
             DateTime resultadoEsperado = new DateTime(2020, 10, 9); // +132 dias
-            DateTime resultadoFinal = ca.calcularFechaTerminoClases();
+            DateTime resultadoFinal = ca.CalcularFechaTerminoClases();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 
@@ -207,7 +207,7 @@ namespace UnitTestProyectoAcademiaSoft
             CicloAcademico ca = new CicloAcademico();
             ca.FechaInicioMatricula = new DateTime(2020, 06, 18);
             DateTime resultadoEsperado = new DateTime(2020, 10, 28); // +132 dias
-            DateTime resultadoFinal = ca.calcularFechaTerminoClases();
+            DateTime resultadoFinal = ca.CalcularFechaTerminoClases();
             Assert.AreEqual(resultadoEsperado, resultadoFinal);
         }
 

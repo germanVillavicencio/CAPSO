@@ -11,9 +11,9 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
 {
     public class GenerarReporteDeMatriculasServicio
     {
-        private IGestorDAO gestorDAO;
-        private ICicloAcademicoDAO cicloAcademicoDAO;
-        private IMatriculaDAO matriculaDAO;
+        private readonly IGestorDAO gestorDAO;
+        private readonly ICicloAcademicoDAO cicloAcademicoDAO;
+        private readonly IMatriculaDAO matriculaDAO;
 
         public GenerarReporteDeMatriculasServicio()
         {
@@ -22,22 +22,22 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             matriculaDAO = new MatriculaDAO(gestorDAO);
         }
 
-        public List<CicloAcademico> obtenerCiclosAcademicos()
+        public List<CicloAcademico> ObtenerCiclosAcademicos()
         {
-            gestorDAO.abrirConexion();
+            gestorDAO.AbrirConexion();
             List<CicloAcademico> ciclos = new List<CicloAcademico>();
-            ciclos = cicloAcademicoDAO.buscarCiclosAcademicos();
-            gestorDAO.cerrarConexion();
+            ciclos = cicloAcademicoDAO.BuscarCiclosAcademicos();
+            gestorDAO.CerrarConexion();
 
             return ciclos;
         }
 
-        public List<Matricula> obtenerMatriculasDeUnCiclo(string periodo)
+        public List<Matricula> ObtenerMatriculasDeUnCiclo(string periodo)
         {
             List<Matricula> matriculas = null;
-            gestorDAO.abrirConexion();
-            matriculas = matriculaDAO.obtenerMatriculasDeUnCiclo(periodo);
-            gestorDAO.cerrarConexion();
+            gestorDAO.AbrirConexion();
+            matriculas = matriculaDAO.ObtenerMatriculasDeUnCiclo(periodo);
+            gestorDAO.CerrarConexion();
 
             return matriculas;
         }

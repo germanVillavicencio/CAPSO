@@ -33,11 +33,11 @@ namespace AcademiaSoft.CapaPresentacion
             MaximizeBox = false;
         }
 
-        private void comboBoxCiclo_SelectionChangeCommitted(object sender, EventArgs e)
+        private void ComboBoxCiclo_SelectionChangeCommitted(object sender, EventArgs e)
         {
             string periodo = comboBoxCiclo.Text;
             GenerarReporteDeMatriculasServicio listarMatriculasServicio = new GenerarReporteDeMatriculasServicio();
-            listaDeMatriculas = listarMatriculasServicio.obtenerMatriculasDeUnCiclo(periodo);
+            listaDeMatriculas = listarMatriculasServicio.ObtenerMatriculasDeUnCiclo(periodo);
 
             turno = comboBoxTurn.Text;
 
@@ -49,14 +49,14 @@ namespace AcademiaSoft.CapaPresentacion
             else
             {
                 if(turno=="Mañana" || turno == "Tarde")
-                    llenarTablaPorTurno(turno);
+                    LlenarTablaPorTurno(turno);
                 else
-                    llenarTabla();
+                    LlenarTabla();
             }
             
         }
 
-        private void llenarTabla()
+        private void LlenarTabla()
         {
             dataGridMatriculas.Rows.Clear();//Limpiar la tabla donde se muestran las Matriculas
             foreach (Matricula matricula in listaDeMatriculas)
@@ -66,7 +66,7 @@ namespace AcademiaSoft.CapaPresentacion
             }
         }
 
-        private void llenarTablaPorTurno(string turno)
+        private void LlenarTablaPorTurno(string turno)
         {
             dataGridMatriculas.Rows.Clear();//Limpiar la tabla donde se muestran las Matriculas
             foreach (Matricula matricula in listaDeMatriculas)
@@ -79,7 +79,7 @@ namespace AcademiaSoft.CapaPresentacion
             }
         }
 
-        private void comboBoxTurn_SelectionChangeCommitted(object sender, EventArgs e)
+        private void ComboBoxTurn_SelectionChangeCommitted(object sender, EventArgs e)
         {
             turno = comboBoxTurn.Text;
 
@@ -91,9 +91,9 @@ namespace AcademiaSoft.CapaPresentacion
             else
             {
                 if (turno == "Mañana" || turno == "Tarde")
-                    llenarTablaPorTurno(turno);
+                    LlenarTablaPorTurno(turno);
                 else
-                    llenarTabla();
+                    LlenarTabla();
             }
         }
     }

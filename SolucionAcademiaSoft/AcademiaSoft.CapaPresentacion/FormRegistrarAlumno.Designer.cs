@@ -59,7 +59,7 @@
             this.textDni.Name = "textDni";
             this.textDni.Size = new System.Drawing.Size(363, 26);
             this.textDni.TabIndex = 0;
-            this.textDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textDni_KeyPress);
+            this.textDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextDni_KeyPress);
             // 
             // textCorreo
             // 
@@ -90,7 +90,7 @@
             this.textTelefono.Name = "textTelefono";
             this.textTelefono.Size = new System.Drawing.Size(364, 26);
             this.textTelefono.TabIndex = 7;
-            this.textTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textTelefono_KeyPress);
+            this.textTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextTelefono_KeyPress);
             // 
             // label7
             // 
@@ -170,7 +170,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Guardar";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label2
             // 
