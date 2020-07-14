@@ -1,13 +1,6 @@
 ﻿using AcademiaSoft.CapaAplicacion.Servicios;
 using AcademiaSoft.CapaDominio.Entidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AcademiaSoft.CapaPresentacion
@@ -52,7 +45,7 @@ namespace AcademiaSoft.CapaPresentacion
             {
                 RegistrarAlumnoServicio registrarAlumnoServicio = new RegistrarAlumnoServicio();
                 registrarAlumnoServicio.GuardarAlumno(alumno);
-                MessageBox.Show("Se ha registrado correctamente al alumno.\n\n"+"Edad del Alumno: "+ alumno.CalcularEdad(), "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Se ha registrado correctamente al alumno.\n\n" + "Edad del Alumno: " + alumno.CalcularEdad(), "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
 
             }
@@ -63,5 +56,5 @@ namespace AcademiaSoft.CapaPresentacion
             }
 
         }
-    } 
+    }
 }

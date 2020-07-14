@@ -1,6 +1,6 @@
-﻿using System;
+﻿using AcademiaSoft.CapaDominio.Entidades;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AcademiaSoft.CapaDominio.Entidades;
+using System;
 
 namespace UnitTestProyectoAcademiaSoft
 {

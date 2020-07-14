@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AcademiaSoft.CapaDominio.Entidades
 {
@@ -45,7 +42,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         //V(G) = 2
         public bool EstaAlumnoMatriculado(string dni)
         {
-            foreach(Matricula m in listaMatriculas)
+            foreach (Matricula m in listaMatriculas)
             {
                 if (m.Alumno.Dni.Equals(dni))
                     return true;
@@ -61,7 +58,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
             DateTime fechaFinMatricula = fechaInicioMatricula.AddDays(20);
 
-            if ( fechaActual >= fechaInicioMatricula  && fechaActual <= fechaFinMatricula)
+            if (fechaActual >= fechaInicioMatricula && fechaActual <= fechaFinMatricula)
                 return true;
             else
                 return false;
@@ -83,7 +80,7 @@ namespace AcademiaSoft.CapaDominio.Entidades
         public int CalcularMatriculasPorTurno(string turno)
         {
             int total = 0;
-            foreach(Matricula matricula in listaMatriculas)
+            foreach (Matricula matricula in listaMatriculas)
             {
                 if (matricula.Turno.Equals(turno))
                     total++;

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using AcademiaSoft.CapaDominio.Contratos;
 using AcademiaSoft.CapaDominio.Entidades;
-using AcademiaSoft.CapaDominio.Contratos;
 using AcademiaSoft.CapaPersistencia.SQLServerDAO;
-using System.Diagnostics;
+using System;
+using System.Collections.Generic;
 
 namespace AcademiaSoft.CapaAplicacion.Servicios
 {
@@ -113,15 +108,16 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
             return listaDeClases;
         }
 
-        public void GuardarMatricula(Matricula matricula, string turno) {
+        public void GuardarMatricula(Matricula matricula, string turno)
+        {
 
-            if(turno=="")
+            if (turno == "")
             {
-                throw new Exception ("No se ha escogido ningún turno para el horario de clases.");
+                throw new Exception("No se ha escogido ningún turno para el horario de clases.");
             }
             matricula.Pago = matricula.CalcularPago(matricula.CicloAcademico.Precio);
             gestorDAO.AbrirConexion();
-            matriculaDAO.GuardarMatricula(matricula,turno);
+            matriculaDAO.GuardarMatricula(matricula, turno);
             gestorDAO.CerrarConexion();
         }
 

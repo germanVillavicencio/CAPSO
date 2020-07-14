@@ -2,12 +2,6 @@
 using AcademiaSoft.CapaDominio.Entidades;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AcademiaSoft.CapaPresentacion
@@ -24,13 +18,13 @@ namespace AcademiaSoft.CapaPresentacion
 
         private void Button1_Click(object sender, EventArgs e)//para mostrar el formulario de registro de matrícula
         {
-            
+
             RegistrarMatriculaServicio registrarMatriculaServicio = new RegistrarMatriculaServicio();
             try
             {
                 CicloAcademico
                 cicloActual = null;
-                int vacantesDisponibles=0;
+                int vacantesDisponibles = 0;
                 cicloActual = registrarMatriculaServicio.ObtenerCicloActual();
                 if (cicloActual != null)
                 {
@@ -68,7 +62,7 @@ namespace AcademiaSoft.CapaPresentacion
             {
                 ciclos = listarMatriculasServicio.ObtenerCiclosAcademicos();
 
-                if(ciclos.Count == 0)
+                if (ciclos.Count == 0)
                 {
                     MessageBox.Show("No existen ciclos académicos registrados.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -78,7 +72,7 @@ namespace AcademiaSoft.CapaPresentacion
                     formReporteMatriculas.ShowDialog();
                 }
 
-                
+
             }
             catch (Exception err)
             {

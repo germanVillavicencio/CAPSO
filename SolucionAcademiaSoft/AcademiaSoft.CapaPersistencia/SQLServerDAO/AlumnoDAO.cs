@@ -1,12 +1,7 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AcademiaSoft.CapaDominio.Contratos;
 using AcademiaSoft.CapaDominio.Entidades;
-using AcademiaSoft.CapaDominio.Contratos;
+using System;
+using System.Data.SqlClient;
 
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
@@ -46,7 +41,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 
         public bool EsValidoCorreo(string correo)
         {
-            string consultaSQL = "SELECT per_correo from Persona where per_correo = '"+correo+"'";
+            string consultaSQL = "SELECT per_correo from Persona where per_correo = '" + correo + "'";
 
             try
             {
@@ -69,8 +64,9 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
         public void GuardarAlumno(Alumno alumno)
         {
             string consultaSQL = "execute registrarAlumno @par_dni, @par_nombre, @par_apellido_pat, @par_apellido_mat, @par_direccion, @par_celular, @par_fecha_nac, @par_correo";
-       
-            try {
+
+            try
+            {
                 SqlCommand comando;
                 //Guardar la alumno
                 comando = gestorSQL.ObtenerComandoSQL(consultaSQL);
@@ -84,9 +80,9 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
                 comando.Parameters.AddWithValue("@par_correo", alumno.Correo);
                 comando.ExecuteNonQuery();
             }
-            catch(Exception err)
+            catch (Exception err)
             {
-                throw new Exception("El alumno ya se encuentra registrado en el sistema.",err);
+                throw new Exception("El alumno ya se encuentra registrado en el sistema.", err);
             }
         }
 

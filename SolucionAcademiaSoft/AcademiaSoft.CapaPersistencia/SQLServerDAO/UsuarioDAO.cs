@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AcademiaSoft.CapaDominio.Contratos;
 using AcademiaSoft.CapaDominio.Entidades;
-using AcademiaSoft.CapaDominio.Contratos;
+using System;
+using System.Data.SqlClient;
 
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
@@ -44,7 +40,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             return usuario;
         }
 
-        public Usuario ObtenerAlumno(SqlDataReader resultadoSQL)
+        private Usuario ObtenerAlumno(SqlDataReader resultadoSQL)
         {
             Usuario usuario = new Usuario();
             usuario.Persona = new Persona();

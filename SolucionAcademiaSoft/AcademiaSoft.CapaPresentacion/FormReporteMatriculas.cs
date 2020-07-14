@@ -2,13 +2,6 @@
 using AcademiaSoft.CapaDominio.Entidades;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AcademiaSoft.CapaPresentacion
@@ -24,9 +17,9 @@ namespace AcademiaSoft.CapaPresentacion
 
             InitializeComponent();
 
-            comboBoxTurn.Items.AddRange(new object[] {"Todos", "Mañana", "Tarde" });
-            
-            foreach(CicloAcademico ciclo in ciclosAcademicos)
+            comboBoxTurn.Items.AddRange(new object[] { "Todos", "Mañana", "Tarde" });
+
+            foreach (CicloAcademico ciclo in ciclosAcademicos)
             {
                 comboBoxCiclo.Items.Add(ciclo.Periodo);
             }
@@ -41,19 +34,19 @@ namespace AcademiaSoft.CapaPresentacion
 
             turno = comboBoxTurn.Text;
 
-            if(listaDeMatriculas.Count==0)
+            if (listaDeMatriculas.Count == 0)
             {
                 MessageBox.Show(this, "No existen matriculas registradas en este ciclo académico.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 dataGridMatriculas.Rows.Clear();
             }
             else
             {
-                if(turno=="Mañana" || turno == "Tarde")
+                if (turno == "Mañana" || turno == "Tarde")
                     LlenarTablaPorTurno(turno);
                 else
                     LlenarTabla();
             }
-            
+
         }
 
         private void LlenarTabla()
@@ -61,8 +54,8 @@ namespace AcademiaSoft.CapaPresentacion
             dataGridMatriculas.Rows.Clear();//Limpiar la tabla donde se muestran las Matriculas
             foreach (Matricula matricula in listaDeMatriculas)
             {
-                    Object[] filaMatricula = { matricula.Codigo, matricula.Fecha.ToShortDateString(), matricula.Pago, matricula.Turno, matricula.Alumno.Dni, matricula.Alumno.Nombre + " " + matricula.Alumno.ApellidoPaterno + " " + matricula.Alumno.ApellidoMaterno };
-                    dataGridMatriculas.Rows.Add(filaMatricula);
+                Object[] filaMatricula = { matricula.Codigo, matricula.Fecha.ToShortDateString(), matricula.Pago, matricula.Turno, matricula.Alumno.Dni, matricula.Alumno.Nombre + " " + matricula.Alumno.ApellidoPaterno + " " + matricula.Alumno.ApellidoMaterno };
+                dataGridMatriculas.Rows.Add(filaMatricula);
             }
         }
 

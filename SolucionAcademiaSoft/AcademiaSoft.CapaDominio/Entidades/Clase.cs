@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AcademiaSoft.CapaDominio.Entidades
 {
@@ -14,7 +10,8 @@ namespace AcademiaSoft.CapaDominio.Entidades
 
         private String codigo;
 
-        public Clase() {
+        public Clase()
+        {
             this.docente = new Docente();
             this.Horario = new Horario();
             this.curso = new Curso();

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using AcademiaSoft.CapaDominio.Entidades;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AcademiaSoft.CapaDominio.Entidades;
+using System;
 
 namespace UnitTestProyectoAcademiaSoft
 {
@@ -13,7 +13,7 @@ namespace UnitTestProyectoAcademiaSoft
         {
             Matricula matricula = new Matricula();    //RESTAMOS 3 DIAS PARA PROBAR LIMITE
             CicloAcademico cicloAcademico = new CicloAcademico();
-            cicloAcademico.FechaInicioMatricula = DateTime.Today.AddDays(-4); 
+            cicloAcademico.FechaInicioMatricula = DateTime.Today.AddDays(-4);
             matricula.CicloAcademico = cicloAcademico;
             double precio = 1000;
             double resultadoEsperado = 0;

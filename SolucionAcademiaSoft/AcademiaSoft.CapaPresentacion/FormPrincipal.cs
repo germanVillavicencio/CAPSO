@@ -1,13 +1,6 @@
 ﻿using AcademiaSoft.CapaAplicacion.Servicios;
 using AcademiaSoft.CapaDominio.Entidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AcademiaSoft.CapaPresentacion
@@ -25,14 +18,14 @@ namespace AcademiaSoft.CapaPresentacion
             Usuario usuario;
             string nick = textNick.Text.Trim();
             string password = textPassword.Text.Trim();
-            
-            if(nick == "")
+
+            if (nick == "")
             {
                 MessageBox.Show("Ingrese un nombre de usuario, por favor.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if(password=="")
+                if (password == "")
                 {
                     MessageBox.Show("Ingrese una contraseña, por favor.", "Sistema AcademiaSoft", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

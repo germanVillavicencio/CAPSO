@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using AcademiaSoft.CapaAplicacion.Servicios;
+﻿using AcademiaSoft.CapaAplicacion.Servicios;
 using AcademiaSoft.CapaDominio.Entidades;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace AcademiaSoft.CapaPresentacion
 {
@@ -50,13 +43,13 @@ namespace AcademiaSoft.CapaPresentacion
             }
             else
             {
-                if(this.numeroMatriculasMañana < this.cicloAcademico.TotalDeAlumnos)
+                if (this.numeroMatriculasMañana < this.cicloAcademico.TotalDeAlumnos)
                 {
-                    this.comboBoxTurno.Items.AddRange(new object[] { "Mañana"});
+                    this.comboBoxTurno.Items.AddRange(new object[] { "Mañana" });
                 }
                 else
                 {
-                    if(this.numeroMatriculasTarde < cicloAcademico.TotalDeAlumnos)
+                    if (this.numeroMatriculasTarde < cicloAcademico.TotalDeAlumnos)
                     {
                         this.comboBoxTurno.Items.AddRange(new object[] { "Tarde" });
                     }
@@ -73,10 +66,10 @@ namespace AcademiaSoft.CapaPresentacion
                 alumno = new Alumno();
                 alumno = registrarMatriculaServicio.BuscarPorDni(dniAlumno);
 
-                if(alumno != null)
+                if (alumno != null)
                 {
-                    if(registrarMatriculaServicio.VerificarAlumnoMatriculado(dniAlumno,this.cicloAcademico))
-                    {   
+                    if (registrarMatriculaServicio.VerificarAlumnoMatriculado(dniAlumno, this.cicloAcademico))
+                    {
                         LimpiarDatosDelAlumno();
                         groupAlumnoDatosPersonales.Enabled = false;
                         groupAlumnoContacto.Enabled = false;
@@ -85,7 +78,7 @@ namespace AcademiaSoft.CapaPresentacion
 
                     }
                     else
-                    {   
+                    {
                         alumno.Dni = textDni.Text;
                         textNombres.Text = alumno.Nombre;
                         textApellidoPaterno.Text = alumno.ApellidoPaterno;
@@ -126,9 +119,9 @@ namespace AcademiaSoft.CapaPresentacion
         private void LlenarListaDeClase()
         {
             string horaFin;
-            foreach(Clase clase in this.cicloAcademico.Clases)
+            foreach (Clase clase in this.cicloAcademico.Clases)
             {
-                horaFin = clase.Horario.Fin.Substring(0,2);
+                horaFin = clase.Horario.Fin.Substring(0, 2);
                 if (String.Compare(horaFin, "13") < 0)
                 {
                     this.listaDeClasesMañana.Add(clase);
@@ -151,9 +144,9 @@ namespace AcademiaSoft.CapaPresentacion
 
             try
             {
-                
+
                 registrarMatriculaServicio.GuardarMatricula(nuevaMatricula, turnoSeleccionado);
-                MessageBox.Show("Se ha matriculado correctamente al alumno.\n\nDescuento: " + nuevaMatricula.CalcularDescuento(cicloAcademico.Precio)+"\nPago: "+nuevaMatricula.CalcularPago(cicloAcademico.Precio), "Sistema AcademiaSoft");
+                MessageBox.Show("Se ha matriculado correctamente al alumno.\n\nDescuento: " + nuevaMatricula.CalcularDescuento(cicloAcademico.Precio) + "\nPago: " + nuevaMatricula.CalcularPago(cicloAcademico.Precio), "Sistema AcademiaSoft");
                 groupAlumnoDatosPersonales.Enabled = false;
                 groupAlumnoContacto.Enabled = false;
                 groupMatricula.Enabled = false;
@@ -176,7 +169,7 @@ namespace AcademiaSoft.CapaPresentacion
                 dataGridClases.Rows.Clear();
                 foreach (Clase clase in this.listaDeClasesMañana)
                 {
-                    Object[] filaClase = { clase.Codigo, clase.Curso.Nombre, clase.Docente.Nombre + " " + clase.Docente.ApellidoPaterno + " " + clase.Docente.ApellidoMaterno, clase.Horario.Dia + " " + clase.Horario.Inicio + " - " +clase.Horario.Fin};
+                    Object[] filaClase = { clase.Codigo, clase.Curso.Nombre, clase.Docente.Nombre + " " + clase.Docente.ApellidoPaterno + " " + clase.Docente.ApellidoMaterno, clase.Horario.Dia + " " + clase.Horario.Inicio + " - " + clase.Horario.Fin };
                     dataGridClases.Rows.Add(filaClase);
                 }
             }
@@ -193,7 +186,7 @@ namespace AcademiaSoft.CapaPresentacion
         }
         private void TextDni_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar==8)
+            if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8)
                 e.Handled = false;
             else
                 e.Handled = true;

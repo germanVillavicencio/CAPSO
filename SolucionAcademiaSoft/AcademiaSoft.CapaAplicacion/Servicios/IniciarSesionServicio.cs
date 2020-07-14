@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using AcademiaSoft.CapaDominio.Contratos;
 using AcademiaSoft.CapaDominio.Entidades;
-using AcademiaSoft.CapaDominio.Contratos;
 using AcademiaSoft.CapaPersistencia.SQLServerDAO;
+using System;
 
 namespace AcademiaSoft.CapaAplicacion.Servicios
 {
@@ -29,7 +24,7 @@ namespace AcademiaSoft.CapaAplicacion.Servicios
                 throw new Exception("Contraseña Incorrecta.");
 
             gestorDAO.CerrarConexion();
-            
+
             return usuario;
         }
     }

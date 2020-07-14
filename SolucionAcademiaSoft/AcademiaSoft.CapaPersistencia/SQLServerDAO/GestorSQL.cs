@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AcademiaSoft.CapaDominio.Contratos;
-using System.Data.SqlClient;
+﻿using AcademiaSoft.CapaDominio.Contratos;
+using System;
 using System.Data;
+using System.Data.SqlClient;
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
-    public class GestorSQL :IGestorDAO
+    public class GestorSQL : IGestorDAO
     {
         private SqlConnection conexion;
         private SqlTransaction transaccion;

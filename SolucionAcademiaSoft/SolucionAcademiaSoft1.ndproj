@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <NDepend AppName="SolucionAcademiaSoft" Platform="DotNet" FileWrittenByProductVersion="2020.1.2.9420">
   <OutputDir KeepXmlFiles="False">.\NDependOut1</OutputDir>
   <IDEFiles>
@@ -76,8 +76,7 @@
       <High2Critical_SeverityThreshold>72000000000</High2Critical_SeverityThreshold>
       <Critical2Blocker_SeverityThreshold>360000000000</Critical2Blocker_SeverityThreshold>
     </DebtSettings>
-  </ProjectDebtSettings>
-  <Queries>
+  </ProjectDebtSettings><Queries>
     <Group Name="Quality Gates" Active="True" ShownInReport="False">
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Quality Gates Evolution</Name>
 from qg in QualityGates
@@ -208,49 +207,6 @@ select new { i, i.Severity, i.Debt, i.AnnualInterest }
 // either inferred from the issue *annual interest* and thresholds defined in the 
 // NDepend Project Properties > Issue and Debt.
 //</Description>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <QualityGate Name="New Blocker / Critical / High Issues" Unit="issues" />
-failif count > 0 issues
-from i in Issues
-where i.Severity.EqualsAny(Severity.Blocker, Severity.Critical, Severity.High) &&  
-      // Count both the new issues and the issues that became at least Critical
-      (i.WasAdded() || i.OlderVersion().Severity < Severity.High)
-select new { i, i.Severity, i.Debt, i.AnnualInterest }
-
-
-//<Description>
-// An issue with the severity **Blocker** cannot move to production, it must be fixed.
-//
-// An issue with a severity level **Critical** shouldn't move to production. 
-// It still can for business imperative needs purposes, but at worth it must be fixed 
-// during the next iterations. 
-//
-// An issue with a severity level **High** should be fixed quickly, but can wait until 
-// the next scheduled interval.
-//
-// The severity of an issue is either defined explicitely in the rule source code,
-// either inferred from the issue *annual interest* and thresholds defined in the 
-// NDepend Project Properties > Issue and Debt.
-//</Description>
-]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <QualityGate Name="Critical Rules Violated" Unit="rules" />
-failif count > 0 rules
-from r in Rules where r.IsCritical && r.IsViolated()
-select new { r, issues = r.Issues() }
-
-//<Description>
-// The concept of critical rule is useful to pinpoint certain rules that 
-// should not be violated.
-//
-// A rule can be made critical just by checking the *Critical button* in the
-// rule edition control and then saving the rule.
-//
-// This quality gate fails if any critical rule gets any violations.
-//
-// When no baseline is available, rules that rely on diff are not counted.
-// If you observe that this quality gate count slightly decreases with no apparent reason,
-// the reason is certainly that rules that rely on diff are not counted
-// because the baseline is not defined.
-//</Description>]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <QualityGate Name="Percentage Debt" Unit="%" />
 failif value > 30%
 warnif value > 20%
@@ -309,40 +265,6 @@ select (debt - debtInBaseline).ToManDay()
 //
 // Debt documentation: https://www.ndepend.com/docs/technical-debt#Debt
 //</Description>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <QualityGate Name="Debt Rating per Namespace" Unit="namespaces" />
-failif count > 0 namespaces
-
-from n in Application.Namespaces
-where n.DebtRating() != null &&
-      n.DebtRating().Value.EqualsAny(DebtRating.E, DebtRating.D)
-select new { 
-   n, 
-   debtRating = n.DebtRating(),
-   debtRatio = n.DebtRatio(),  // % of debt from which DebtRating is inferred
-   devTimeInManDay = n.EffortToDevelop().ToDebt(), 
-   debtInManDay = n.AllDebt(),
-   issues = n.AllIssues() 
-}
-
-// <Description>
-// Forbid namespaces with a poor Debt Rating equals to **E** or **D**.
-//
-// The **Debt Rating** for a code element is estimated by the value of the **Debt Ratio**
-// and from the various rating thresholds defined in this project *Debt Settings*. 
-//
-// The **Debt Ratio** of a code element is a percentage of **Debt Amount** (in floating man-days) 
-// compared to the **estimated effort to develop the code element** (also in floating man-days).
-//
-// The **estimated effort to develop the code element** is inferred from the code elements
-// number of lines of code, and from the project *Debt Settings* parameters 
-// *estimated number of man-days to develop 1000* **logical lines of code**.
-//
-// The **logical lines of code** corresponds to the number of debug breakpoints in a method
-// and doesn't depend on code formatting nor comments.
-//
-// The Quality Gate can be modified to match assemblies, types or methods
-// with a poor Debt Rating, instead of matching namespaces.
-// </Description>]]></Query>
       <Query Active="False" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <QualityGate Name="Annual Interest" Unit="man-days" />
 failif value > 50 man-days
 warnif value > 30 man-days
@@ -359,27 +281,6 @@ Issues.Sum(i => i.AnnualInterest).ToManDay()
 //
 // The Annual-Interest is defined as the sum of estimated annual cost
 // in man-days, to leave all issues unfixed.
-//
-// Each rule can either provide a formula to compute the Annual-Interest 
-// per issue, or assign a **Severity** level for each issue. Some thresholds
-// defined in *Project Properties > Issue and Debt > Annual Interest* are
-// used to infer an Annual-Interest value from a Severity level.
-// Annual Interest documentation: https://www.ndepend.com/docs/technical-debt#AnnualInterest
-//</Description>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="True" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <QualityGate Name="New Annual Interest since Baseline" Unit="man-days" />
-failif value > 2 man-days
-warnif value > 0 man-days
-let ai = Issues.Sum(i => i.AnnualInterest)
-let aiInBaseline = IssuesInBaseline.Sum(i => i.AnnualInterest)
-select (ai - aiInBaseline).ToManDay()
-
-//<Description>
-// This Quality Gate fails if the estimated annual cost to leave all issues
-// unfixed, increased from more than 2 man-days since the baseline.
-//
-// This Quality Gate warns if this estimated annual cost is positive.
-//
-// This estimated annual cost is named the **Annual-Interest**.
 //
 // Each rule can either provide a formula to compute the Annual-Interest 
 // per issue, or assign a **Severity** level for each issue. Some thresholds
@@ -4602,132 +4503,6 @@ select new {
 //</HowToFix>]]></Query>
     </Group>
     <Group Name="API Breaking Changes" Active="True" ShownInReport="True">
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>API Breaking Changes: Types</Name>
-// <Id>ND1500:APIBreakingChangesTypes</Id>
-
-warnif count > 0 from t in codeBase.OlderVersion().Application.Types
-where t.IsPubliclyVisible && 
-
-     // The type has been removed, it was not tagged as obsolete
-     // and its parent assembly hasn't been removed …
-     ( ( t.WasRemoved() && 
-        !t.ParentAssembly.WasRemoved() && 
-        !t.IsObsolete) ||
-
-     // … or the type is not publicly visible anymore
-        !t.WasRemoved() && !t.NewerVersion().IsPubliclyVisible)
-
-select new { 
-   t,
-   NewVisibility = 
-      (t.WasRemoved() ? " " : 
-       t.NewerVersion().Visibility.ToString()),
-   Debt = 20.ToMinutes().ToDebt(),
-   Severity = Severity.High
-}
-
-//<Description>
-// This rule is executed only if a *baseline for comparison* is defined (*diff mode*).
-//
-// This rule warns if a type publicly visible in the *baseline*, 
-// is not publicly visible anymore or if it has been removed.
-// Clients code using such type will be broken.
-//</Description>
-
-//<HowToFix>
-// Make sure that public types that used to be presented to
-// clients, still remain public now, and in the future.
-//
-// If a public type must really be removed, you can tag it
-// with *System.ObsoleteAttribute* with a *workaround message*
-// during a few public releases, until it gets removed definitely.
-// Notice that this rule doesn't match types removed that were
-// tagged as obsolete.
-//
-// Issues of this rule have a severity equal to **High**
-// because an API Breaking change can provoque significant
-// friction with consumers of the API.
-//</HowToFix>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>API Breaking Changes: Methods</Name>
-// <Id>ND1501:APIBreakingChangesMethods</Id>
-
-warnif count > 0 from m in codeBase.OlderVersion().Application.Methods
-where m.IsPubliclyVisible && 
-
-     // The method has been removed, it was not tagged as obsolete
-     // and its parent type hasn't been removed …
-     ( ( m.WasRemoved() && 
-        !m.ParentType.WasRemoved() && 
-        !m.IsObsolete )
-
-        // … or the method is not publicly visible anymore 
-        //   but the parent type is still publicly visible
-     || (!m.WasRemoved() && !m.NewerVersion().IsPubliclyVisible && 
-          m.ParentType.NewerVersion().IsPubliclyVisible) 
-
-        // … or the method return type has changed
-     || (!m.WasRemoved() && m.ReturnType != null && m.NewerVersion().ReturnType != null
-                         && m.ReturnType.FullName != m.NewerVersion().ReturnType.FullName)        
-      )
-
-//--------------------------------------
-// Handle special case: if between two versions a regular property becomes 
-// an auto-property (or vice-versa) the property getter/setter method have 
-// a different value for IMethod.IsGeneratedByCompiler
-// since auto-property getter/setter are marked as generated by the compiler.
-//
-// If a method IsGeneratedByCompiler value changes between two versions, 
-// NDepend doesn't pair the newer/older occurences of the method.
-//
-// Hence in such situation, a public method is seen as added 
-// and a public method is seen as removed, but the API is not broken!
-// The equivalentMethod-check below avoids reporting such 
-// API Breaking Change false-positive.
-let equivalentMethod = m.WasRemoved() && m.ParentType.IsPresentInBothBuilds() ?
-   m.ParentType.NewerVersion().Methods
-   .FirstOrDefault(m1 => 
-       m1.IsPubliclyVisible &&
-       m1.Name == m.Name &&
-       m1.IsGeneratedByCompiler != m.IsGeneratedByCompiler &&
-      (m1.ReturnType == null || m.ReturnType == null || m1.ReturnType.FullName == m.ReturnType.FullName)
-    )
-    : null
-where equivalentMethod == null
-//--------------------------------------
-
-
-select new { 
-   m,
-   NewVisibility = 
-      (m.WasRemoved() ? " " : 
-       m.NewerVersion().Visibility.ToString()),
-   Debt = 10.ToMinutes().ToDebt(),
-   Severity = Severity.High
-}
-
-//<Description>
-// This rule is executed only if a *baseline for comparison* is defined (*diff mode*).
-//
-// This rule warns if a method publicly visible in the *baseline*, 
-// is not publicly visible anymore or if it has been removed.
-// Clients code using such method will be broken.
-//</Description>
-
-//<HowToFix>
-// Make sure that public methods that used to be presented to
-// clients, still remain public now, and in the future.
-//
-// If a public method must really be removed, you can tag it
-// with *System.ObsoleteAttribute* with a *workaround message*
-// during a few public releases, until it gets removed definitely.
-// Notice that this rule doesn't match methods removed that were
-// tagged as obsolete.
-//
-// Issues of this rule have a severity equal to **High**
-// because an API Breaking change can provoque significant
-// friction with consumers of the API.
-//</HowToFix>
-]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>API Breaking Changes: Fields</Name>
 // <Id>ND1502:APIBreakingChangesFields</Id>
 
@@ -4779,55 +4554,6 @@ select new {
 // Issues of this rule have a severity equal to **High**
 // because an API Breaking change can provoque significant
 // friction with consumers of the API.
-//</HowToFix>]]></Query>
-      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>API Breaking Changes: Interfaces and Abstract Classes</Name>
-// <Id>ND1503:APIBreakingChangesInterfacesAndAbstractClasses</Id>
-
-warnif count > 0 from tNewer in Application.Types where 
- (tNewer.IsInterface || tNewer.IsClass && tNewer.IsAbstract) && 
-  tNewer.IsPubliclyVisible && 
-  tNewer.IsPresentInBothBuilds()
-
-let tOlder = tNewer.OlderVersion() where tOlder.IsPubliclyVisible
-
-let methodsRemoved = tOlder.Methods.Where(m => m.IsAbstract && m.WasRemoved())
-let methodsAdded = tNewer.Methods.Where(m => m.IsAbstract && m.WasAdded())
-
-where methodsAdded.Count() > 0 || methodsRemoved.Count() > 0
-select new { 
-   tNewer, 
-   methodsAdded, 
-   methodsRemoved,
-   Debt = 10.ToMinutes().ToDebt(),
-   Severity = Severity.High
-}
-
-//<Description>
-// This rule is executed only if a *baseline for comparison* is defined (*diff mode*).
-//
-// This rule warns if a publicly visible interface or abstract class 
-// has been changed and contains new abstract methods or 
-// if some abstract methods have been removed.
-//
-// Clients code that implement such interface or derive from 
-// such abstract class will be broken.
-//</Description>
-
-//<HowToFix>
-// Make sure that the public contracts of interfaces and abstract classes
-// that used to be presented to clients, remain stable now, and in the future.
-//
-// If a public contract must really be changed, you can tag 
-// abstract methods that will be removed with *System.ObsoleteAttribute*  
-// with a *workaround message* during a few public releases, until it gets 
-// removed definitely.
-//
-// Issues of this rule have a severity equal to **High**
-// because an API Breaking change can provoque significant
-// friction with consummers of the API.
-// The severity is not set to **Critical** because an interface 
-// is not necessarily meant to be implemented by the consummer
-// of the API.
 //</HowToFix>]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>Broken serializable types</Name>
 // <Id>ND1504:BrokenSerializableTypes</Id>
@@ -12577,6 +12303,4 @@ select new {
 //</HowToFix>]]></Query>
       </Group>
     </Group>
-  </Queries>
-  <WarnFilter />
-</NDepend>
+  </Queries></NDepend>

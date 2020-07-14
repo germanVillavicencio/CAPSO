@@ -1,11 +1,8 @@
-﻿using AcademiaSoft.CapaDominio.Entidades;
+﻿using AcademiaSoft.CapaDominio.Contratos;
+using AcademiaSoft.CapaDominio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AcademiaSoft.CapaDominio.Contratos;
 namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
 {
     public class MatriculaDAO : IMatriculaDAO
@@ -18,7 +15,8 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             this.gestorSQL = (GestorSQL)gestorSQL;
         }
 
-        public void GuardarMatricula(Matricula matricula, string turno) {
+        public void GuardarMatricula(Matricula matricula, string turno)
+        {
 
             string consultaSQL = "execute registrarMatricula @par_pago, @par_dni_secretario, @par_dni_alumno, @par_ciclo, @par_turno";
 
@@ -45,7 +43,7 @@ namespace AcademiaSoft.CapaPersistencia.SQLServerDAO
             List<Matricula> listaMatricula = new List<Matricula>();
             Matricula matricula;
             string consultaSQL = "select m.mat_codigo, m.mat_fecha, m.mat_pago, m.mat_turno, p.per_dni, p.per_nombre, p.per_apellido_mat, p.per_apellido_pat " +
-                                    "from Matricula m inner join Ciclo_Academico c on m.cic_id = c.cic_id inner join Persona p on m.alu_dni = p.per_dni "+
+                                    "from Matricula m inner join Ciclo_Academico c on m.cic_id = c.cic_id inner join Persona p on m.alu_dni = p.per_dni " +
                                     "where c.cic_periodo = '" + periodo + "' ";
 
             try

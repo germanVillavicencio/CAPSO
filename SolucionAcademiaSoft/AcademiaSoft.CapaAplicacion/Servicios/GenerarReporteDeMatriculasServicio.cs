@@ -1,11 +1,7 @@
 ﻿using AcademiaSoft.CapaDominio.Contratos;
 using AcademiaSoft.CapaDominio.Entidades;
 using AcademiaSoft.CapaPersistencia.SQLServerDAO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AcademiaSoft.CapaAplicacion.Servicios
 {
